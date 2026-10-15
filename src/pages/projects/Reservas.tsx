@@ -29,7 +29,7 @@ export default function Reservas({ project }: { project: Project }) {
               <Mark text={project.hero.title} word={project.hero.mark} color="text-sol" />
             </h1>
             <p className="text-body mt-8 max-w-lg">{project.hero.text}</p>
-            <Button to="/#contato" className="mt-10">
+            <Button to={`/?servico=${project.service}#contato`} className="mt-10">
               {project.hero.contactCta}
             </Button>
           </div>

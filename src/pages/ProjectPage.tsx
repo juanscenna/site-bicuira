@@ -1,5 +1,8 @@
 import { useParams } from 'react-router-dom'
 import usePageMeta from '../components/usePageMeta'
+import Breadcrumb from '../components/Breadcrumb'
+import PageHero, { HeroPlate } from '../components/PageHero'
+import { findService, serviceLabels } from '../content/services'
 import { findProject, type Project } from '../content/projects'
 import NotFound from './NotFound'
 import PousadaSite from './projects/PousadaSite'
@@ -24,5 +27,23 @@ export default function ProjectPage() {
 function ProjectWithMeta({ project }: { project: Project }) {
   usePageMeta(project.seo.title, project.seo.description)
   const Layout = layouts[project.slug] ?? GenericProject
-  return <Layout project={project} />
+  const service = findService(project.service)
+  return (
+    <>
+      {/* Abertura padrão do site: imagem grande + placa central */}
+      <PageHero image={project.heroImage}>
+        <HeroPlate>
+          <p className="tag text-restinga">{project.category}</p>
+          <p className="font-display text-[clamp(1.9rem,5.5vw,3.25rem)] leading-none text-restinga">{project.client}</p>
+        </HeroPlate>
+      </PageHero>
+      <div className="wrap pt-4">
+        <Breadcrumb
+          align="left"
+          items={[{ label: serviceLabels.home, to: '/' }, { label: service.name, to: service.path }, { label: project.title }]}
+        />
+      </div>
+      <Layout project={project} />
+    </>
+  )
 }

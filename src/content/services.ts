@@ -1,3 +1,5 @@
+import { images, type SiteImage } from './images'
+
 // Os três serviços da Bicuíra.
 // "card" = texto curto da seção "Nossas soluções".
 // "detail" = texto completo da seção "Serviços".
@@ -8,6 +10,9 @@ export type Service = {
   id: ServiceId
   number: string
   name: string
+  path: string // endereço da página do serviço
+  heroImage: SiteImage // foto do topo da página do serviço
+  seo: { title: string; description: string }
   formLabel: string // nome que aparece no campo "Serviço de interesse"
   inDevelopment?: boolean
   card: {
@@ -30,6 +35,13 @@ export const services: Service[] = [
     id: 'sites',
     number: '01',
     name: 'Bicuíra Sites',
+    path: '/sites',
+    heroImage: images.coastNature,
+    seo: {
+      title: 'Bicuíra Sites — Sites para negócios locais | Bicuíra Digital',
+      description:
+        'Sites que apresentam melhor seu negócio, organizam informações e facilitam o contato com seus clientes. Pousadas, hospedagens, bares, restaurantes e negócios locais.',
+    },
     formLabel: 'Bicuíra Sites',
     card: {
       description:
@@ -76,6 +88,13 @@ export const services: Service[] = [
     id: 'automacao',
     number: '02',
     name: 'Bicuíra Automação',
+    path: '/automacao',
+    heroImage: images.oceanTexture,
+    seo: {
+      title: 'Bicuíra Automação — Menos tarefas repetitivas | Bicuíra Digital',
+      description:
+        'Soluções digitais que simplificam processos, conectam ferramentas e ajudam negócios a trabalhar melhor, incluindo aplicações de inteligência artificial.',
+    },
     formLabel: 'Bicuíra Automação',
     card: {
       description:
@@ -90,6 +109,7 @@ export const services: Service[] = [
         'Criamos soluções digitais que simplificam processos, conectam ferramentas e ajudam negócios a trabalhar melhor.',
       groups: [
         {
+          title: 'O que podemos fazer',
           items: [
             'Automatização de tarefas manuais',
             'Integração entre ferramentas',
@@ -109,6 +129,13 @@ export const services: Service[] = [
     id: 'fideliza',
     number: '03',
     name: 'Bicuíra Fideliza',
+    path: '/fideliza',
+    heroImage: images.surfboards,
+    seo: {
+      title: 'Bicuíra Fideliza — Produto em desenvolvimento | Bicuíra Digital',
+      description:
+        'Uma proposta de fidelização digital para incentivar os clientes a voltar. Produto em desenvolvimento, com recursos em validação.',
+    },
     formLabel: 'Bicuíra Fideliza',
     inDevelopment: true,
     card: {
@@ -147,3 +174,22 @@ export const inDevelopmentLabel = 'Produto em desenvolvimento'
 
 // Botão que abre as listas de serviços no celular
 export const detailsToggle = { open: 'Ver o que pode incluir', close: 'Mostrar menos' }
+
+// Textos fixos das páginas de serviço
+export const serviceLabels = {
+  home: 'Início',
+  serviceTag: 'Serviço',
+  include: 'O que pode incluir',
+  casesTag: 'Cases',
+  casesTitle: 'Projetos reais com esta solução',
+  viewCase: 'Ver case completo',
+  seeCases: 'Ver os cases',
+  statusTitle: 'Em que pé está',
+  otherServices: 'Conheça também',
+  finalTitle: 'Vamos conversar sobre o seu negócio?',
+  finalText: 'Conta para a gente o que você precisa. A gente entende sua realidade e mostra as possibilidades.',
+}
+
+export function findService(id: ServiceId) {
+  return services.find((s) => s.id === id)!
+}

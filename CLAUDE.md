@@ -16,21 +16,23 @@ Vite + React + TypeScript + Tailwind + React Router. Sem backend. Deploy na Verc
 - Fontes: Baloo 2 ExtraBold (800) para títulos (`font-display`); Sora para o resto (`font-sans`).
 - Direção visual: editorial, assimétrica, tipografia grande, fotografia costeira, rabiscos à mão (`components/Doodles.tsx`). Evitar cara de template, cards idênticos, gradientes roxo/azul, glassmorphism, sombras pesadas. Animações discretas e respeitando `prefers-reduced-motion`.
 
-## Rotas
-- `/` — página inicial (âncoras: `#inicio #solucoes #projetos #servicos #servico-sites #servico-automacao #servico-fideliza #como-trabalhamos #sobre #contato`)
-- `/projetos/pousada-sonhos-do-rosa`, `/projetos/automacao-reservas`, `/projetos/agenda-de-todos-nos`
+## Rotas e estrutura
+- `/` — página inicial, enxuta: abertura (imagem grande + logo no centro), título, 3 soluções IGUAIS (cada uma com sua cor), Manifesto, Como trabalhamos, Sobre e Contato. Âncoras: `#inicio #solucoes #como-trabalhamos #sobre #contato`.
+- `/sites`, `/automacao`, `/fideliza` — uma página por serviço (`pages/ServicePage.tsx`): mesma abertura da home (imagem + placa central), o que inclui, resumo dos cases com "Ver case completo" e CTA final. Fideliza não tem case e mostra o status "em desenvolvimento".
+- `/projetos/pousada-sonhos-do-rosa`, `/projetos/automacao-reservas`, `/projetos/agenda-de-todos-nos` — página completa de cada case, com a mesma abertura, trilha (Início / Serviço / Case) e "voltar" para o serviço. Cada case pertence a um serviço (`service` em `projects.ts`).
 - qualquer outra → 404
-- `vercel.json` reescreve tudo para `index.html`. `ScrollManager` volta ao topo ao trocar de página e rola até a âncora quando há `#`.
+- Todas as páginas começam com `components/PageHero.tsx`.
+- `vercel.json` (cleanUrls + rewrite para `index.html`). `ScrollManager` volta ao topo ao trocar de página e rola até a âncora quando há `#`.
 - Pré-seleção do formulário: `/?servico=sites#contato` (ids: `sites`, `automacao`, `fideliza`).
 
 ## Onde fica cada coisa
 - `src/content/` — TODOS os textos:
   - `site.ts` — nome, região, Instagram, `whatsappNumber` (null = sem botão), `formEndpoint` (null = formulário mostra aviso e aponta para o Instagram), menus
   - `home.ts` — textos das seções da página inicial
-  - `services.ts` — os três serviços (card + detalhe)
-  - `projects.ts` — lista de cases (novo case = nova entrada + imagens; ganha página pelo `GenericProject`)
+  - `services.ts` — os três serviços (card da home + página própria: `path`, `heroImage`, `seo`, `detail`) e `serviceLabels`
+  - `projects.ts` — lista de cases (novo case = nova entrada com `service` + imagens; aparece na página do serviço e ganha página pelo `GenericProject`)
   - `images.ts` — TODAS as referências de imagem (`isPlaceholder: true` nas provisórias). `images` = fotos de atmosfera (com `srcSet` 800/1600; use `local('/images/...')` para WebP locais). `captures` = espaços das capturas reais dos projetos: com `src: ''` mostram uma composição da marca + "Captura em breve"; para ativar, troque por `{ ...local('/images/projects/x'), alt, isPlaceholder: false }`
-- `src/sections/` — seções da home · `src/pages/` — páginas · `src/components/` — peças reutilizáveis
+- `src/sections/` — seções da home · `src/pages/` — páginas (Home, ServicePage, ProjectPage e layouts dos cases) · `src/components/` — peças reutilizáveis
 
 ## Outros detalhes
 - Destaques à mão nos títulos: campo `mark` no conteúdo + componente `Mark` (não altera o texto).

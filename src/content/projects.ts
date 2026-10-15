@@ -8,7 +8,8 @@
 //
 // Os três primeiros projetos têm páginas com layout próprio (src/pages/).
 
-import { captures, type SiteImage } from './images'
+import { captures, images, type SiteImage } from './images'
+import type { ServiceId } from './services'
 
 export type GalleryItem = {
   image: SiteImage
@@ -18,6 +19,8 @@ export type GalleryItem = {
 
 export type Project = {
   slug: string
+  service: ServiceId // serviço ao qual o case pertence (aparece na página dele)
+  heroImage: SiteImage // foto do topo da página do case
   client: string
   title: string // nome do projeto
   category: string
@@ -45,6 +48,8 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: 'pousada-sonhos-do-rosa',
+    service: 'sites',
+    heroImage: images.surfLifestyle,
     client: 'Pousada Sonhos do Rosa',
     title: 'Site da Pousada Sonhos do Rosa',
     category: 'Desenvolvimento de site',
@@ -92,6 +97,8 @@ export const projects: Project[] = [
   },
   {
     slug: 'automacao-reservas',
+    service: 'automacao',
+    heroImage: images.waveBreaking,
     client: 'Pousada Sonhos do Rosa',
     title: 'Automação de reservas',
     category: 'Automação de processos',
@@ -150,6 +157,8 @@ export const projects: Project[] = [
   },
   {
     slug: 'agenda-de-todos-nos',
+    service: 'automacao',
+    heroImage: images.oceanAerial,
     client: 'Agenda de Todos Nós',
     title: 'Agenda de Todos Nós',
     category: 'Inteligência artificial e automação',
@@ -205,6 +214,10 @@ export const projects: Project[] = [
   },
 ]
 
+export function projectsOf(service: ServiceId) {
+  return projects.filter((p) => p.service === service)
+}
+
 export function findProject(slug: string) {
   return projects.find((p) => p.slug === slug)
 }
@@ -228,12 +241,12 @@ export const projectLabels = {
   gallery: 'Galeria',
   tools: 'Ferramentas',
   result: 'Resultado relatado pela operação',
-  portfolio: 'Portfólio',
-  back: 'Voltar aos projetos',
+  portfolio: 'Serviço',
+  back: 'Voltar para',
   viewProject: 'Ver projeto',
   prev: 'Projeto anterior',
   next: 'Próximo projeto',
   services: 'Serviços',
-  servicesLink: 'Conheça nossos serviços',
+  servicesLink: 'Conheça nossas soluções',
   otherProjects: 'Outros projetos',
 }

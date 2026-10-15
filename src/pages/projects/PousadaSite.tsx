@@ -35,7 +35,7 @@ export default function PousadaSite({ project }: { project: Project }) {
               {project.hero.externalLink && (
                 <Button to={project.hero.externalLink.url}>{project.hero.externalLink.label}</Button>
               )}
-              <Button to="/#contato" variant="text">
+              <Button to={`/?servico=${project.service}#contato`} variant="text">
                 {project.hero.contactCta}
               </Button>
             </div>

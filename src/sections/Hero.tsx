@@ -1,31 +1,34 @@
 import Button from '../components/Button'
-import Photo from '../components/Photo'
-import { ScribbleArrow, ScribbleCircle, Sun, WaveShape } from '../components/Doodles'
+import PageHero from '../components/PageHero'
+import { ScribbleCircle } from '../components/Doodles'
 import { hero } from '../content/home'
-import { images } from '../content/images'
+import { brand, images } from '../content/images'
 
-// Abertura da página inicial: título gigante à esquerda,
-// foto de surf sangrando para a borda direita, sol e onda da marca.
+// Abertura da página inicial (segue o wireframe):
+// 1. imagem grande com o logo oficial no centro
+// 2. logo abaixo, título, texto curto e os dois caminhos (conversar / ver soluções)
 export default function Hero() {
   return (
-    <section id="inicio" className="relative overflow-hidden pb-14 md:pb-20">
-      {/* Imagem: no desktop ocupa a lateral direita até a borda da tela */}
-      <div className="relative mx-4 mt-3 sm:mx-6 md:absolute md:inset-y-0 md:right-0 md:mx-0 md:mt-0 md:w-[40%] md:pb-20">
-        <Photo
-          image={images.heroCoastal}
-          priority
-          sizes="(min-width: 768px) 40vw, 100vw"
-          className="h-[28vh] min-h-[11rem] rounded-[2rem] md:h-full md:rounded-none md:rounded-bl-[6rem]"
-        />
-        <Sun className="absolute -top-3 right-6 w-16 text-sol sm:w-24 md:-left-6 md:right-auto md:top-auto md:bottom-[42%] md:w-32 lg:-left-16 lg:w-40" />
-        <WaveShape className="absolute -bottom-4 -left-6 hidden w-[70%] text-oceano md:block md:w-[110%] md:-left-24 md:bottom-16 md:w-[90%]" />
-      </div>
+    <>
+      <PageHero image={images.heroCoastal}>
+        <div className="relative">
+          {/* brilho claro atrás do logo para ele se destacar sobre a foto */}
+          <div aria-hidden="true" className="absolute -inset-10 rounded-full bg-areia/70 blur-3xl sm:-inset-14" />
+          <img
+            src={brand.principal}
+            alt={hero.logoAlt}
+            width={482}
+            height={393}
+            fetchPriority="high"
+            className="relative w-[min(50vw,22rem)] drop-shadow-[0_6px_18px_rgba(41,42,41,0.35)] md:w-[26rem]"
+          />
+        </div>
+      </PageHero>
 
-      <div className="wrap relative">
-        <div className="relative z-10 pt-7 md:w-[56%] md:pt-20 lg:w-[60%] lg:pt-24">
+      <section id="inicio" className="relative pb-16 pt-5 text-center md:pb-24 md:pt-14">
+        <div className="wrap flex flex-col items-center">
           <p className="tag text-restinga">{hero.tag}</p>
-
-          <h1 className="mt-4 text-[clamp(3.25rem,14vw,5rem)] leading-[0.86] text-restinga md:text-[9.5vw] lg:text-giant">
+          <h1 className="mt-4 max-w-4xl text-[clamp(2.6rem,8vw,6.5rem)] leading-[0.92] text-restinga">
             {hero.title.before}{' '}
             <span className="relative inline-block text-sol">
               {hero.title.highlight}
@@ -33,26 +36,15 @@ export default function Hero() {
             </span>{' '}
             <span className="whitespace-nowrap">{hero.title.after}</span>
           </h1>
-
-          <div className="mt-5 flex items-end gap-6 md:mt-12">
-            <p className="text-body max-w-md">{hero.text}</p>
-            <ScribbleArrow draw className="hidden w-24 shrink-0 rotate-[20deg] text-oceano lg:block" />
-          </div>
-
-          <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 md:mt-8">
-            <Button to="/#contato" color="carvao">
-              {hero.primaryCta}
-            </Button>
-            <Button to="/#projetos" variant="text">
+          <p className="text-body mt-4 max-w-xl md:mt-6">{hero.text}</p>
+          <div className="mt-6 flex flex-col items-center gap-2 sm:flex-row sm:gap-6 md:mt-8">
+            <Button to="/#contato">{hero.primaryCta}</Button>
+            <Button to="/#solucoes" variant="text">
               {hero.secondaryCta}
             </Button>
           </div>
-
-          <p className="mt-10 max-w-xs border-l-2 border-lima pl-4 text-sm leading-relaxed text-carvao/80 md:mt-14">
-            {hero.caption}
-          </p>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   )
 }

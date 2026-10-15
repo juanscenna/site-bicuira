@@ -12,10 +12,10 @@ export const hero = {
   // Título "Tecnologia com raiz local." dividido em partes para a composição.
   // A palavra em "highlight" ganha o círculo desenhado à mão.
   title: { before: 'Tecnologia com', highlight: 'raiz', after: 'local.' },
-  caption: 'Sites, automações e soluções digitais — feitos aqui, para negócios reais.',
   text: 'Criamos sites e soluções digitais que simplificam a rotina, conectam pessoas e ajudam negócios a crescer.',
   primaryCta: 'Vamos conversar sobre seu negócio',
-  secondaryCta: 'Conheça nossos projetos',
+  secondaryCta: 'Conheça nossas soluções',
+  logoAlt: 'Bicuíra Digital — Tecnologia com raiz local',
 }
 
 export const solutionsIntro = {
@@ -34,17 +34,6 @@ export const manifesto = {
     'Por isso, criamos soluções práticas, pensadas para a realidade de cada negócio. Sem complicação desnecessária, sem fórmulas prontas e sem promessas vazias.',
     'Tecnologia com proximidade, liberdade para criar e vontade de crescer junto.',
   ],
-}
-
-export const projectsIntro = {
-  tag: 'Projetos',
-  title: 'Tecnologia aplicada a problemas reais.',
-  mark: 'problemas reais',
-  text: 'Cada projeto começa com um desafio. Nosso trabalho é entender o que precisa melhorar e construir uma solução que faça sentido na prática.',
-}
-
-export const servicesIntro = {
-  tag: 'Serviços',
 }
 
 export const howWeWork = {

@@ -27,20 +27,26 @@ export const site = {
 
 // Menu principal (header)
 export const mainNav = [
-  { label: 'Início', to: '/#inicio' },
-  { label: 'Soluções', to: '/#solucoes' },
-  { label: 'Projetos', to: '/#projetos' },
+  { label: 'Sites', to: '/sites' },
+  { label: 'Automação', to: '/automacao' },
+  { label: 'Fideliza', to: '/fideliza' },
   { label: 'Sobre', to: '/#sobre' },
 ]
 
+// Botão de destaque do header (leva ao contato)
+export const headerCta = { label: 'Vamos conversar', to: '/#contato' }
+
 // Links do rodapé
 export const footerNav = [
-  { label: 'Início', to: '/#inicio' },
+  { label: 'Início', to: '/' },
   { label: 'Soluções', to: '/#solucoes' },
-  { label: 'Projetos', to: '/#projetos' },
-  { label: 'Serviços', to: '/#servicos' },
+  { label: 'Como trabalhamos', to: '/#como-trabalhamos' },
   { label: 'Sobre', to: '/#sobre' },
+  { label: 'Contato', to: '/#contato' },
 ]
+
+// Títulos das colunas do rodapé
+export const footerLabels = { nav: 'Navegação', services: 'Serviços', projects: 'Cases', contact: 'Contato' }
 
 export function whatsappUrl() {
   return site.whatsappNumber ? `https://wa.me/${site.whatsappNumber}` : null

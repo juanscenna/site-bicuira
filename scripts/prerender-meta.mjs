@@ -10,6 +10,7 @@ const { outputFiles } = await build({
     contents: `
       export { homeSeo } from './src/content/home.ts'
       export { projects } from './src/content/projects.ts'
+      export { services } from './src/content/services.ts'
       export { site } from './src/content/site.ts'`,
     resolveDir: process.cwd(),
     loader: 'ts',
@@ -19,7 +20,7 @@ const { outputFiles } = await build({
   platform: 'node',
   write: false,
 })
-const { homeSeo, projects, site } = await import(
+const { homeSeo, projects, services, site } = await import(
   'data:text/javascript;base64,' + Buffer.from(outputFiles[0].text).toString('base64')
 )
 
@@ -39,14 +40,23 @@ function page({ title, description, path, image }) {
 }
 
 writeFileSync('dist/index.html', page({ ...homeSeo, path: '/', image: 'home' }))
+// Páginas sem imagem própria em public/og/ usam a imagem da página inicial
+const ogImage = (name) => {
+  try {
+    readFileSync(`public/og/${name}.png`)
+    return name
+  } catch {
+    return 'home'
+  }
+}
+
+for (const s of services) {
+  const name = s.path.slice(1)
+  writeFileSync(`dist/${name}.html`, page({ ...s.seo, path: s.path, image: ogImage(name) }))
+}
+
 mkdirSync('dist/projetos', { recursive: true })
 for (const p of projects) {
-  // Projetos novos sem imagem própria usam a imagem da página inicial
-  let image = 'home'
-  try {
-    readFileSync(`public/og/${p.slug}.png`)
-    image = p.slug
-  } catch {}
-  writeFileSync(`dist/projetos/${p.slug}.html`, page({ ...p.seo, path: `/projetos/${p.slug}`, image }))
+  writeFileSync(`dist/projetos/${p.slug}.html`, page({ ...p.seo, path: `/projetos/${p.slug}`, image: ogImage(p.slug) }))
 }
-console.log(`Metas geradas para ${projects.length + 1} páginas.`)
+console.log(`Metas geradas para ${services.length + projects.length + 1} páginas.`)

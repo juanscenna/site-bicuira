@@ -6,6 +6,7 @@ import Button from '../Button'
 import { Framed } from '../Frames'
 import { ScribbleUnderline, WaveEdge } from '../Doodles'
 import { neighbors, projectLabels as L, projects, type GalleryItem, type Project } from '../../content/projects'
+import { findService } from '../../content/services'
 
 // Etiqueta do topo: "Case 01 — Desenvolvimento de site · Pousada Sonhos do Rosa"
 export function ProjectLabel({ project, dark = false }: { project: Project; dark?: boolean }) {
@@ -83,7 +84,7 @@ export function ProjectCta({ project }: { project: Project }) {
           </div>
           <div className="md:col-span-4">
             <p className="text-body">{finalCta.text}</p>
-            <Button to="/#contato" color="lima" className="mt-8">
+            <Button to={`/?servico=${project.service}#contato`} color="lima" className="mt-8">
               {finalCta.button}
             </Button>
           </div>
@@ -96,15 +97,18 @@ export function ProjectCta({ project }: { project: Project }) {
 // Navegação entre projetos (fica logo abaixo do CTA final)
 export function ProjectNav({ project }: { project: Project }) {
   const { prev, next } = neighbors(project.slug)
+  const service = findService(project.service)
   const link = 'group block rounded-2xl border-2 border-carvao/15 p-6 transition-colors hover:border-carvao'
 
   return (
     <nav aria-label={L.otherProjects} className="bg-restinga pb-16 text-carvao">
       <div className="wrap">
         <div className="grid gap-4 rounded-[2rem] bg-areia p-4 sm:p-6 lg:grid-cols-3">
-          <Link to="/#projetos" className={link}>
+          <Link to={service.path} className={link}>
             <span className="text-[0.8rem] font-semibold uppercase tracking-wider text-restinga">{L.portfolio}</span>
-            <span className="mt-2 block font-display text-2xl">← {L.back}</span>
+            <span className="mt-2 block font-display text-2xl">
+              ← {L.back} {service.name}
+            </span>
           </Link>
 
           {prev ? (
@@ -122,7 +126,7 @@ export function ProjectNav({ project }: { project: Project }) {
               <span className="mt-2 block font-display text-2xl">{next.title} →</span>
             </Link>
           ) : (
-            <Link to="/#servicos" className={`${link} lg:text-right`}>
+            <Link to="/#solucoes" className={`${link} lg:text-right`}>
               <span className="text-[0.8rem] font-semibold uppercase tracking-wider text-restinga">{L.services}</span>
               <span className="mt-2 block font-display text-2xl">{L.servicesLink} →</span>
             </Link>

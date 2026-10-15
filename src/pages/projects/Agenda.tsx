@@ -40,7 +40,7 @@ export default function Agenda({ project }: { project: Project }) {
                   {project.hero.externalLink.label}
                 </Button>
               )}
-              <Button to="/#contato" variant="text">
+              <Button to={`/?servico=${project.service}#contato`} variant="text">
                 {project.hero.contactCta}
               </Button>
             </div>

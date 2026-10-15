@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { mainNav, whatsappUrl } from '../content/site'
+import { headerCta, mainNav, whatsappUrl } from '../content/site'
+import { findProject } from '../content/projects'
+import { findService } from '../content/services'
 import { brand } from '../content/images'
 import { WaveLine } from './Doodles'
 
@@ -11,6 +13,11 @@ export default function Header() {
   const menuButton = useRef<HTMLButtonElement>(null)
   const firstLink = useRef<HTMLAnchorElement>(null)
   const whatsapp = whatsappUrl()
+
+  // Página atual no menu: o serviço aberto, ou o serviço do case aberto
+  const caseSlug = location.pathname.startsWith('/projetos/') ? location.pathname.split('/')[2] : ''
+  const casePath = caseSlug && findProject(caseSlug) ? findService(findProject(caseSlug)!.service).path : ''
+  const isCurrent = (to: string) => !to.includes('#') && (location.pathname === to || casePath === to)
 
   // Fecha o menu ao trocar de página/seção
   useEffect(() => setOpen(false), [location.key])
@@ -52,7 +59,7 @@ export default function Header() {
       }`}
     >
       <div className="wrap flex h-[72px] items-center justify-between gap-6">
-        <Link to="/#inicio" className="relative z-[60] flex min-h-[48px] shrink-0 items-center" aria-label="Bicuíra Digital — página inicial">
+        <Link to="/" className="relative z-[60] flex min-h-[48px] shrink-0 items-center" aria-label="Bicuíra Digital — página inicial">
           <img src={brand.horizontal} alt="Bicuíra Digital" width={875} height={214} className="h-10 w-auto sm:h-11" />
         </Link>
 
@@ -60,7 +67,13 @@ export default function Header() {
           <ul className="flex items-center gap-8 text-sm font-medium">
             {mainNav.map((item) => (
               <li key={item.to}>
-                <Link to={item.to} className="relative inline-flex min-h-[44px] items-center underline-offset-[6px] hover:underline hover:decoration-sol hover:decoration-2">
+                <Link
+                  to={item.to}
+                  aria-current={isCurrent(item.to) ? 'page' : undefined}
+                  className={`relative inline-flex min-h-[44px] items-center underline-offset-[6px] hover:underline hover:decoration-sol hover:decoration-2 ${
+                    isCurrent(item.to) ? 'font-semibold text-restinga underline decoration-sol decoration-2' : ''
+                  }`}
+                >
                   {item.label}
                 </Link>
               </li>
@@ -80,10 +93,10 @@ export default function Header() {
             </a>
           )}
           <Link
-            to="/#contato"
+            to={headerCta.to}
             className="inline-flex min-h-[44px] items-center rounded-full bg-carvao px-5 text-sm font-semibold text-areia transition-colors hover:bg-restinga"
           >
-            Vamos conversar
+            {headerCta.label}
           </Link>
         </div>
 
@@ -129,10 +142,10 @@ export default function Header() {
         <WaveLine className="my-8 h-6 w-full text-oceano" waves={5} />
         <div className="mt-auto flex flex-col gap-3">
           <Link
-            to="/#contato"
+            to={headerCta.to}
             className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-carvao px-6 font-semibold text-areia"
           >
-            Vamos conversar
+            {headerCta.label}
           </Link>
           {whatsapp && (
             <a
