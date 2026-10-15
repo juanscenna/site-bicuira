@@ -10,7 +10,7 @@ import { projects, type Project } from '../content/projects'
 // Se um projeto novo for adicionado em projects.ts, ele usa a composição "padrão".
 export default function FeaturedProjects() {
   return (
-    <section id="projetos" className="relative overflow-hidden py-20 md:py-28">
+    <section id="projetos" className="relative overflow-hidden py-16 md:py-24">
       <div className="wrap">
         <div className="grid gap-8 md:grid-cols-12">
           <div className="md:col-span-8">
@@ -21,7 +21,7 @@ export default function FeaturedProjects() {
         </div>
       </div>
 
-      <div className="mt-16 space-y-24 md:mt-24 md:space-y-36">
+      <div className="mt-14 space-y-20 md:mt-20 md:space-y-28">
         {projects.map((project, i) => {
           if (i === 0) return <WideImage key={project.slug} project={project} index={i} />
           if (i === 1) return <PhoneStage key={project.slug} project={project} index={i} />
@@ -52,18 +52,18 @@ function Info({ project, index }: { project: Project; index: number }) {
 function WideImage({ project, index }: { project: Project; index: number }) {
   return (
     <Reveal>
-      <article className="relative md:grid md:grid-cols-12 md:items-end">
-        <div className="relative pr-4 sm:pr-10 md:col-span-8 md:row-start-1 md:pr-0">
-          <Photo image={project.cover} className="aspect-[4/3] rounded-r-[3rem] md:aspect-[16/10]" />
+      <article className="relative xl:grid xl:grid-cols-12 xl:items-end">
+        <div className="relative pr-4 sm:pr-10 lg:pr-[20%] xl:col-span-7 xl:row-start-1 xl:pr-0">
+          <Photo image={project.cover} sizes="(min-width: 1280px) 58vw, 90vw" className="aspect-[4/3] rounded-r-[3rem] md:aspect-[16/9]" />
           <span
             aria-hidden="true"
-            className="absolute -bottom-10 right-8 font-display text-[7rem] leading-none text-sol md:-right-6 md:text-[11rem]"
+            className="absolute -bottom-10 right-8 font-display text-[7rem] leading-none text-sol md:text-[10rem] xl:-right-6"
           >
             {String(index + 1).padStart(2, '0')}
           </span>
         </div>
-        <div className="relative mt-10 px-4 sm:px-6 md:col-span-5 md:col-start-8 md:row-start-1 md:-mb-20 md:mt-0 md:pl-0 lg:pr-10">
-          <div className="bg-areia md:rounded-tl-[3rem] md:p-10 md:pb-0">
+        <div className="wrap relative mt-12 xl:col-span-5 xl:col-start-7 xl:row-start-1 xl:-mb-16 xl:mt-0 xl:min-w-[22rem] xl:pl-0">
+          <div className="max-w-xl bg-areia xl:rounded-tl-[3rem] xl:p-10 xl:pb-0">
             <Info project={project} index={index} />
           </div>
         </div>
@@ -76,17 +76,17 @@ function WideImage({ project, index }: { project: Project; index: number }) {
 function PhoneStage({ project, index }: { project: Project; index: number }) {
   return (
     <Reveal>
-      <article className="wrap grid gap-12 md:grid-cols-12 md:items-center">
-        <div className="md:col-span-5 md:col-start-2">
+      <article className="wrap grid gap-12 lg:grid-cols-12 lg:items-center">
+        <div className="max-w-xl lg:col-span-5 lg:col-start-1 lg:min-w-[18rem] xl:col-start-2">
           <Info project={project} index={index} />
         </div>
-        <div className="relative md:col-span-5 md:col-start-8">
+        <div className="relative mx-auto w-full max-w-md lg:col-span-6 lg:col-start-7 lg:max-w-none xl:col-span-5 xl:col-start-8">
           <div className="relative flex justify-center overflow-hidden rounded-[3rem] rounded-br-none bg-oceano px-6 pb-0 pt-12">
             <WaveShape className="absolute left-[-10%] top-8 w-[120%] text-areia/25" />
             <WaveShape className="absolute bottom-20 left-[-20%] w-[130%] text-restinga/40" />
             <PhoneFrame image={project.cover} className="relative w-[58%] max-w-[240px] translate-y-10" />
           </div>
-          <ScribbleArrow className="absolute -left-16 top-1/2 hidden w-20 -scale-x-100 text-carvao md:block" />
+          <ScribbleArrow className="absolute -left-16 top-1/2 hidden w-20 -scale-x-100 text-carvao lg:block" />
         </div>
       </article>
     </Reveal>
@@ -97,16 +97,16 @@ function PhoneStage({ project, index }: { project: Project; index: number }) {
 function SquareImage({ project, index }: { project: Project; index: number }) {
   return (
     <Reveal>
-      <article className="wrap grid gap-10 md:grid-cols-12 md:items-start">
-        <div className="relative md:order-2 md:col-span-6 md:col-start-7">
-          <Photo image={project.cover} className="aspect-square rounded-tl-[4rem]" />
+      <article className="wrap grid gap-10 lg:grid-cols-12 lg:items-start">
+        <div className="relative lg:order-2 lg:col-span-6 lg:col-start-7">
+          <Photo image={project.cover} sizes="(min-width: 1024px) 50vw, 100vw" className="aspect-[4/3] rounded-tl-[4rem] lg:aspect-square" />
           {project.highlight && (
-            <p className="absolute -left-3 top-8 -rotate-6 bg-lima px-4 py-2 text-xs font-bold uppercase tracking-widest text-carvao md:-left-10">
+            <p className="absolute -left-3 top-8 -rotate-6 bg-lima px-4 py-2 text-xs font-bold uppercase tracking-widest text-carvao lg:-left-10">
               {project.highlight}
             </p>
           )}
         </div>
-        <div className="relative md:order-1 md:col-span-5 md:pt-16">
+        <div className="relative max-w-xl lg:order-1 lg:col-span-5 lg:min-w-[18rem] lg:pt-16">
           <span aria-hidden="true" className="relative inline-block font-display text-[7rem] leading-none text-restinga md:text-[10rem]">
             {String(index + 1).padStart(2, '0')}
             <ScribbleCircle className="absolute -inset-4 h-[calc(100%+2rem)] w-[calc(100%+2rem)] text-sol" />

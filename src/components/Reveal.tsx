@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
 
-// Faz o conteúdo aparecer suavemente quando entra na tela.
-// Quem usa "reduzir movimento" no sistema vê tudo direto, sem animação.
+// Suaviza a entrada do conteúdo quando ele chega na tela.
+// - O que já está visível ao carregar aparece na hora.
+// - O observador dispara um pouco ANTES do bloco entrar (rootMargin positivo),
+//   então o conteúdo nunca fica "vazio" enquanto a pessoa rola.
+// - Com "reduzir movimento" no sistema, o CSS mostra tudo direto (index.css).
 export default function Reveal({
   children,
   className = '',
@@ -17,6 +20,10 @@ export default function Reveal({
   useEffect(() => {
     const el = ref.current
     if (!el) return
+    if (!('IntersectionObserver' in window) || el.getBoundingClientRect().top < window.innerHeight) {
+      setVisible(true)
+      return
+    }
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -24,7 +31,7 @@ export default function Reveal({
           observer.disconnect()
         }
       },
-      { rootMargin: '0px 0px -10% 0px' },
+      { threshold: 0, rootMargin: '0px 0px 15% 0px' },
     )
     observer.observe(el)
     return () => observer.disconnect()
@@ -34,7 +41,7 @@ export default function Reveal({
     <div
       ref={ref}
       className={`reveal ${visible ? 'is-visible' : ''} ${className}`}
-      style={{ transitionDelay: `${delay}ms` }}
+      style={{ transitionDelay: visible ? `${Math.min(delay, 200)}ms` : undefined }}
     >
       {children}
     </div>

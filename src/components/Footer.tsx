@@ -64,12 +64,13 @@ export default function Footer() {
           </nav>
         </div>
 
-        {/* Frase gigante cortada na base */}
-        <div className="overflow-hidden" aria-hidden="true">
-          <p className="wrap translate-y-[18%] select-none whitespace-nowrap font-display text-[clamp(1.25rem,6.8vw,8rem)] leading-none text-restinga">
-            Tecnologia com raiz local.
-          </p>
-        </div>
+        {/* Frase grande, inteira, apoiada sobre a barra de copyright */}
+        <p
+          aria-hidden="true"
+          className="wrap select-none whitespace-nowrap pb-[0.08em] font-display text-[clamp(1.5rem,6.4vw,7.5rem)] leading-[1.05] text-restinga"
+        >
+          {site.slogan}
+        </p>
         <div className="bg-restinga text-areia">
           <div className="wrap flex flex-col gap-2 py-5 text-xs sm:flex-row sm:justify-between">
             <p>© {year} {site.name}. Todos os direitos reservados.</p>
