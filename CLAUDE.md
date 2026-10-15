@@ -29,8 +29,14 @@ Vite + React + TypeScript + Tailwind + React Router. Sem backend. Deploy na Verc
   - `home.ts` — textos das seções da página inicial
   - `services.ts` — os três serviços (card + detalhe)
   - `projects.ts` — lista de cases (novo case = nova entrada + imagens; ganha página pelo `GenericProject`)
-  - `images.ts` — TODAS as referências de imagem (`isPlaceholder: true` nas provisórias)
+  - `images.ts` — TODAS as referências de imagem (`isPlaceholder: true` nas provisórias). `images` = fotos de atmosfera (com `srcSet` 800/1600; use `local('/images/...')` para WebP locais). `captures` = espaços das capturas reais dos projetos: com `src: ''` mostram uma composição da marca + "Captura em breve"; para ativar, troque por `{ ...local('/images/projects/x'), alt, isPlaceholder: false }`
 - `src/sections/` — seções da home · `src/pages/` — páginas · `src/components/` — peças reutilizáveis
+
+## Outros detalhes
+- Destaques à mão nos títulos: campo `mark` no conteúdo + componente `Mark` (não altera o texto).
+- Animações (`Reveal`) nunca escondem conteúdo; tudo desligado com `prefers-reduced-motion`.
+- `npm run build` roda `scripts/prerender-meta.mjs`, que gera um HTML por rota com metas Open Graph (imagens em `public/og/`). Endereço base em `site.url` (`site.ts`).
+- Contraste: verificar 4.5:1 (texto normal) e 3:1 (≥ 24px ou ≥ 18,66px bold). Nenhum texto abaixo de 12px.
 
 ## Fidelidade à realidade (obrigatório)
 - Preservar os nomes corretos dos clientes e usar só os links reais fornecidos (`sonhosdorosa.lovable.app`, `agendadetodosnos.lovable.app`). A automação de reservas é de uso interno: sem link público.
