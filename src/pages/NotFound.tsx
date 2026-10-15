@@ -14,7 +14,7 @@ export default function NotFound() {
         <h1 className="mt-6 max-w-3xl text-giant text-restinga">
           {notFound.title}
         </h1>
-        <ScribbleUnderline draw className="mt-2 h-5 w-64 text-oceano" />
+        <ScribbleUnderline className="mt-2 h-5 w-64 text-oceano" />
         <p className="text-body mt-8 max-w-md">{notFound.text}</p>
         <Button to="/" className="mt-10">
           {notFound.button}

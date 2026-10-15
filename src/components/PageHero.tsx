@@ -9,8 +9,11 @@ import { WaveEdge } from './Doodles'
 export default function PageHero({ image, children }: { image: SiteImage; children: ReactNode }) {
   return (
     <section className="relative">
-      <div className="relative h-[36svh] min-h-[14rem] md:h-[70vh] md:max-h-[46rem] md:min-h-[28rem]">
-        <Photo image={image} priority sizes="100vw" className="absolute inset-0 h-full w-full" />
+      <div className="relative h-[36svh] min-h-[14rem] overflow-hidden md:h-[70vh] md:max-h-[46rem] md:min-h-[28rem]">
+        {/* a foto rola mais devagar que a página (profundidade) */}
+        <div data-parallax="0.3" className="absolute inset-x-0 -top-[12%] h-[124%]">
+          <Photo image={image} priority sizes="100vw" className="h-full w-full" />
+        </div>
         {/* leve escurecimento nas bordas para o elemento central se destacar */}
         <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(41,42,41,0.35)_100%)]" />
         <div className="absolute inset-0 flex items-center justify-center px-4">{children}</div>

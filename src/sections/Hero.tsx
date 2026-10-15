@@ -32,7 +32,7 @@ export default function Hero() {
             {hero.title.before}{' '}
             <span className="relative inline-block text-sol">
               {hero.title.highlight}
-              <ScribbleCircle draw className="absolute -inset-x-[14%] -inset-y-[8%] h-[120%] w-[128%] text-carvao" />
+              <ScribbleCircle className="absolute -inset-x-[14%] -inset-y-[8%] h-[120%] w-[128%] text-carvao" />
             </span>{' '}
             <span className="whitespace-nowrap">{hero.title.after}</span>
           </h1>

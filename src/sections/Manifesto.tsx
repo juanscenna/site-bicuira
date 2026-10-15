@@ -32,7 +32,7 @@ export default function Manifesto() {
             </div>
           </div>
         </div>
-        <WaveLine className="absolute bottom-8 left-0 h-6 w-full text-areia/40" waves={8} />
+        <WaveLine wipe className="absolute bottom-8 left-0 h-6 w-full text-areia/40" waves={8} />
       </div>
       <WaveEdge flip className="-mt-px h-12 text-sol sm:h-20" />
     </section>

@@ -18,9 +18,9 @@ export default function HowWeWork() {
 
         <div className="relative mt-14 md:mt-20">
           {/* Percurso em onda (desktop): fica na faixa dos marcadores */}
-          <WaveLine className="absolute inset-x-0 top-0 hidden h-6 w-full text-oceano lg:block" waves={5} />
+          <WaveLine wipe className="absolute inset-x-0 top-0 hidden h-6 w-full text-oceano lg:block" waves={5} />
           {/* Linha lateral (celular/tablet) */}
-          <span aria-hidden="true" className="absolute bottom-6 left-[1.1rem] top-6 w-[3px] rounded bg-oceano lg:hidden" />
+          <span aria-hidden="true" data-grow className="absolute bottom-6 left-[1.1rem] top-6 w-[3px] rounded bg-oceano lg:hidden" />
 
           <ol className="relative grid gap-10 lg:grid-cols-5 lg:gap-8">
             {howWeWork.steps.map((step, i) => (

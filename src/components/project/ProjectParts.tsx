@@ -80,7 +80,7 @@ export function ProjectCta({ project }: { project: Project }) {
             <h2 id="cta-final" className="text-big">
               {finalCta.title}
             </h2>
-            <ScribbleUnderline draw className="mt-4 h-5 w-56 text-lima" />
+            <ScribbleUnderline className="mt-4 h-5 w-56 text-lima" />
           </div>
           <div className="md:col-span-4">
             <p className="text-body">{finalCta.text}</p>

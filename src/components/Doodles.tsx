@@ -1,7 +1,7 @@
 // Elementos gráficos "desenhados à mão" e formas orgânicas da marca.
 // Todos são decorativos (aria-hidden) e herdam a cor via "currentColor".
 
-type P = { className?: string; draw?: boolean }
+type P = { className?: string }
 
 const stroke = {
   fill: 'none',
@@ -10,10 +10,13 @@ const stroke = {
   strokeLinejoin: 'round' as const,
 }
 
+// Rabiscos (círculo, sublinhado, seta): se desenham conforme a rolagem (ScrollFx).
+// pathLength=1 deixa o traço com comprimento 1 para o CSS controlar o desenho.
+
 // Círculo rabiscado em volta de uma palavra
-export function ScribbleCircle({ className = '', draw }: P) {
+export function ScribbleCircle({ className = '' }: P) {
   return (
-    <svg aria-hidden="true" viewBox="0 0 300 120" preserveAspectRatio="none" className={`${draw ? 'draw' : ''} ${className}`}>
+    <svg aria-hidden="true" viewBox="0 0 300 120" preserveAspectRatio="none" data-draw className={className}>
       <path
         {...stroke}
         strokeWidth="4"
@@ -24,20 +27,20 @@ export function ScribbleCircle({ className = '', draw }: P) {
 }
 
 // Sublinhado ondulado
-export function ScribbleUnderline({ className = '', draw }: P) {
+export function ScribbleUnderline({ className = '' }: P) {
   return (
-    <svg aria-hidden="true" viewBox="0 0 300 24" preserveAspectRatio="none" className={`${draw ? 'draw' : ''} ${className}`}>
-      <path {...stroke} strokeWidth="4" d="M4 16C60 4 110 22 160 12s100-6 136 2" />
+    <svg aria-hidden="true" viewBox="0 0 300 24" preserveAspectRatio="none" data-draw className={className}>
+      <path pathLength={1} {...stroke} strokeWidth="4" d="M4 16C60 4 110 22 160 12s100-6 136 2" />
     </svg>
   )
 }
 
 // Seta curva desenhada
-export function ScribbleArrow({ className = '', draw }: P) {
+export function ScribbleArrow({ className = '' }: P) {
   return (
-    <svg aria-hidden="true" viewBox="0 0 120 80" className={`${draw ? 'draw' : ''} ${className}`}>
-      <path {...stroke} strokeWidth="3.5" d="M6 70C28 24 66 10 106 22" />
-      <path {...stroke} strokeWidth="3.5" d="M90 9l17 13-15 15" />
+    <svg aria-hidden="true" viewBox="0 0 120 80" data-draw className={className}>
+      <path pathLength={1} {...stroke} strokeWidth="3.5" d="M6 70C28 24 66 10 106 22" />
+      <path pathLength={1} {...stroke} strokeWidth="3.5" d="M90 9l17 13-15 15" />
     </svg>
   )
 }
@@ -52,12 +55,12 @@ export function Spark({ className = '' }: P) {
 }
 
 // Linha de onda contínua (usada em percursos e divisões)
-export function WaveLine({ className = '', waves = 6 }: { className?: string; waves?: number }) {
+export function WaveLine({ className = '', waves = 6, wipe = false }: { className?: string; waves?: number; wipe?: boolean }) {
   const w = 100
   let d = `M0 20`
   for (let i = 0; i < waves; i++) d += ` q${w / 4} -16 ${w / 2} 0 t${w / 2} 0`
   return (
-    <svg aria-hidden="true" viewBox={`0 0 ${waves * w} 40`} preserveAspectRatio="none" className={className}>
+    <svg aria-hidden="true" data-wipe={wipe || undefined} viewBox={`0 0 ${waves * w} 40`} preserveAspectRatio="none" className={className}>
       <path {...stroke} strokeWidth="3" vectorEffect="non-scaling-stroke" d={d} />
     </svg>
   )

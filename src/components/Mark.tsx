@@ -1,8 +1,7 @@
-import { useEffect, useRef, useState } from 'react'
 import { ScribbleCircle, ScribbleUnderline } from './Doodles'
 
 // Destaca 1 trecho de um título com um traço desenhado à mão
-// (sublinhado ou círculo), que se desenha quando aparece na tela.
+// (sublinhado ou círculo), que se desenha conforme a pessoa rola a página.
 // O texto não muda: se "word" não estiver em "text", mostra o texto puro.
 type Props = {
   text: string
@@ -12,22 +11,6 @@ type Props = {
 }
 
 export default function Mark({ text, word, kind = 'underline', color = 'text-sol' }: Props) {
-  const ref = useRef<HTMLSpanElement>(null)
-  const [drawn, setDrawn] = useState(false)
-
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const observer = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) {
-        setDrawn(true)
-        observer.disconnect()
-      }
-    })
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
-
   const at = word ? text.indexOf(word) : -1
   if (!word || at < 0) return <>{text}</>
 
@@ -40,9 +23,9 @@ export default function Mark({ text, word, kind = 'underline', color = 'text-sol
   return (
     <>
       {text.slice(0, at)}
-      <span ref={ref} className="relative inline-block whitespace-nowrap">
+      <span className="relative inline-block whitespace-nowrap">
         {word}
-        <Stroke className={`mark-line ${drawn ? 'is-drawn' : ''} pointer-events-none ${strokePos} ${color}`} />
+        <Stroke className={`pointer-events-none ${strokePos} ${color}`} />
       </span>
       {text.slice(at + word.length)}
     </>

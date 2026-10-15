@@ -94,7 +94,7 @@ export default function Agenda({ project }: { project: Project }) {
                           <Spark className="absolute -right-4 -top-6 h-12 w-12 text-sol" />
                           <span className="relative inline-block font-display text-6xl">
                             {String(i + 1).padStart(2, '0')}
-                            <ScribbleCircle draw className="absolute -inset-3 h-[calc(100%+1.5rem)] w-[calc(100%+1.5rem)] text-carvao" />
+                            <ScribbleCircle className="absolute -inset-3 h-[calc(100%+1.5rem)] w-[calc(100%+1.5rem)] text-carvao" />
                           </span>
                           <h3 className="mt-6 font-display text-3xl">{step.name}</h3>
                           <p className="mt-2 text-lg font-medium leading-relaxed">{step.text}</p>

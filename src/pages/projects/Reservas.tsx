@@ -35,7 +35,7 @@ export default function Reservas({ project }: { project: Project }) {
           <div className="relative lg:col-span-6">
             <div className="relative mx-auto flex max-w-lg items-center gap-2 rounded-[3rem] bg-oceano p-6 sm:p-10">
               <PhoneFrame image={project.cover} className="w-[38%] shrink-0" />
-              <ScribbleArrow draw className="w-[18%] shrink-0 text-areia" />
+              <ScribbleArrow className="w-[18%] shrink-0 text-areia" />
               <div className="flex-1">
                 <SheetGraphic rows={6} cols={3} filled={[4]} />
                 <p className="mx-auto mt-3 w-fit rounded-full bg-areia px-3 py-1 text-center text-sm font-bold text-carvao">Google Sheets</p>
