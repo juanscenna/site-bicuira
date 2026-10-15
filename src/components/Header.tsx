@@ -118,13 +118,6 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Barra fina de progresso: mostra quanto da página já foi lida */}
-      <div
-        aria-hidden="true"
-        className="absolute bottom-[-2px] left-0 h-[3px] w-full origin-left bg-sol motion-reduce:hidden"
-        style={{ transform: 'scaleX(var(--scroll, 0))' }}
-      />
-
       {/* Menu em tela cheia (mobile) */}
       <div
         id="menu-mobile"

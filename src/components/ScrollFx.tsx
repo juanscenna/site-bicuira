@@ -8,21 +8,17 @@ import { useLocation } from 'react-router-dom'
 //   data-wipe     → linha (ex.: onda) que se revela da esquerda para a direita
 //   data-grow     → linha vertical que cresce de cima para baixo
 //   data-parallax → imagem que se move mais devagar que a página (profundidade)
-// Também atualiza --scroll (0 a 1) para a barra de progresso do topo.
 // Com "reduzir movimento" no sistema, tudo aparece pronto e parado.
 export default function ScrollFx() {
   const { pathname } = useLocation()
 
   useEffect(() => {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const root = document.documentElement
     let frame = 0
 
     const update = () => {
       frame = 0
       const vh = window.innerHeight
-      const max = root.scrollHeight - vh
-      root.style.setProperty('--scroll', String(max > 0 ? Math.min(window.scrollY / max, 1) : 0))
 
       document.querySelectorAll<HTMLElement | SVGElement>('[data-draw],[data-wipe],[data-grow]').forEach((el) => {
         const top = el.getBoundingClientRect().top
