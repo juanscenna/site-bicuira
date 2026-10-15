@@ -26,7 +26,7 @@ export default function Photo({ image, className = '', fit = 'cover', priority =
   }
 
   return (
-    <div className={`overflow-hidden bg-restinga/10 ${className}`}>
+    <div className={`overflow-hidden bg-oceano ${className}`}>
       <img
         src={image.src}
         alt={image.alt}

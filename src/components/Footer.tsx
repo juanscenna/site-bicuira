@@ -9,8 +9,8 @@ export default function Footer() {
 
   return (
     <footer className="relative mt-auto">
-      <WaveEdge className="-mb-px h-10 text-restinga/10 sm:h-16" />
       <div className="bg-restinga/10 text-carvao">
+        <WaveEdge flip className="h-10 text-areia sm:h-16" />
         <div className="wrap grid gap-12 pb-10 pt-10 md:grid-cols-12">
           <div className="md:col-span-5">
             <Link to="/#inicio" aria-label="Bicuíra Digital — página inicial" className="inline-block">
@@ -24,7 +24,7 @@ export default function Footer() {
 
           <nav aria-label="Rodapé" className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:col-span-7">
             <div>
-              <h2 className="tag mb-4 font-sans text-sol">Navegação</h2>
+              <h2 className="tag mb-4 font-sans text-restinga">Navegação</h2>
               <ul className="space-y-2 text-sm">
                 {footerNav.map((item) => (
                   <li key={item.to}>
@@ -36,7 +36,7 @@ export default function Footer() {
               </ul>
             </div>
             <div>
-              <h2 className="tag mb-4 font-sans text-sol">Projetos</h2>
+              <h2 className="tag mb-4 font-sans text-restinga">Projetos</h2>
               <ul className="space-y-2 text-sm">
                 {projects.map((p) => (
                   <li key={p.slug}>
@@ -48,23 +48,25 @@ export default function Footer() {
               </ul>
             </div>
             <div className="col-span-2 sm:col-span-1">
-              <h2 className="tag mb-4 font-sans text-sol">Contato</h2>
+              <h2 className="tag mb-4 font-sans text-restinga">Contato</h2>
+              <p>
               <a
                 href={site.instagram.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm font-semibold underline decoration-2 underline-offset-4 hover:text-sol"
               >
-                Instagram {site.instagram.handle}
+                {site.instagram.handle}
                 <span className="sr-only"> (abre em nova aba)</span>
               </a>
+              </p>
             </div>
           </nav>
         </div>
 
         {/* Frase gigante cortada na base */}
         <div className="overflow-hidden" aria-hidden="true">
-          <p className="wrap translate-y-[18%] select-none whitespace-nowrap font-display text-[clamp(2rem,7.4vw,8.5rem)] leading-none text-restinga">
+          <p className="wrap translate-y-[18%] select-none whitespace-nowrap font-display text-[clamp(1.25rem,6.8vw,8rem)] leading-none text-restinga">
             Tecnologia com raiz local.
           </p>
         </div>

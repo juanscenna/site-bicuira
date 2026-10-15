@@ -10,7 +10,7 @@ export default function NotFound() {
     <section className="relative overflow-hidden">
       <Sun className="absolute -right-16 top-10 w-56 text-sol sm:w-80" />
       <div className="wrap relative py-24 sm:py-36">
-        <p className="tag text-sol">Erro 404</p>
+        <p className="tag text-restinga">Erro 404</p>
         <h1 className="mt-6 max-w-3xl text-giant text-restinga">
           {notFound.title}
         </h1>

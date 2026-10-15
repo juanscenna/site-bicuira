@@ -9,7 +9,10 @@ export const homeSeo = {
 
 export const hero = {
   tag: 'Garopaba · Praia do Rosa · SC',
-  title: ['Tecnologia', 'com raiz', 'local.'], // cada item é uma linha
+  // Título "Tecnologia com raiz local." dividido em partes para a composição.
+  // A palavra em "highlight" ganha o círculo desenhado à mão.
+  title: { before: 'Tecnologia com', highlight: 'raiz', after: 'local.' },
+  caption: 'Sites, automações e soluções digitais — feitos aqui, para negócios reais.',
   text: 'Criamos sites e soluções digitais que simplificam a rotina, conectam pessoas e ajudam negócios a crescer.',
   primaryCta: 'Vamos conversar sobre seu negócio',
   secondaryCta: 'Conheça nossos projetos',
@@ -78,6 +81,8 @@ export const contact = {
     service: 'Serviço de interesse',
     servicePlaceholder: 'Escolha uma opção',
     message: 'Mensagem',
+    requiredNote: 'Campos com * são obrigatórios.',
+    goInstagram: 'Ir para o Instagram',
     submit: 'Enviar mensagem',
     sending: 'Enviando…',
     errors: {

@@ -22,6 +22,7 @@ export type Project = {
   title: string // nome do projeto
   category: string
   summary: string // descrição curta, usada na página inicial
+  highlight?: string // etiqueta opcional sobre a imagem na página inicial
   cover: SiteImage
   seo: { title: string; description: string }
   hero: {
@@ -151,6 +152,7 @@ export const projects: Project[] = [
     category: 'Inteligência artificial e automação',
     summary:
       'Um sistema que lê flyers de eventos com inteligência artificial, passa pela conferência de uma pessoa e organiza tudo no Google Sheets.',
+    highlight: 'IA + revisão humana',
     cover: images.projectAgenda,
     seo: {
       title: 'Agenda de Todos Nós — Bicuíra Digital',

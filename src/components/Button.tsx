@@ -6,11 +6,12 @@ import SmartLink from './SmartLink'
 // line   → só contorno (ação secundária)
 // text   → link com seta
 type Variant = 'solid' | 'line' | 'text'
-type Color = 'carvao' | 'sol' | 'restinga' | 'areia' | 'lima'
+// Obs.: Pôr do Sol e Oceano não têm contraste suficiente para texto pequeno,
+// por isso não são usados como cor de botão.
+type Color = 'carvao' | 'restinga' | 'areia' | 'lima'
 
 const solid: Record<Color, string> = {
   carvao: 'bg-carvao text-areia hover:bg-restinga',
-  sol: 'bg-sol text-white hover:bg-carvao',
   restinga: 'bg-restinga text-areia hover:bg-carvao',
   areia: 'bg-areia text-carvao hover:bg-lima',
   lima: 'bg-lima text-carvao hover:bg-areia',
@@ -18,7 +19,6 @@ const solid: Record<Color, string> = {
 
 const line: Record<Color, string> = {
   carvao: 'border-carvao text-carvao hover:bg-carvao hover:text-areia',
-  sol: 'border-sol text-sol hover:bg-sol hover:text-white',
   restinga: 'border-restinga text-restinga hover:bg-restinga hover:text-areia',
   areia: 'border-areia text-areia hover:bg-areia hover:text-carvao',
   lima: 'border-lima text-lima hover:bg-lima hover:text-carvao',
