@@ -13,7 +13,7 @@ const palette: Record<CaptureTone, { bg: string; hill: string; sun: string; wave
 export default function CaptureArt({ image, className = '' }: { image: SiteImage; className?: string }) {
   const c = palette[image.tone ?? 'oceano']
   return (
-    <div role="img" aria-label={`${image.alt} — ${captureSoonLabel.toLowerCase()}`} className={`relative overflow-hidden ${className}`}>
+    <div role="img" aria-label={`${image.alt} — ${captureSoonLabel.toLowerCase()}`} className={`capture relative overflow-hidden ${className}`}>
       <svg
         aria-hidden="true"
         viewBox="0 0 400 300"
@@ -39,7 +39,7 @@ export default function CaptureArt({ image, className = '' }: { image: SiteImage
           d="M-10 262c42-26 102-32 162-16s120 26 170 10c24-8 56-18 70-10 10 8-12 26-44 34-60 16-120 4-176-10s-104-8-144 8c-18 6-56-4-38-16z"
         />
       </svg>
-      <span className="absolute bottom-3 left-3 rounded-full bg-areia px-3 py-1 text-[0.8rem] font-semibold text-carvao">
+      <span aria-hidden="true" className="capture-chip absolute bottom-3 left-3 whitespace-nowrap rounded-full bg-areia px-3 py-1 text-[0.8rem] font-semibold text-carvao">
         {captureSoonLabel}
       </span>
     </div>

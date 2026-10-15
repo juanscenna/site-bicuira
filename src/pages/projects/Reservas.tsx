@@ -22,10 +22,10 @@ export default function Reservas({ project }: { project: Project }) {
     <>
       {/* Hero: texto à esquerda, diagrama celular → planilha à direita */}
       <section className="relative overflow-hidden pb-20 md:pb-28">
-        <div className="wrap grid gap-14 pt-12 md:grid-cols-12 md:pt-20">
-          <div className="md:col-span-6">
+        <div className="wrap grid gap-14 pt-12 md:pt-20 lg:grid-cols-12">
+          <div className="lg:col-span-6">
             <ProjectLabel project={project} />
-            <h1 className="mt-8 text-huge text-restinga">
+            <h1 className="mt-8 text-[clamp(2.6rem,5.4vw,5rem)] leading-[0.95] text-restinga">
               <Mark text={project.hero.title} word={project.hero.mark} color="text-sol" />
             </h1>
             <p className="text-body mt-8 max-w-lg">{project.hero.text}</p>
@@ -34,7 +34,7 @@ export default function Reservas({ project }: { project: Project }) {
             </Button>
           </div>
 
-          <div className="relative md:col-span-6">
+          <div className="relative lg:col-span-6">
             <div className="relative mx-auto flex max-w-lg items-center gap-2 rounded-[3rem] bg-oceano p-6 sm:p-10">
               <PhoneFrame image={project.cover} className="w-[38%] shrink-0" />
               <ScribbleArrow draw className="w-[18%] shrink-0 text-areia" />
@@ -118,16 +118,16 @@ export default function Reservas({ project }: { project: Project }) {
 
       {/* Benefícios + galeria */}
       <section aria-labelledby="beneficios" className="pb-24">
-        <div className="wrap grid gap-14 md:grid-cols-12">
-          <div className="md:col-span-6">
+        <div className="wrap grid gap-14 lg:grid-cols-12">
+          <div className="lg:col-span-6">
             <h2 id="beneficios" className="text-big text-restinga">
               {L.benefits}
             </h2>
             <div className="mt-8">
-              <Benefits items={project.benefits} />
+              <Benefits items={project.benefits} columns={1} />
             </div>
           </div>
-          <div className="md:col-span-5 md:col-start-8">
+          <div className="max-w-md lg:col-span-5 lg:col-start-8 lg:max-w-none">
             <h2 className="tag text-restinga">{L.gallery}</h2>
             <div className="mt-6 grid grid-cols-3 gap-3">
               {project.gallery

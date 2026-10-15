@@ -17,7 +17,7 @@ export default function Hero() {
           sizes="(min-width: 768px) 40vw, 100vw"
           className="h-[28vh] min-h-[11rem] rounded-[2rem] md:h-full md:rounded-none md:rounded-bl-[6rem]"
         />
-        <Sun className="absolute -top-3 right-6 w-16 text-sol sm:w-24 md:-left-16 md:right-auto md:top-auto md:bottom-[42%] md:w-40" />
+        <Sun className="absolute -top-3 right-6 w-16 text-sol sm:w-24 md:-left-6 md:right-auto md:top-auto md:bottom-[42%] md:w-32 lg:-left-16 lg:w-40" />
         <WaveShape className="absolute -bottom-4 -left-6 hidden w-[70%] text-oceano md:block md:w-[110%] md:-left-24 md:bottom-16 md:w-[90%]" />
       </div>
 

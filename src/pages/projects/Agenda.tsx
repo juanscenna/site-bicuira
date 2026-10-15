@@ -85,11 +85,11 @@ export default function Agenda({ project }: { project: Project }) {
             <h2 id="como-funciona" className="mt-20 text-big text-restinga">
               {L.howItWorks}
             </h2>
-            <ol className="mt-10 flex flex-col gap-5 md:flex-row md:items-center">
+            <ol className="mt-10 flex flex-col gap-5 lg:flex-row lg:items-center">
               {steps.map((step, i) => {
                 const isReview = i === REVIEW_STEP
                 return (
-                  <li key={step.name} className={isReview ? 'md:flex-[1.5]' : 'md:flex-1'}>
+                  <li key={step.name} className={isReview ? 'lg:flex-[1.5]' : 'lg:flex-1'}>
                     <Reveal delay={i * 120}>
                       {isReview ? (
                         <div className="relative -rotate-1 rounded-[2rem] bg-lima p-8 text-carvao md:p-10">

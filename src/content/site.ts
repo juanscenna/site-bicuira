@@ -3,6 +3,9 @@
 
 export const site = {
   name: 'Bicuíra Digital',
+  // Endereço público do site (usado nas prévias de link do WhatsApp/Instagram).
+  // Quando tiver domínio próprio, troque aqui (ex.: 'https://bicuiradigital.com.br').
+  url: 'https://site-bicuira.vercel.app',
   slogan: 'Tecnologia com raiz local.',
   region: 'Garopaba, Praia do Rosa e região — Santa Catarina',
   footerText: 'Sites, automações e soluções digitais para negócios que querem trabalhar melhor.',

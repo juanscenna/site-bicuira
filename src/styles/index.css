@@ -77,6 +77,10 @@
 }
 .mark-line.is-drawn path { stroke-dashoffset: 0; }
 
+/* Etiqueta 'Captura em breve' só aparece quando cabe numa linha */
+.capture { container-type: inline-size; }
+@container (max-width: 150px) { .capture-chip { display: none; } }
+
 /* Zoom leve na imagem ao passar o mouse sobre um case */
 .photo-img { transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1); }
 .case:hover .photo-img { transform: scale(1.04); }

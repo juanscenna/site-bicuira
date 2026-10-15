@@ -57,15 +57,15 @@ export default function PousadaSite({ project }: { project: Project }) {
 
       {/* Desafio e solução: dois blocos que se sobrepõem */}
       <section className="relative py-20 md:py-28">
-        <div className="wrap grid gap-8 md:grid-cols-12">
-          <Reveal className="md:col-span-6">
-            <div className="rounded-[2.5rem] rounded-br-none bg-sol/15 p-8 sm:p-12">
+        <div className="wrap grid gap-8 xl:grid-cols-12">
+          <Reveal className="xl:col-span-6">
+            <div className="rounded-[2.5rem] rounded-br-none bg-sol/15 p-6 sm:p-12">
               <StoryBlock label={L.challenge} title={project.challenge.title} text={project.challenge.text} />
             </div>
           </Reveal>
-          <Reveal className="md:col-span-6 md:mt-40 md:-ml-16" delay={150}>
-            <div className="on-dark relative rounded-[2.5rem] rounded-tl-none bg-restinga p-8 text-areia sm:p-12">
-              <ScribbleArrow className="absolute -left-14 -top-14 hidden w-24 rotate-[30deg] text-carvao md:block" />
+          <Reveal className="xl:col-span-6 xl:-ml-16 xl:mt-40" delay={150}>
+            <div className="on-dark relative rounded-[2.5rem] rounded-tl-none bg-restinga p-6 text-areia sm:p-12">
+              <ScribbleArrow className="absolute -left-14 -top-14 hidden w-24 rotate-[30deg] text-carvao xl:block" />
               <StoryBlock label={L.solution} title={project.solution.title} text={project.solution.text} dark />
             </div>
           </Reveal>

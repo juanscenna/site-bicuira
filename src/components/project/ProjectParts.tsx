@@ -54,9 +54,9 @@ export function GalleryFigure({ item, className = '' }: { item: GalleryItem; cla
 }
 
 // Lista de benefícios com traço desenhado
-export function Benefits({ items, dark = false }: { items: string[]; dark?: boolean }) {
+export function Benefits({ items, dark = false, columns = 2 }: { items: string[]; dark?: boolean; columns?: 1 | 2 }) {
   return (
-    <ul className="grid gap-x-10 sm:grid-cols-2">
+    <ul className={`grid gap-x-10 ${columns === 2 ? 'sm:grid-cols-2' : ''}`}>
       {items.map((b, i) => (
         <li key={b} className={`flex items-baseline gap-4 border-b-2 py-4 ${dark ? 'border-areia/20' : 'border-carvao/10'}`}>
           <span className={`font-display text-xl ${dark ? 'text-lima' : 'text-restinga'}`}>{String(i + 1).padStart(2, '0')}</span>
@@ -101,7 +101,7 @@ export function ProjectNav({ project }: { project: Project }) {
   return (
     <nav aria-label={L.otherProjects} className="bg-restinga pb-16 text-carvao">
       <div className="wrap">
-        <div className="grid gap-4 rounded-[2rem] bg-areia p-4 sm:p-6 md:grid-cols-3">
+        <div className="grid gap-4 rounded-[2rem] bg-areia p-4 sm:p-6 lg:grid-cols-3">
           <Link to="/#projetos" className={link}>
             <span className="text-[0.8rem] font-semibold uppercase tracking-wider text-restinga">{L.portfolio}</span>
             <span className="mt-2 block font-display text-2xl">← {L.back}</span>
@@ -113,16 +113,16 @@ export function ProjectNav({ project }: { project: Project }) {
               <span className="mt-2 block font-display text-2xl">← {prev.title}</span>
             </Link>
           ) : (
-            <span className="hidden md:block" />
+            <span className="hidden lg:block" />
           )}
 
           {next ? (
-            <Link to={`/projetos/${next.slug}`} className={`${link} md:text-right`}>
+            <Link to={`/projetos/${next.slug}`} className={`${link} lg:text-right`}>
               <span className="text-[0.8rem] font-semibold uppercase tracking-wider text-restinga">{L.next}</span>
               <span className="mt-2 block font-display text-2xl">{next.title} →</span>
             </Link>
           ) : (
-            <Link to="/#servicos" className={`${link} md:text-right`}>
+            <Link to="/#servicos" className={`${link} lg:text-right`}>
               <span className="text-[0.8rem] font-semibold uppercase tracking-wider text-restinga">{L.services}</span>
               <span className="mt-2 block font-display text-2xl">{L.servicesLink} →</span>
             </Link>
@@ -148,7 +148,7 @@ export function StoryBlock({
   return (
     <div>
       <p className={`tag ${dark ? 'text-lima' : 'text-restinga'}`}>{label}</p>
-      <h2 className="mt-5 text-big">{title}</h2>
+      <h2 className="mt-5 text-[clamp(1.5rem,3.4vw,3rem)] leading-[1.02]">{title}</h2>
       <p className="text-body mt-6 max-w-xl">{text}</p>
     </div>
   )
