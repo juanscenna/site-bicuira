@@ -16,7 +16,19 @@ export type SiteImage = {
   alt: string
   isPlaceholder?: boolean
   position?: string // ponto de foco do recorte, ex.: 'center', '30% 50%'
+  // Só para espaços de captura sem arquivo: cor da composição da marca
+  // que aparece no lugar (com a etiqueta "Captura em breve").
+  tone?: CaptureTone
 }
+
+export type CaptureTone = 'restinga' | 'oceano' | 'sol' | 'areia' | 'lima'
+
+// Etiqueta discreta mostrada nos espaços de captura ainda vazios
+export const captureSoonLabel = 'Captura em breve'
+
+// Espaço de captura vazio: aparece uma composição da marca no lugar.
+// Para colocar a captura real, troque por: { ...local('/images/projects/nome'), alt: '...', isPlaceholder: false }
+const capture = (alt: string, tone: CaptureTone): SiteImage => ({ src: '', alt, isPlaceholder: true, tone })
 
 // Foto do Unsplash em dois tamanhos (800 e 1600 px de largura)
 const unsplash = (id: string) => {
@@ -43,11 +55,6 @@ export const images = {
   oceanTexture: {
     ...unsplash('1505118380757-91f5f5632de0'),
     alt: 'Textura de água do mar com espuma',
-    isPlaceholder: true,
-  },
-  beachWide: {
-    ...unsplash('1507525428034-b723cf961d3e'),
-    alt: 'Praia ampla com mar calmo e céu aberto',
     isPlaceholder: true,
   },
   beachAerial: {
@@ -80,31 +87,30 @@ export const images = {
     alt: 'Costa com vegetação e mar ao fundo',
     isPlaceholder: true,
   },
-  tropicalStay: {
-    ...unsplash('1520250497591-112f2f40a3f4'),
-    alt: 'Hospedagem cercada por vegetação tropical',
-    isPlaceholder: true,
-  },
+}
 
-  // ── Espaços para capturas dos projetos (provisórios) ──
-  // Quando tiver as capturas reais, salve em public/images/projects/
-  // e troque o src. Use isPlaceholder: false nas capturas reais.
-  projectPousada: {
-    ...unsplash('1520250497591-112f2f40a3f4'),
-    alt: 'Imagem ilustrativa de hospedagem em meio à natureza',
-    isPlaceholder: true,
-  },
-  projectReservations: {
-    ...unsplash('1505118380757-91f5f5632de0'),
-    alt: 'Imagem ilustrativa de mar, representando o projeto de reservas',
-    isPlaceholder: true,
-  },
-  projectAgenda: {
-    ...unsplash('1468581264429-2548ef9eb732'),
-    alt: 'Imagem ilustrativa de mar visto do alto, representando o projeto de eventos',
-    isPlaceholder: true,
-  },
+// ── Espaços para as capturas reais dos projetos ──
+// Hoje estão vazios (src: ''), então mostram uma composição da marca.
+// Quando tiver as capturas, salve em public/images/projects/ (800 e 1600 px, WebP)
+// e troque a linha por: nome: { ...local('/images/projects/arquivo'), alt: '...', isPlaceholder: false },
+export const captures = {
+  pousadaHome: capture('Captura da página inicial do site da Pousada Sonhos do Rosa (desktop)', 'oceano'),
+  pousadaMobile: capture('Captura do site da Pousada Sonhos do Rosa no celular', 'restinga'),
+  pousadaInternal: capture('Captura de uma seção interna do site da Pousada Sonhos do Rosa', 'sol'),
+  pousadaDetail: capture('Detalhe da interface do site da Pousada Sonhos do Rosa', 'areia'),
+
+  reservasHome: capture('Captura da tela inicial do aplicativo de reservas', 'restinga'),
+  reservasForm: capture('Captura da interface de preenchimento da reserva', 'oceano'),
+  reservasConfirm: capture('Captura da confirmação do registro da reserva', 'lima'),
+  reservasSheet: capture('Captura da planilha com os dados enviados', 'areia'),
+
+  agendaFlyer: capture('Flyer original de um evento', 'sol'),
+  agendaUpload: capture('Captura da interface de envio da imagem', 'oceano'),
+  agendaExtracted: capture('Captura das informações extraídas do flyer', 'areia'),
+  agendaReview: capture('Captura da etapa de revisão humana', 'lima'),
+  agendaSheet: capture('Captura da planilha com os dados registrados', 'restinga'),
 } satisfies Record<string, SiteImage>
+
 
 // Logotipos oficiais (public/brand/)
 export const brand = {

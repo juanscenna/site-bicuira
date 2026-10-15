@@ -17,6 +17,7 @@ export type Service = {
   }
   detail: {
     title: string
+    mark?: string // trecho do título destacado com traço à mão
     description: string
     groups: { title?: string; items: string[] }[]
     note?: string
@@ -38,6 +39,7 @@ export const services: Service[] = [
     },
     detail: {
       title: 'Seu negócio merece uma presença digital à altura.',
+      mark: 'à altura',
       description:
         'Criamos sites que apresentam melhor seu negócio, organizam informações e facilitam a vida de quem chega até ele.',
       groups: [
@@ -83,6 +85,7 @@ export const services: Service[] = [
     },
     detail: {
       title: 'Menos tarefas repetitivas. Mais tempo para o que importa.',
+      mark: 'o que importa',
       description:
         'Criamos soluções digitais que simplificam processos, conectam ferramentas e ajudam negócios a trabalhar melhor.',
       groups: [
@@ -116,6 +119,7 @@ export const services: Service[] = [
     },
     detail: {
       title: 'Faça seus clientes terem mais motivos para voltar.',
+      mark: 'voltar',
       description:
         'Estamos desenvolvendo uma solução de fidelização digital para aproximar estabelecimentos de seus clientes e incentivar novas visitas.',
       groups: [
@@ -140,3 +144,6 @@ export const services: Service[] = [
 export const unsureOption = 'Ainda não sei qual solução preciso'
 
 export const inDevelopmentLabel = 'Produto em desenvolvimento'
+
+// Botão que abre as listas de serviços no celular
+export const detailsToggle = { open: 'Ver o que pode incluir', close: 'Mostrar menos' }

@@ -1,6 +1,7 @@
 import Button from '../../components/Button'
 import Photo from '../../components/Photo'
 import Reveal from '../../components/Reveal'
+import Mark from '../../components/Mark'
 import { BrowserFrame, PhoneFrame } from '../../components/Frames'
 import { ScribbleArrow, Sun, WaveShape } from '../../components/Doodles'
 import {
@@ -11,7 +12,7 @@ import {
   ProjectNav,
   StoryBlock,
 } from '../../components/project/ProjectParts'
-import { images } from '../../content/images'
+import { captures, images } from '../../content/images'
 import { projectLabels as L, type Project } from '../../content/projects'
 
 // Site da Pousada Sonhos do Rosa
@@ -25,14 +26,16 @@ export default function PousadaSite({ project }: { project: Project }) {
       <section className="relative overflow-hidden pb-16">
         <div className="wrap pt-12 md:pt-20">
           <ProjectLabel project={project} />
-          <h1 className="mt-8 max-w-5xl text-huge text-restinga">{project.hero.title}</h1>
+          <h1 className="mt-8 max-w-5xl text-huge text-restinga">
+              <Mark text={project.hero.title} word={project.hero.mark} color="text-sol" />
+            </h1>
           <div className="mt-10 grid gap-8 md:grid-cols-12 md:items-end">
             <p className="text-body md:col-span-5">{project.hero.text}</p>
             <div className="flex flex-wrap gap-4 md:col-span-6 md:col-start-7 md:justify-end">
               {project.hero.externalLink && (
                 <Button to={project.hero.externalLink.url}>{project.hero.externalLink.label}</Button>
               )}
-              <Button to="/#contato" variant="line">
+              <Button to="/#contato" variant="text">
                 {project.hero.contactCta}
               </Button>
             </div>
@@ -45,7 +48,7 @@ export default function PousadaSite({ project }: { project: Project }) {
           <div className="wrap relative -mt-40 grid grid-cols-12 items-end gap-4 sm:-mt-56 md:-mt-80">
             <BrowserFrame image={project.cover} className="col-span-12 sm:col-span-9 md:col-span-8" />
             <PhoneFrame
-              image={images.surfLifestyle}
+              image={captures.pousadaMobile}
               className="col-span-5 col-start-8 -mt-24 sm:col-span-3 sm:col-start-auto sm:mt-0 md:col-span-2 md:-mb-12"
             />
           </div>

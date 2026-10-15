@@ -1,5 +1,6 @@
 import Button from '../../components/Button'
 import Reveal from '../../components/Reveal'
+import Mark from '../../components/Mark'
 import { PhoneFrame } from '../../components/Frames'
 import { ScribbleArrow, WaveEdge, WaveLine } from '../../components/Doodles'
 import SheetGraphic from '../../components/project/SheetGraphic'
@@ -24,7 +25,9 @@ export default function Reservas({ project }: { project: Project }) {
         <div className="wrap grid gap-14 pt-12 md:grid-cols-12 md:pt-20">
           <div className="md:col-span-6">
             <ProjectLabel project={project} />
-            <h1 className="mt-8 text-huge text-restinga">{project.hero.title}</h1>
+            <h1 className="mt-8 text-huge text-restinga">
+              <Mark text={project.hero.title} word={project.hero.mark} color="text-sol" />
+            </h1>
             <p className="text-body mt-8 max-w-lg">{project.hero.text}</p>
             <Button to="/#contato" className="mt-10">
               {project.hero.contactCta}

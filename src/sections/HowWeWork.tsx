@@ -1,4 +1,5 @@
 import Reveal from '../components/Reveal'
+import Mark from '../components/Mark'
 import { WaveLine } from '../components/Doodles'
 import { howWeWork } from '../content/home'
 
@@ -11,7 +12,9 @@ export default function HowWeWork() {
     <section id="como-trabalhamos" className="on-dark relative overflow-hidden bg-carvao pb-24 pt-16 text-areia md:pb-40 md:pt-24">
       <div className="wrap">
         <p className="tag text-lima">{howWeWork.tag}</p>
-        <h2 className="mt-6 max-w-4xl text-huge">{howWeWork.title}</h2>
+        <h2 className="mt-6 max-w-4xl text-huge">
+          <Mark text={howWeWork.title} word={howWeWork.mark} color="text-lima" />
+        </h2>
 
         <div className="relative mt-14 md:mt-20">
           {/* Percurso em onda (desktop): fica na faixa dos marcadores */}

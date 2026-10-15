@@ -1,4 +1,5 @@
 import Button from '../../components/Button'
+import Mark from '../../components/Mark'
 import Photo from '../../components/Photo'
 import {
   Benefits,
@@ -20,13 +21,15 @@ export default function GenericProject({ project }: { project: Project }) {
       <section className="wrap grid gap-12 pb-20 pt-12 md:grid-cols-12 md:pt-20">
         <div className="md:col-span-7">
           <ProjectLabel project={project} />
-          <h1 className="mt-8 text-huge text-restinga">{project.hero.title}</h1>
+          <h1 className="mt-8 text-huge text-restinga">
+              <Mark text={project.hero.title} word={project.hero.mark} color="text-sol" />
+            </h1>
           <p className="text-body mt-8 max-w-lg">{project.hero.text}</p>
           <div className="mt-10 flex flex-wrap gap-4">
             {project.hero.externalLink && (
               <Button to={project.hero.externalLink.url}>{project.hero.externalLink.label}</Button>
             )}
-            <Button to="/#contato" variant="line">
+            <Button to="/#contato" variant="text">
               {project.hero.contactCta}
             </Button>
           </div>

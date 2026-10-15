@@ -1,4 +1,5 @@
 import Reveal from '../components/Reveal'
+import Mark from '../components/Mark'
 import { Spark, WaveEdge, WaveLine } from '../components/Doodles'
 import { manifesto } from '../content/home'
 
@@ -8,12 +9,14 @@ export default function Manifesto() {
   return (
     <section aria-labelledby="manifesto-titulo" className="relative">
       <WaveEdge className="-mb-px h-12 text-sol sm:h-20" />
-      <div className="on-dark relative overflow-hidden bg-sol pb-24 pt-10 text-areia sm:pb-32">
+      <div className="on-dark relative overflow-hidden bg-sol pb-20 pt-8 text-areia sm:pb-28">
         <div className="wrap">
           <p className="tag bg-carvao px-3 py-1.5 text-areia">{manifesto.tag}</p>
           <h2 id="manifesto-titulo" className="mt-8 text-[clamp(2.5rem,8.2vw,8.75rem)] leading-[0.9]">
             <span className="block">{manifesto.title[0]}</span>
-            <span className="block md:pl-[10vw]">{manifesto.title[1]}</span>
+            <span className="block md:pl-[10vw]">
+              <Mark text={manifesto.title[1]} word={manifesto.mark} color="text-lima" />
+            </span>
           </h2>
 
           <div className="mt-16 grid gap-10 md:mt-24 md:grid-cols-12">

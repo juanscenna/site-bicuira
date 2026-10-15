@@ -1,4 +1,6 @@
 import Button from '../components/Button'
+import Collapsible from '../components/Collapsible'
+import Mark from '../components/Mark'
 import Photo from '../components/Photo'
 import Reveal from '../components/Reveal'
 import { IconAutomacao, IconFideliza, IconSites, WaveEdge, WaveLine } from '../components/Doodles'
@@ -35,12 +37,14 @@ function SitesBlock({ service }: { service: Service }) {
   return (
     <div id="servico-sites">
       <WaveEdge className="-mb-px h-12 text-restinga sm:h-20" />
-      <div className="on-dark bg-restinga pb-20 pt-8 text-areia md:pb-28">
+      <div className="on-dark bg-restinga pb-16 pt-6 text-areia md:pb-24">
         <div className="wrap">
           <div className="grid gap-10 md:grid-cols-12">
             <div className="md:col-span-7">
               <Label service={service} dark />
-              <h2 className="mt-6 text-huge">{d.title}</h2>
+              <h2 className="mt-6 text-huge">
+                <Mark text={d.title} word={d.mark} color="text-lima" />
+              </h2>
             </div>
             <div className="md:col-span-4 md:col-start-9 md:pt-14">
               <IconSites className="h-14 w-14 text-lima" />
@@ -48,24 +52,27 @@ function SitesBlock({ service }: { service: Service }) {
             </div>
           </div>
 
-          <div className="mt-16 grid gap-12 md:grid-cols-2 md:gap-16">
+          {/* Listas compactas: 2–3 colunas no desktop; recolhidas no celular */}
+          <div className="mt-12 grid gap-10 md:mt-14 lg:grid-cols-12">
             {d.groups.map((g, gi) => (
-              <Reveal key={gi} delay={gi * 120} className={gi === 1 ? 'md:mt-20' : ''}>
+              <Reveal key={gi} className={gi === 0 ? 'lg:col-span-7' : 'lg:col-span-5'}>
                 <h3 className="font-sans text-lg font-semibold">{g.title}</h3>
-                <ol className="mt-6 border-t border-areia/25">
-                  {g.items.map((item, i) => (
-                    <li key={item} className="flex gap-5 border-b border-areia/25 py-3">
-                      <span className="w-6 shrink-0 font-display text-lima">{String(i + 1).padStart(2, '0')}</span>
-                      {item}
-                    </li>
-                  ))}
-                </ol>
+                <Collapsible dark>
+                  <ol className={`mt-5 grid gap-x-6 border-t border-areia/25 sm:grid-cols-2`}>
+                    {g.items.map((item, i) => (
+                      <li key={item} className="flex gap-3 border-b border-areia/25 py-2.5">
+                        <span className="w-6 shrink-0 font-display text-lima">{String(i + 1).padStart(2, '0')}</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ol>
+                </Collapsible>
               </Reveal>
             ))}
           </div>
 
-          <div className="mt-14 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-            <p className="max-w-md text-sm italic text-areia/85">{d.note}</p>
+          <div className="mt-10 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+            <p className="max-w-md text-sm italic text-areia/90">{d.note}</p>
             <Button to={contactLink(service)} color="lima">
               {d.cta}
             </Button>
@@ -81,14 +88,16 @@ function SitesBlock({ service }: { service: Service }) {
 function AutomacaoBlock({ service }: { service: Service }) {
   const d = service.detail
   return (
-    <div id="servico-automacao" className="py-20 md:py-28">
+    <div id="servico-automacao" className="py-14 md:py-20">
       <div className="wrap grid gap-12 md:grid-cols-12">
         <div className="relative md:col-span-4">
           <Photo image={images.oceanTexture} className="aspect-[3/4] rounded-b-full md:sticky md:top-28" />
         </div>
         <div className="md:col-span-7 md:col-start-6">
           <Label service={service} />
-          <h2 className="mt-6 text-huge text-restinga">{d.title}</h2>
+          <h2 className="mt-6 text-huge text-restinga">
+            <Mark text={d.title} word={d.mark} />
+          </h2>
           <div className="mt-8 flex items-start gap-5">
             <IconAutomacao className="h-12 w-12 shrink-0 text-oceano" />
             <p className="text-body">{d.description}</p>
@@ -117,7 +126,7 @@ function AutomacaoBlock({ service }: { service: Service }) {
 function FidelizaBlock({ service }: { service: Service }) {
   const d = service.detail
   return (
-    <div id="servico-fideliza" className="pb-20 md:pb-28">
+    <div id="servico-fideliza" className="pb-16 md:pb-24">
       <div className="wrap">
         <div className="relative rounded-[2.5rem] border-[3px] border-dashed border-sol bg-sol/10 px-6 py-12 sm:px-12 md:px-16 md:py-16">
           <p className="absolute -top-5 right-6 rotate-3 bg-carvao px-4 py-2 text-sm font-bold uppercase tracking-wider text-areia sm:right-12">
@@ -127,7 +136,9 @@ function FidelizaBlock({ service }: { service: Service }) {
           <div className="grid gap-12 md:grid-cols-12">
             <div className="md:col-span-6">
               <Label service={service} />
-              <h2 className="mt-6 text-big text-carvao">{d.title}</h2>
+              <h2 className="mt-6 text-big text-carvao">
+                <Mark text={d.title} word={d.mark} kind="circle" />
+              </h2>
               <p className="text-body mt-6">{d.description}</p>
             </div>
 

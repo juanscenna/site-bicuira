@@ -2,6 +2,7 @@ import { Sun, WaveEdge, WaveShape } from '../components/Doodles'
 import { contact } from '../content/home'
 import { site, whatsappUrl } from '../content/site'
 import ContactForm from './ContactForm'
+import Mark from '../components/Mark'
 
 export default function Contact() {
   const whatsapp = whatsappUrl()
@@ -9,12 +10,14 @@ export default function Contact() {
   return (
     <section id="contato" className="relative">
       <WaveEdge className="-mb-px h-12 text-restinga sm:h-20" />
-      <div className="on-dark relative overflow-hidden bg-restinga pb-20 pt-8 text-areia md:pb-28">
+      <div className="on-dark relative overflow-hidden bg-restinga pb-16 pt-6 text-areia md:pb-24">
         <Sun className="absolute -right-20 top-10 hidden w-96 text-sol/90 lg:block" />
         <div className="wrap relative grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-6">
             <p className="tag text-lima">{contact.tag}</p>
-            <h2 className="mt-6 text-big">{contact.title}</h2>
+            <h2 className="mt-6 text-big">
+              <Mark text={contact.title} word={contact.mark} color="text-lima" />
+            </h2>
             <p className="text-body mt-8 max-w-md">{contact.text}</p>
 
             {/* Instagram: canal principal por enquanto */}

@@ -21,12 +21,14 @@ export const hero = {
 export const solutionsIntro = {
   tag: 'Nossas soluções',
   title: 'Três caminhos para fazer seu negócio evoluir.',
+  mark: 'evoluir', // trecho destacado com traço à mão (não altera o texto)
   text: 'Da presença digital à automação de processos e à fidelização de clientes, criamos soluções práticas para as necessidades de cada negócio.',
 }
 
 export const manifesto = {
   tag: 'Manifesto',
   title: ['Menos complicação.', 'Mais possibilidades.'],
+  mark: 'possibilidades',
   paragraphs: [
     'Acreditamos que a tecnologia deve trabalhar a favor das pessoas.',
     'Por isso, criamos soluções práticas, pensadas para a realidade de cada negócio. Sem complicação desnecessária, sem fórmulas prontas e sem promessas vazias.',
@@ -37,6 +39,7 @@ export const manifesto = {
 export const projectsIntro = {
   tag: 'Projetos',
   title: 'Tecnologia aplicada a problemas reais.',
+  mark: 'problemas reais',
   text: 'Cada projeto começa com um desafio. Nosso trabalho é entender o que precisa melhorar e construir uma solução que faça sentido na prática.',
 }
 
@@ -47,6 +50,7 @@ export const servicesIntro = {
 export const howWeWork = {
   tag: 'Como trabalhamos',
   title: 'Uma boa solução começa entendendo o problema.',
+  mark: 'entendendo',
   steps: [
     { name: 'Entender', text: 'Conhecemos o negócio, a rotina e os desafios do cliente.' },
     { name: 'Identificar', text: 'Analisamos oportunidades para melhorar processos ou experiências.' },
@@ -59,6 +63,7 @@ export const howWeWork = {
 export const about = {
   tag: 'Sobre a Bicuíra',
   title: 'Tecnologia que entende de onde vem.',
+  mark: 'de onde vem',
   paragraphs: [
     'A Bicuíra Digital nasceu da vontade de aproximar a tecnologia da realidade dos negócios.',
     'Com raízes locais e uma visão aberta para novas possibilidades, desenvolvemos soluções que respeitam a identidade de cada empresa e buscam tornar o trabalho mais simples.',
@@ -71,6 +76,7 @@ export const about = {
 export const contact = {
   tag: 'Contato',
   title: 'Tem alguma coisa no seu negócio que poderia funcionar melhor?',
+  mark: 'funcionar melhor',
   text: 'Conta para a gente o que você está buscando. Vamos entender sua necessidade e conversar sobre as possibilidades.',
   instagramLabel: 'Fale com a gente no Instagram',
   whatsappLabel: 'Chamar no WhatsApp',

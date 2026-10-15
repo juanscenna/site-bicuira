@@ -1,6 +1,7 @@
 import Button from '../../components/Button'
 import Photo from '../../components/Photo'
 import Reveal from '../../components/Reveal'
+import Mark from '../../components/Mark'
 import { ScribbleCircle, Spark, WaveEdge } from '../../components/Doodles'
 import SheetGraphic from '../../components/project/SheetGraphic'
 import {
@@ -11,7 +12,7 @@ import {
   StoryBlock,
   Tools,
 } from '../../components/project/ProjectParts'
-import { images } from '../../content/images'
+import { captures } from '../../content/images'
 import { projectLabels as L, type Project } from '../../content/projects'
 
 // Agenda de Todos Nós
@@ -29,7 +30,9 @@ export default function Agenda({ project }: { project: Project }) {
         <div className="wrap grid gap-14 pt-12 md:grid-cols-12 md:pt-20">
           <div className="relative z-10 md:col-span-7">
             <ProjectLabel project={project} dark />
-            <h1 className="mt-8 text-huge">{project.hero.title}</h1>
+            <h1 className="mt-8 text-huge">
+              <Mark text={project.hero.title} word={project.hero.mark} color="text-lima" />
+            </h1>
             <p className="text-body mt-8 max-w-lg text-areia/90">{project.hero.text}</p>
             <div className="mt-10 flex flex-wrap gap-4">
               {project.hero.externalLink && (
@@ -37,16 +40,16 @@ export default function Agenda({ project }: { project: Project }) {
                   {project.hero.externalLink.label}
                 </Button>
               )}
-              <Button to="/#contato" variant="line" color="areia">
+              <Button to="/#contato" variant="text">
                 {project.hero.contactCta}
               </Button>
             </div>
           </div>
 
           <div className="relative h-[22rem] sm:h-[28rem] md:col-span-5 md:h-auto">
-            <Photo image={images.waveBreaking} className="absolute left-[4%] top-4 aspect-[3/4] w-[52%] -rotate-6 rounded-md border-4 border-areia" />
+            <Photo image={captures.agendaUpload} className="absolute left-[4%] top-4 aspect-[3/4] w-[52%] -rotate-6 rounded-md border-4 border-areia" />
             <Photo image={project.cover} className="absolute right-[4%] top-16 aspect-[3/4] w-[52%] rotate-3 rounded-md border-4 border-areia" />
-            <span className="absolute bottom-0 left-1/2 -translate-x-1/2 -rotate-2 bg-lima px-4 py-2 text-[0.8125rem] font-bold uppercase tracking-wider text-carvao">
+            <span className="absolute right-0 top-0 rotate-3 bg-lima px-4 py-2 text-[0.8125rem] font-bold uppercase tracking-wider text-carvao">
               {project.highlight}
             </span>
           </div>

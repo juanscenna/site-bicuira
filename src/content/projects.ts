@@ -8,7 +8,7 @@
 //
 // Os três primeiros projetos têm páginas com layout próprio (src/pages/).
 
-import { images, type SiteImage } from './images'
+import { captures, type SiteImage } from './images'
 
 export type GalleryItem = {
   image: SiteImage
@@ -27,6 +27,7 @@ export type Project = {
   seo: { title: string; description: string }
   hero: {
     title: string
+    mark?: string // trecho do título destacado com traço à mão
     text: string
     externalLink?: { label: string; url: string }
     contactCta: string
@@ -49,7 +50,7 @@ export const projects: Project[] = [
     category: 'Desenvolvimento de site',
     summary:
       'Um site próprio para reunir as informações da pousada, que antes estavam espalhadas entre plataformas de hospedagem e redes sociais.',
-    cover: images.projectPousada,
+    cover: captures.pousadaHome,
     seo: {
       title: 'Site da Pousada Sonhos do Rosa — Bicuíra Digital',
       description:
@@ -57,6 +58,7 @@ export const projects: Project[] = [
     },
     hero: {
       title: 'Uma presença digital à altura da experiência da pousada.',
+      mark: 'experiência',
       text: 'Um site próprio para reunir informações importantes, apresentar a hospedagem e facilitar a jornada de quem deseja conhecer a Pousada Sonhos do Rosa.',
       externalLink: { label: 'Visitar site', url: 'https://sonhosdorosa.lovable.app/' },
       contactCta: 'Quero um site para meu negócio',
@@ -77,10 +79,10 @@ export const projects: Project[] = [
       'Acesso às informações relevantes para os visitantes',
     ],
     gallery: [
-      { image: images.projectPousada, label: 'Página inicial — desktop', frame: 'browser' },
-      { image: images.beachWide, label: 'Versão mobile', frame: 'phone' },
-      { image: images.coastNature, label: 'Seções internas', frame: 'browser' },
-      { image: images.tropicalStay, label: 'Detalhes da interface', frame: 'plain' },
+      { image: captures.pousadaHome, label: 'Página inicial — desktop', frame: 'browser' },
+      { image: captures.pousadaMobile, label: 'Versão mobile', frame: 'phone' },
+      { image: captures.pousadaInternal, label: 'Seções internas', frame: 'browser' },
+      { image: captures.pousadaDetail, label: 'Detalhes da interface', frame: 'plain' },
     ],
     finalCta: {
       title: 'Seu negócio também merece uma presença digital melhor.',
@@ -95,7 +97,7 @@ export const projects: Project[] = [
     category: 'Automação de processos',
     summary:
       'Um aplicativo web com interface simples para registrar reservas direto na planilha Google Sheets que o proprietário já usava.',
-    cover: images.projectReservations,
+    cover: captures.reservasHome,
     seo: {
       title: 'Automação de reservas — Bicuíra Digital',
       description:
@@ -103,6 +105,7 @@ export const projects: Project[] = [
     },
     hero: {
       title: 'Reservas mais simples. Menos trabalho manual.',
+      mark: 'mais simples',
       text: 'Uma interface prática para registrar reservas diretamente no Google Sheets, aproveitando a planilha que o cliente já utilizava.',
       contactCta: 'Quero automatizar um processo',
     },
@@ -134,10 +137,10 @@ export const projects: Project[] = [
       'Processo mais prático para registrar reservas',
     ],
     gallery: [
-      { image: images.projectReservations, label: 'Tela inicial do aplicativo', frame: 'phone' },
-      { image: images.waveBreaking, label: 'Interface de preenchimento', frame: 'phone' },
-      { image: images.oceanTexture, label: 'Confirmação do registro', frame: 'phone' },
-      { image: images.beachAerial, label: 'Planilha com os dados enviados', frame: 'browser' },
+      { image: captures.reservasHome, label: 'Tela inicial do aplicativo', frame: 'phone' },
+      { image: captures.reservasForm, label: 'Interface de preenchimento', frame: 'phone' },
+      { image: captures.reservasConfirm, label: 'Confirmação do registro', frame: 'phone' },
+      { image: captures.reservasSheet, label: 'Planilha com os dados enviados', frame: 'browser' },
     ],
     finalCta: {
       title: 'Qual tarefa da sua rotina poderia ser mais simples?',
@@ -153,7 +156,7 @@ export const projects: Project[] = [
     summary:
       'Um sistema que lê flyers de eventos com inteligência artificial, passa pela conferência de uma pessoa e organiza tudo no Google Sheets.',
     highlight: 'IA + revisão humana',
-    cover: images.projectAgenda,
+    cover: captures.agendaFlyer,
     seo: {
       title: 'Agenda de Todos Nós — Bicuíra Digital',
       description:
@@ -161,6 +164,7 @@ export const projects: Project[] = [
     },
     hero: {
       title: 'Do cartaz à planilha, sem transcrever tudo manualmente.',
+      mark: 'sem transcrever',
       text: 'Uma solução que utiliza inteligência artificial para extrair informações de flyers de eventos, permite a revisão humana e organiza os dados automaticamente no Google Sheets.',
       externalLink: { label: 'Visitar sistema', url: 'https://agendadetodosnos.lovable.app/' },
       contactCta: 'Quero automatizar meu negócio',
@@ -187,11 +191,11 @@ export const projects: Project[] = [
       note: 'Resultado relatado por esta operação. Cada negócio tem uma realidade diferente.',
     },
     gallery: [
-      { image: images.projectAgenda, label: 'Flyer original', frame: 'plain' },
-      { image: images.oceanAerial, label: 'Interface de envio', frame: 'browser' },
-      { image: images.surfboards, label: 'Informações extraídas', frame: 'browser' },
-      { image: images.surfLifestyle, label: 'Etapa de revisão', frame: 'phone' },
-      { image: images.beachWide, label: 'Planilha com os dados registrados', frame: 'browser' },
+      { image: captures.agendaFlyer, label: 'Flyer original', frame: 'plain' },
+      { image: captures.agendaUpload, label: 'Interface de envio', frame: 'browser' },
+      { image: captures.agendaExtracted, label: 'Informações extraídas', frame: 'browser' },
+      { image: captures.agendaReview, label: 'Etapa de revisão', frame: 'phone' },
+      { image: captures.agendaSheet, label: 'Planilha com os dados registrados', frame: 'browser' },
     ],
     finalCta: {
       title: 'Seu negócio também tem tarefas que poderiam ser automatizadas?',
@@ -226,6 +230,7 @@ export const projectLabels = {
   result: 'Resultado relatado pela operação',
   portfolio: 'Portfólio',
   back: 'Voltar aos projetos',
+  viewProject: 'Ver projeto',
   prev: 'Projeto anterior',
   next: 'Próximo projeto',
   services: 'Serviços',

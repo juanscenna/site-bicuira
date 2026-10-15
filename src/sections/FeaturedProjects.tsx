@@ -1,10 +1,11 @@
 import Button from '../components/Button'
 import Photo from '../components/Photo'
 import Reveal from '../components/Reveal'
+import Mark from '../components/Mark'
 import { PhoneFrame } from '../components/Frames'
 import { ScribbleArrow, ScribbleCircle, WaveShape } from '../components/Doodles'
 import { projectsIntro } from '../content/home'
-import { projects, type Project } from '../content/projects'
+import { projectLabels, projects, type Project } from '../content/projects'
 
 // Portfólio editorial: cada projeto tem uma composição diferente.
 // Se um projeto novo for adicionado em projects.ts, ele usa a composição "padrão".
@@ -15,7 +16,9 @@ export default function FeaturedProjects() {
         <div className="grid gap-8 md:grid-cols-12">
           <div className="md:col-span-8">
             <p className="tag text-restinga">{projectsIntro.tag}</p>
-            <h2 className="mt-5 text-huge text-restinga">{projectsIntro.title}</h2>
+            <h2 className="mt-5 text-huge text-restinga">
+              <Mark text={projectsIntro.title} word={projectsIntro.mark} />
+            </h2>
           </div>
           <p className="text-body md:col-span-4 md:mt-16">{projectsIntro.text}</p>
         </div>
@@ -32,7 +35,8 @@ export default function FeaturedProjects() {
   )
 }
 
-function Info({ project, index }: { project: Project; index: number }) {
+// O botão varia por case: sólido, link sublinhado ou Lima, para não repetir o mesmo bloco
+function Info({ project, index, cta = 'solid' }: { project: Project; index: number; cta?: 'solid' | 'text' | 'lima' }) {
   return (
     <>
       <p className="tag text-restinga">
@@ -41,8 +45,13 @@ function Info({ project, index }: { project: Project; index: number }) {
       <p className="mt-4 text-sm font-semibold uppercase tracking-wider text-carvao/80">{project.client}</p>
       <h3 className="mt-2 text-big text-carvao">{project.title}</h3>
       <p className="mt-5 max-w-md leading-relaxed">{project.summary}</p>
-      <Button to={`/projetos/${project.slug}`} className="mt-8">
-        Ver projeto
+      <Button
+        to={`/projetos/${project.slug}`}
+        variant={cta === 'text' ? 'text' : 'solid'}
+        color={cta === 'lima' ? 'lima' : 'carvao'}
+        className="mt-8"
+      >
+        {projectLabels.viewProject}
       </Button>
     </>
   )
@@ -52,8 +61,8 @@ function Info({ project, index }: { project: Project; index: number }) {
 function WideImage({ project, index }: { project: Project; index: number }) {
   return (
     <Reveal>
-      <article className="relative xl:grid xl:grid-cols-12 xl:items-end">
-        <div className="relative pr-4 sm:pr-10 lg:pr-[20%] xl:col-span-7 xl:row-start-1 xl:pr-0">
+      <article className="case relative xl:grid xl:grid-cols-12 xl:items-end">
+        <div className="relative pr-4 sm:pr-10 lg:pr-[20%] xl:col-span-7 xl:col-start-1 xl:row-start-1 xl:pr-0">
           <Photo image={project.cover} sizes="(min-width: 1280px) 58vw, 90vw" className="aspect-[4/3] rounded-r-[3rem] md:aspect-[16/9]" />
           <span
             aria-hidden="true"
@@ -76,9 +85,9 @@ function WideImage({ project, index }: { project: Project; index: number }) {
 function PhoneStage({ project, index }: { project: Project; index: number }) {
   return (
     <Reveal>
-      <article className="wrap grid gap-12 lg:grid-cols-12 lg:items-center">
+      <article className="case wrap grid gap-12 lg:grid-cols-12 lg:items-center">
         <div className="max-w-xl lg:col-span-5 lg:col-start-1 lg:min-w-[18rem] xl:col-start-2">
-          <Info project={project} index={index} />
+          <Info project={project} index={index} cta="text" />
         </div>
         <div className="relative mx-auto w-full max-w-md lg:col-span-6 lg:col-start-7 lg:max-w-none xl:col-span-5 xl:col-start-8">
           <div className="relative flex justify-center overflow-hidden rounded-[3rem] rounded-br-none bg-oceano px-6 pb-0 pt-12">
@@ -97,7 +106,7 @@ function PhoneStage({ project, index }: { project: Project; index: number }) {
 function SquareImage({ project, index }: { project: Project; index: number }) {
   return (
     <Reveal>
-      <article className="wrap grid gap-10 lg:grid-cols-12 lg:items-start">
+      <article className="case wrap grid gap-10 lg:grid-cols-12 lg:items-start">
         <div className="relative lg:order-2 lg:col-span-6 lg:col-start-7">
           <Photo image={project.cover} sizes="(min-width: 1024px) 50vw, 100vw" className="aspect-[4/3] rounded-tl-[4rem] lg:aspect-square" />
           {project.highlight && (
@@ -112,7 +121,7 @@ function SquareImage({ project, index }: { project: Project; index: number }) {
             <ScribbleCircle className="absolute -inset-4 h-[calc(100%+2rem)] w-[calc(100%+2rem)] text-sol" />
           </span>
           <div className="mt-6">
-            <Info project={project} index={index} />
+            <Info project={project} index={index} cta="lima" />
           </div>
         </div>
       </article>

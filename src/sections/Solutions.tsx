@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import Reveal from '../components/Reveal'
-import { IconAutomacao, IconFideliza, IconSites, ScribbleUnderline } from '../components/Doodles'
+import Mark from '../components/Mark'
+import { IconAutomacao, IconFideliza, IconSites } from '../components/Doodles'
 import { solutionsIntro } from '../content/home'
 import { inDevelopmentLabel, services, type ServiceId } from '../content/services'
 
@@ -33,16 +34,17 @@ const icons = { sites: IconSites, automacao: IconAutomacao, fideliza: IconFideli
 
 export default function Solutions() {
   return (
-    <section id="solucoes" className="relative py-20 md:py-28">
+    <section id="solucoes" className="relative py-14 md:py-20">
       <div className="wrap">
         <div className="grid gap-8 md:grid-cols-12 md:items-end">
           <div className="md:col-span-7">
             <p className="tag text-restinga">{solutionsIntro.tag}</p>
-            <h2 className="mt-5 text-huge text-restinga">{solutionsIntro.title}</h2>
+            <h2 className="mt-5 text-huge text-restinga">
+              <Mark text={solutionsIntro.title} word={solutionsIntro.mark} />
+            </h2>
           </div>
           <div className="md:col-span-4 md:col-start-9">
-            <ScribbleUnderline className="mb-4 h-4 w-32 text-sol" />
-            <p className="text-body">{solutionsIntro.text}</p>
+                        <p className="text-body">{solutionsIntro.text}</p>
           </div>
         </div>
 

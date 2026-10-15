@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import type { SiteImage } from '../content/images'
 import { WaveShape } from './Doodles'
+import CaptureArt from './CaptureArt'
 
 type Props = {
   image: SiteImage
@@ -16,6 +17,9 @@ type Props = {
 // - enquanto carrega (ou se falhar), aparece um fundo da marca, nunca um bloco vazio
 export default function Photo({ image, className = '', fit = 'cover', priority = false, sizes = '100vw' }: Props) {
   const [failed, setFailed] = useState(false)
+
+  // Espaço de captura ainda sem arquivo → composição da marca
+  if (!image.src) return <CaptureArt image={image} className={className} />
 
   return (
     <div className={`relative overflow-hidden bg-oceano ${className}`}>

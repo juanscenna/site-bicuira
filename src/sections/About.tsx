@@ -1,5 +1,6 @@
 import Photo from '../components/Photo'
 import Reveal from '../components/Reveal'
+import Mark from '../components/Mark'
 import { Hill } from '../components/Doodles'
 import { about } from '../content/home'
 import { brand, images } from '../content/images'
@@ -8,11 +9,13 @@ import { site } from '../content/site'
 // Sobre: foto costeira forte sangrando à direita e subindo sobre a seção anterior.
 export default function About() {
   return (
-    <section id="sobre" className="relative pb-20 md:pb-28">
+    <section id="sobre" className="relative pb-16 md:pb-24">
       <div className="grid md:grid-cols-12">
         <div className="order-2 px-4 pt-14 sm:px-6 md:order-1 md:col-span-6 md:pl-[max(2.5rem,calc((100vw-1400px)/2+2.5rem))] md:pr-12 md:pt-24">
           <p className="tag text-restinga">{about.tag}</p>
-          <h2 className="mt-6 text-huge text-restinga">{about.title}</h2>
+          <h2 className="mt-6 text-huge text-restinga">
+            <Mark text={about.title} word={about.mark} />
+          </h2>
           <div className="mt-10 space-y-5">
             {about.paragraphs.map((p, i) => (
               <Reveal key={i} delay={i * 80}>
