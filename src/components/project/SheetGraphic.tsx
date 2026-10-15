@@ -30,7 +30,7 @@ export default function SheetGraphic({
 function Row({ cols, index, highlight }: { cols: number; index: number; highlight: boolean }) {
   return (
     <>
-      <span className="flex h-8 items-center justify-center border-b border-r border-carvao/20 bg-carvao/5 text-[0.6rem] text-carvao/60">
+      <span className="flex h-8 items-center justify-center border-b border-r border-carvao/20 bg-carvao/5 text-[0.75rem] text-carvao/80">
         {index + 1}
       </span>
       {Array.from({ length: cols }).map((_, c) => (

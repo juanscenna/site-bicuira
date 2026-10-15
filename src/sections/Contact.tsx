@@ -24,7 +24,7 @@ export default function Contact() {
               rel="noopener noreferrer"
               className="group mt-12 block max-w-md rounded-[2rem] rounded-tl-none bg-lima p-6 text-carvao transition-colors hover:bg-areia sm:p-8"
             >
-              <span className="text-xs font-bold uppercase tracking-widest">{contact.instagramLabel}</span>
+              <span className="text-[0.8125rem] font-bold uppercase tracking-wider">{contact.instagramLabel}</span>
               <span className="mt-2 flex items-center justify-between gap-4 font-display text-[clamp(1.9rem,5vw,3rem)] leading-none">
                 {site.instagram.handle}
                 <span aria-hidden="true" className="transition-transform group-hover:translate-x-2">

@@ -13,6 +13,8 @@
     @apply bg-areia font-sans text-carvao antialiased;
     overflow-x: hidden;
   }
+  /* Baloo 2 só é carregada no peso 800 */
+  .font-display { font-weight: 800; }
   h1, h2, h3 {
     @apply font-display;
     font-weight: 800;
@@ -37,7 +39,7 @@
   }
   /* Etiqueta editorial pequena: "01 — Sites" */
   .tag {
-    @apply inline-flex items-center gap-2 font-sans text-[0.72rem] font-semibold uppercase tracking-[0.18em];
+    @apply inline-flex items-center gap-2 font-sans text-[0.8rem] font-semibold uppercase tracking-[0.16em];
   }
   .tag::before {
     content: '';

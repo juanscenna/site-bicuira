@@ -61,7 +61,7 @@ export default function Solutions() {
                   </div>
 
                   {service.inDevelopment && (
-                    <p className="mt-4 inline-block -rotate-3 self-start whitespace-nowrap border-2 border-sol px-2.5 py-1 text-[0.62rem] font-bold uppercase tracking-wider">
+                    <p className="mt-4 inline-block -rotate-3 self-start border-2 border-sol px-3 py-1.5 text-[0.8125rem] font-bold uppercase leading-tight tracking-wide">
                       {inDevelopmentLabel}
                     </p>
                   )}

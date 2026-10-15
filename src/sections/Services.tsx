@@ -120,7 +120,7 @@ function FidelizaBlock({ service }: { service: Service }) {
     <div id="servico-fideliza" className="pb-20 md:pb-28">
       <div className="wrap">
         <div className="relative rounded-[2.5rem] border-[3px] border-dashed border-sol bg-sol/10 px-6 py-12 sm:px-12 md:px-16 md:py-16">
-          <p className="absolute -top-5 right-6 rotate-3 bg-carvao px-4 py-2 text-xs font-bold uppercase tracking-widest text-areia sm:right-12">
+          <p className="absolute -top-5 right-6 rotate-3 bg-carvao px-4 py-2 text-sm font-bold uppercase tracking-wider text-areia sm:right-12">
             {inDevelopmentLabel}
           </p>
 

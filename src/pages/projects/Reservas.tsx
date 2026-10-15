@@ -37,7 +37,7 @@ export default function Reservas({ project }: { project: Project }) {
               <ScribbleArrow draw className="w-[18%] shrink-0 text-areia" />
               <div className="flex-1">
                 <SheetGraphic rows={6} cols={3} filled={[4]} />
-                <p className="mt-3 text-center text-sm font-bold text-carvao">Google Sheets</p>
+                <p className="mx-auto mt-3 w-fit rounded-full bg-areia px-3 py-1 text-center text-sm font-bold text-carvao">Google Sheets</p>
               </div>
             </div>
           </div>

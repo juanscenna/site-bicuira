@@ -206,7 +206,7 @@ function Field({
       <label htmlFor={`campo-${name}`} className="text-sm font-semibold">
         {label}
         {required && (
-          <span aria-hidden="true" className="text-sol">
+          <span aria-hidden="true" className="text-restinga">
             {' '}*
           </span>
         )}
@@ -214,7 +214,7 @@ function Field({
       {children}
       {error && (
         <p id={`erro-${name}`} className="mt-2 flex items-center gap-2 text-sm font-semibold text-carvao">
-          <span aria-hidden="true" className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-sol text-xs text-white">
+          <span aria-hidden="true" className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-carvao text-[0.75rem] font-bold text-areia">
             !
           </span>
           {error}

@@ -25,10 +25,10 @@ export default function Footer() {
           <nav aria-label="Rodapé" className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:col-span-7">
             <div>
               <h2 className="tag mb-4 font-sans text-restinga">Navegação</h2>
-              <ul className="space-y-2 text-sm">
+              <ul className="text-sm">
                 {footerNav.map((item) => (
                   <li key={item.to}>
-                    <Link to={item.to} className="hover:text-sol hover:underline">
+                    <Link to={item.to} className="inline-flex min-h-[44px] items-center underline-offset-4 hover:underline hover:decoration-sol hover:decoration-2">
                       {item.label}
                     </Link>
                   </li>
@@ -37,10 +37,10 @@ export default function Footer() {
             </div>
             <div>
               <h2 className="tag mb-4 font-sans text-restinga">Projetos</h2>
-              <ul className="space-y-2 text-sm">
+              <ul className="text-sm">
                 {projects.map((p) => (
                   <li key={p.slug}>
-                    <Link to={`/projetos/${p.slug}`} className="hover:text-sol hover:underline">
+                    <Link to={`/projetos/${p.slug}`} className="inline-flex min-h-[44px] items-center underline-offset-4 hover:underline hover:decoration-sol hover:decoration-2">
                       {p.title}
                     </Link>
                   </li>
@@ -54,7 +54,7 @@ export default function Footer() {
                 href={site.instagram.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-semibold underline decoration-2 underline-offset-4 hover:text-sol"
+                className="inline-flex min-h-[44px] items-center text-sm font-semibold underline decoration-2 underline-offset-4 hover:decoration-sol"
               >
                 {site.instagram.handle}
                 <span className="sr-only"> (abre em nova aba)</span>
@@ -72,7 +72,7 @@ export default function Footer() {
           {site.slogan}
         </p>
         <div className="bg-restinga text-areia">
-          <div className="wrap flex flex-col gap-2 py-5 text-xs sm:flex-row sm:justify-between">
+          <div className="wrap flex flex-col gap-2 py-5 text-[0.8125rem] sm:flex-row sm:justify-between">
             <p>© {year} {site.name}. Todos os direitos reservados.</p>
             <p>{site.slogan}</p>
           </div>

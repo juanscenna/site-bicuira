@@ -59,7 +59,7 @@ export function Benefits({ items, dark = false }: { items: string[]; dark?: bool
     <ul className="grid gap-x-10 sm:grid-cols-2">
       {items.map((b, i) => (
         <li key={b} className={`flex items-baseline gap-4 border-b-2 py-4 ${dark ? 'border-areia/20' : 'border-carvao/10'}`}>
-          <span className={`font-display text-xl ${dark ? 'text-lima' : 'text-sol'}`}>{String(i + 1).padStart(2, '0')}</span>
+          <span className={`font-display text-xl ${dark ? 'text-lima' : 'text-restinga'}`}>{String(i + 1).padStart(2, '0')}</span>
           <span className="text-lg font-medium">{b}</span>
         </li>
       ))}
@@ -103,13 +103,13 @@ export function ProjectNav({ project }: { project: Project }) {
       <div className="wrap">
         <div className="grid gap-4 rounded-[2rem] bg-areia p-4 sm:p-6 md:grid-cols-3">
           <Link to="/#projetos" className={link}>
-            <span className="text-xs font-semibold uppercase tracking-widest text-restinga">{L.portfolio}</span>
+            <span className="text-[0.8rem] font-semibold uppercase tracking-wider text-restinga">{L.portfolio}</span>
             <span className="mt-2 block font-display text-2xl">← {L.back}</span>
           </Link>
 
           {prev ? (
             <Link to={`/projetos/${prev.slug}`} className={link}>
-              <span className="text-xs font-semibold uppercase tracking-widest text-restinga">{L.prev}</span>
+              <span className="text-[0.8rem] font-semibold uppercase tracking-wider text-restinga">{L.prev}</span>
               <span className="mt-2 block font-display text-2xl">← {prev.title}</span>
             </Link>
           ) : (
@@ -118,12 +118,12 @@ export function ProjectNav({ project }: { project: Project }) {
 
           {next ? (
             <Link to={`/projetos/${next.slug}`} className={`${link} md:text-right`}>
-              <span className="text-xs font-semibold uppercase tracking-widest text-restinga">{L.next}</span>
+              <span className="text-[0.8rem] font-semibold uppercase tracking-wider text-restinga">{L.next}</span>
               <span className="mt-2 block font-display text-2xl">{next.title} →</span>
             </Link>
           ) : (
             <Link to="/#servicos" className={`${link} md:text-right`}>
-              <span className="text-xs font-semibold uppercase tracking-widest text-restinga">{L.services}</span>
+              <span className="text-[0.8rem] font-semibold uppercase tracking-wider text-restinga">{L.services}</span>
               <span className="mt-2 block font-display text-2xl">{L.servicesLink} →</span>
             </Link>
           )}

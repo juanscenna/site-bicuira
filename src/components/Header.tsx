@@ -52,7 +52,7 @@ export default function Header() {
       }`}
     >
       <div className="wrap flex h-[72px] items-center justify-between gap-6">
-        <Link to="/#inicio" className="relative z-[60] shrink-0" aria-label="Bicuíra Digital — página inicial">
+        <Link to="/#inicio" className="relative z-[60] flex min-h-[48px] shrink-0 items-center" aria-label="Bicuíra Digital — página inicial">
           <img src={brand.horizontal} alt="Bicuíra Digital" width={875} height={214} className="h-10 w-auto sm:h-11" />
         </Link>
 
@@ -60,7 +60,7 @@ export default function Header() {
           <ul className="flex items-center gap-8 text-sm font-medium">
             {mainNav.map((item) => (
               <li key={item.to}>
-                <Link to={item.to} className="relative py-2 hover:text-sol">
+                <Link to={item.to} className="relative inline-flex min-h-[44px] items-center underline-offset-[6px] hover:underline hover:decoration-sol hover:decoration-2">
                   {item.label}
                 </Link>
               </li>
@@ -81,7 +81,7 @@ export default function Header() {
           )}
           <Link
             to="/#contato"
-            className="inline-flex min-h-[44px] items-center rounded-full bg-carvao px-5 text-sm font-semibold text-areia transition-colors hover:bg-sol"
+            className="inline-flex min-h-[44px] items-center rounded-full bg-carvao px-5 text-sm font-semibold text-areia transition-colors hover:bg-restinga"
           >
             Vamos conversar
           </Link>
@@ -92,11 +92,11 @@ export default function Header() {
           ref={menuButton}
           type="button"
           className="relative z-[60] inline-flex h-12 w-12 items-center justify-center md:hidden"
+          aria-label={open ? 'Fechar menu' : 'Abrir menu'}
           aria-expanded={open}
           aria-controls="menu-mobile"
           onClick={() => setOpen((v) => !v)}
         >
-          <span className="sr-only">{open ? 'Fechar menu' : 'Abrir menu'}</span>
           <span aria-hidden="true" className="relative block h-4 w-7">
             <span className={`absolute left-0 h-[3px] w-7 rounded bg-carvao transition-transform ${open ? 'top-1.5 rotate-45' : 'top-0'}`} />
             <span className={`absolute left-0 h-[3px] w-5 rounded bg-carvao transition-opacity ${open ? 'opacity-0' : 'top-1.5'}`} />
@@ -119,7 +119,7 @@ export default function Header() {
                   to={item.to}
                   className="flex items-baseline gap-4 py-2 font-display text-[3.2rem] leading-none text-restinga"
                 >
-                  <span className="font-sans text-xs font-semibold text-sol">0{i + 1}</span>
+                  <span aria-hidden="true" className="font-sans text-sm font-semibold text-restinga">0{i + 1}</span>
                   {item.label}
                 </Link>
               </li>

@@ -38,7 +38,7 @@ function Info({ project, index }: { project: Project; index: number }) {
       <p className="tag text-restinga">
         Case {String(index + 1).padStart(2, '0')} — {project.category}
       </p>
-      <p className="mt-4 text-sm font-semibold uppercase tracking-wider text-carvao/70">{project.client}</p>
+      <p className="mt-4 text-sm font-semibold uppercase tracking-wider text-carvao/80">{project.client}</p>
       <h3 className="mt-2 text-big text-carvao">{project.title}</h3>
       <p className="mt-5 max-w-md leading-relaxed">{project.summary}</p>
       <Button to={`/projetos/${project.slug}`} className="mt-8">
@@ -101,7 +101,7 @@ function SquareImage({ project, index }: { project: Project; index: number }) {
         <div className="relative lg:order-2 lg:col-span-6 lg:col-start-7">
           <Photo image={project.cover} sizes="(min-width: 1024px) 50vw, 100vw" className="aspect-[4/3] rounded-tl-[4rem] lg:aspect-square" />
           {project.highlight && (
-            <p className="absolute -left-3 top-8 -rotate-6 bg-lima px-4 py-2 text-xs font-bold uppercase tracking-widest text-carvao lg:-left-10">
+            <p className="absolute -left-3 top-8 -rotate-6 bg-lima px-4 py-2 text-[0.8125rem] font-bold uppercase tracking-wider text-carvao lg:-left-10">
               {project.highlight}
             </p>
           )}

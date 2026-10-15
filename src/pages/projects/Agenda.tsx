@@ -46,7 +46,7 @@ export default function Agenda({ project }: { project: Project }) {
           <div className="relative h-[22rem] sm:h-[28rem] md:col-span-5 md:h-auto">
             <Photo image={images.waveBreaking} className="absolute left-[4%] top-4 aspect-[3/4] w-[52%] -rotate-6 rounded-md border-4 border-areia" />
             <Photo image={project.cover} className="absolute right-[4%] top-16 aspect-[3/4] w-[52%] rotate-3 rounded-md border-4 border-areia" />
-            <span className="absolute bottom-0 left-1/2 -translate-x-1/2 -rotate-2 bg-lima px-4 py-2 text-xs font-bold uppercase tracking-widest text-carvao">
+            <span className="absolute bottom-0 left-1/2 -translate-x-1/2 -rotate-2 bg-lima px-4 py-2 text-[0.8125rem] font-bold uppercase tracking-wider text-carvao">
               {project.highlight}
             </span>
           </div>
