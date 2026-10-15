@@ -8,7 +8,7 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="relative mt-auto">
+    <footer id="rodape" className="relative mt-auto">
       <div className="bg-restinga/10 text-carvao">
         <WaveEdge flip className="h-10 text-areia sm:h-16" />
         <div className="wrap grid gap-12 pb-10 pt-10 md:grid-cols-12">

@@ -21,10 +21,10 @@ export default function Hero() {
       </div>
 
       <div className="wrap relative">
-        <div className="relative z-10 pt-14 md:w-[64%] md:pt-20 lg:pt-24">
+        <div className="relative z-10 pt-14 md:w-[56%] md:pt-20 lg:w-[60%] lg:pt-24">
           <p className="tag text-restinga">{hero.tag}</p>
 
-          <h1 className="mt-6 text-[clamp(3.4rem,14.5vw,5rem)] leading-[0.86] text-restinga md:text-giant">
+          <h1 className="mt-6 text-[clamp(3.4rem,14.5vw,5rem)] leading-[0.86] text-restinga md:text-[9.5vw] lg:text-giant">
             {hero.title.before}{' '}
             <span className="relative inline-block text-sol">
               {hero.title.highlight}

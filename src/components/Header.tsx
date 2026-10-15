@@ -32,12 +32,16 @@ export default function Header() {
         menuButton.current?.focus()
       }
     }
+    // O resto da página fica "inativo" enquanto o menu está aberto (o Tab não sai do menu)
+    const behind = [document.getElementById('conteudo'), document.getElementById('rodape')]
     document.addEventListener('keydown', onKey)
     document.body.style.overflow = 'hidden'
+    behind.forEach((el) => el?.setAttribute('inert', ''))
     firstLink.current?.focus()
     return () => {
       document.removeEventListener('keydown', onKey)
       document.body.style.overflow = ''
+      behind.forEach((el) => el?.removeAttribute('inert'))
     }
   }, [open])
 
