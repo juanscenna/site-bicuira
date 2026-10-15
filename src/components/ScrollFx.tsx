@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom'
 // Movimentos ligados à rolagem (um único controle para o site inteiro).
 // Marque os elementos com atributos e o CSS faz o resto (styles/index.css):
 //   data-draw     → traço desenhado à mão que se desenha conforme a rolagem
+//                   (data-draw="top": se desenha nos primeiros movimentos da página)
 //   data-wipe     → linha (ex.: onda) que se revela da esquerda para a direita
 //   data-grow     → linha vertical que cresce de cima para baixo
 //   data-parallax → imagem que se move mais devagar que a página (profundidade)
@@ -24,11 +25,25 @@ export default function ScrollFx() {
       root.style.setProperty('--scroll', String(max > 0 ? Math.min(window.scrollY / max, 1) : 0))
 
       document.querySelectorAll<HTMLElement | SVGElement>('[data-draw],[data-wipe],[data-grow]').forEach((el) => {
-        if (reduce) return el.style.setProperty('--draw', '1')
         const top = el.getBoundingClientRect().top
-        // começa quando o elemento entra pela base da tela e completa perto do meio
-        const p = Math.min(Math.max((vh * 0.95 - top) / (vh * 0.45), 0), 1)
-        el.style.setProperty('--draw', p.toFixed(3))
+        // começa quando o elemento entra pela base da tela e termina perto do topo,
+        // assim o desenho acompanha um bom trecho da rolagem
+        // data-draw="top": elemento que já aparece ao abrir a página (ex.: o círculo do
+        // "raiz") começa vazio e se desenha nos primeiros movimentos da rolagem
+        const fromTop = el.getAttribute('data-draw') === 'top'
+        const raw = fromTop ? window.scrollY / (vh * 0.35) : (vh * 0.95 - top) / (vh * 0.65)
+        const p = reduce ? 1 : Math.min(Math.max(raw, 0), 1)
+        // valores aplicados direto no elemento (funciona também no Safari/iPhone)
+        if (el.hasAttribute('data-draw')) {
+          el.querySelectorAll('path').forEach((path) => {
+            path.style.strokeDasharray = '1'
+            path.style.strokeDashoffset = String(1 - p)
+          })
+        } else if (el.hasAttribute('data-wipe')) {
+          el.style.clipPath = `inset(0 ${((1 - p) * 100).toFixed(1)}% 0 0)`
+        } else {
+          el.style.transform = `scaleY(${p.toFixed(3)})`
+        }
       })
 
       if (reduce) return

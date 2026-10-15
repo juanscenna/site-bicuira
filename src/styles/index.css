@@ -64,13 +64,11 @@
   transform: none;
 }
 
-/* Movimentos ligados à rolagem (components/ScrollFx.tsx define --draw de 0 a 1) */
-[data-draw] path {
-  stroke-dasharray: 1;
-  stroke-dashoffset: calc(1 - var(--draw, 0));
-}
-[data-wipe] { clip-path: inset(0 calc((1 - var(--draw, 0)) * 100%) 0 0); }
-[data-grow] { transform: scaleY(var(--draw, 0)); transform-origin: top; }
+/* Movimentos ligados à rolagem: o estado inicial fica aqui e
+   components/ScrollFx.tsx atualiza cada elemento conforme a rolagem */
+[data-draw] path { stroke-dasharray: 1; stroke-dashoffset: 1; }
+[data-wipe] { clip-path: inset(0 100% 0 0); }
+[data-grow] { transform: scaleY(0); transform-origin: top; }
 [data-parallax] { will-change: transform; }
 
 /* Etiqueta 'Captura em breve' só aparece quando cabe numa linha */
@@ -83,9 +81,9 @@
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
-  [data-draw] path { stroke-dashoffset: 0; }
-  [data-wipe] { clip-path: none; }
-  [data-grow] { transform: none; }
+  [data-draw] path { stroke-dashoffset: 0 !important; }
+  [data-wipe] { clip-path: none !important; }
+  [data-grow] { transform: none !important; }
   .case:hover .photo-img { transform: none; }
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }

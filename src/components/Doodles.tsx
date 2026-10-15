@@ -1,7 +1,7 @@
 // Elementos gráficos "desenhados à mão" e formas orgânicas da marca.
 // Todos são decorativos (aria-hidden) e herdam a cor via "currentColor".
 
-type P = { className?: string }
+type P = { className?: string; fromTop?: boolean }
 
 const stroke = {
   fill: 'none',
@@ -14,9 +14,9 @@ const stroke = {
 // pathLength=1 deixa o traço com comprimento 1 para o CSS controlar o desenho.
 
 // Círculo rabiscado em volta de uma palavra
-export function ScribbleCircle({ className = '' }: P) {
+export function ScribbleCircle({ className = '', fromTop }: P) {
   return (
-    <svg aria-hidden="true" viewBox="0 0 300 120" preserveAspectRatio="none" data-draw className={className}>
+    <svg aria-hidden="true" viewBox="0 0 300 120" preserveAspectRatio="none" data-draw={fromTop ? 'top' : ''} className={className}>
       <path
         {...stroke}
         strokeWidth="4"
