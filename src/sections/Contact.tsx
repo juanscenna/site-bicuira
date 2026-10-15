@@ -15,7 +15,7 @@ export default function Contact() {
         <div className="wrap relative grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-6">
             <p className="tag text-lima">{contact.tag}</p>
-            <h2 className="mt-6 text-big">
+            <h2 className="mt-6 text-[clamp(1.75rem,3.2vw,2.9rem)] leading-[1.02]">
               <Mark text={contact.title} word={contact.mark} color="text-lima" />
             </h2>
             <p className="text-body mt-8 max-w-md">{contact.text}</p>

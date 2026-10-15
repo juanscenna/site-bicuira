@@ -20,9 +20,9 @@ export default {
       fontSize: {
         // Títulos fluidos: crescem com a largura da tela
         'giant': ['clamp(3.25rem, 11vw, 10rem)', { lineHeight: '0.86' }],
-        'huge': ['clamp(2.6rem, 7vw, 6rem)', { lineHeight: '0.92' }],
-        'big': ['clamp(2.1rem, 4.6vw, 4rem)', { lineHeight: '0.98' }],
-        'mid': ['clamp(1.6rem, 2.8vw, 2.5rem)', { lineHeight: '1.05' }],
+        'huge': ['clamp(2.1rem, 5.6vw, 5rem)', { lineHeight: '0.95' }],
+        'big': ['clamp(1.75rem, 3.9vw, 3.5rem)', { lineHeight: '1' }],
+        'mid': ['clamp(1.45rem, 2.4vw, 2.15rem)', { lineHeight: '1.08' }],
       },
     },
   },

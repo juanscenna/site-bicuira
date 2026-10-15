@@ -106,47 +106,45 @@ export function WaveEdge({ className = '', flip = false }: { className?: string;
   )
 }
 
-// ── Ícones dos serviços (mesma família: traço 2.5, cantos arredondados) ──
+// ── Ícones dos serviços ──
+// Traço fino (1.25), poucos elementos e cantos arredondados, como o desenho da marca.
+const thin = { ...stroke, strokeWidth: 1.25 }
 
+// Sites: janela de navegador com uma onda
 export function IconSites({ className = '' }: P) {
   return (
-    <svg aria-hidden="true" viewBox="0 0 48 48" className={className}>
-      <g {...stroke} strokeWidth="2.5">
-        <path d="M6 10c0-2 1-3 3-3h30c2 0 3 1 3 3v24c0 2-1 3-3 3H9c-2 0-3-1-3-3z" />
-        <path d="M6 15h36" />
-        <circle cx="11" cy="11" r="0.6" />
-        <circle cx="15" cy="11" r="0.6" />
-        <path d="M12 30c4-4 8-4 12 0s8 4 12 0" />
-        <path d="M29 22a4 4 0 1 0 0.1 0" />
+    <svg aria-hidden="true" viewBox="0 0 24 24" className={className}>
+      <g {...thin}>
+        <rect x="3" y="4.5" width="18" height="15" rx="2.5" />
+        <path d="M3 8.5h18" />
+        <path d="M7 15c1.5-1.5 3-1.5 4.5 0s3 1.5 4.5 0" />
       </g>
     </svg>
   )
 }
 
+// Automação: dois pontos ligados por um caminho suave
 export function IconAutomacao({ className = '' }: P) {
   return (
-    <svg aria-hidden="true" viewBox="0 0 48 48" className={className}>
-      <g {...stroke} strokeWidth="2.5">
-        <circle cx="11" cy="14" r="5" />
-        <circle cx="37" cy="34" r="5" />
-        <path d="M16 14c10 0 6 20 16 20" />
-        <path d="M28 30l4 4-4 4" />
-        <path d="M30 10h10M35 5v10" />
+    <svg aria-hidden="true" viewBox="0 0 24 24" className={className}>
+      <g {...thin}>
+        <circle cx="6" cy="7" r="2.25" />
+        <circle cx="18" cy="17" r="2.25" />
+        <path d="M8.25 7.2c5.5.3 2 9.6 7.5 9.6" />
       </g>
     </svg>
   )
 }
 
+// Fideliza: cartão com carimbos (o último ainda por preencher)
 export function IconFideliza({ className = '' }: P) {
   return (
-    <svg aria-hidden="true" viewBox="0 0 48 48" className={className}>
-      <g {...stroke} strokeWidth="2.5">
-        <path d="M6 13c0-2 1-3 3-3h30c2 0 3 1 3 3v22c0 2-1 3-3 3H9c-2 0-3-1-3-3z" />
-        <circle cx="15" cy="20" r="3.2" />
-        <circle cx="24" cy="20" r="3.2" />
-        <circle cx="33" cy="20" r="3.2" />
-        <circle cx="15" cy="29" r="3.2" />
-        <path d="M22 29h12" strokeDasharray="1 4" />
+    <svg aria-hidden="true" viewBox="0 0 24 24" className={className}>
+      <g {...thin}>
+        <rect x="3" y="6" width="18" height="12" rx="2.5" />
+        <circle cx="8" cy="12" r="1.6" />
+        <circle cx="12" cy="12" r="1.6" />
+        <circle cx="16" cy="12" r="1.6" strokeDasharray="1.2 1.4" />
       </g>
     </svg>
   )

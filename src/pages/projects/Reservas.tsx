@@ -8,7 +8,6 @@ import {
   Benefits,
   GalleryFigure,
   ProjectCta,
-  ProjectLabel,
   ProjectNav,
   StoryBlock,
   Tools,
@@ -22,10 +21,9 @@ export default function Reservas({ project }: { project: Project }) {
     <>
       {/* Hero: texto à esquerda, diagrama celular → planilha à direita */}
       <section className="relative overflow-hidden pb-20 md:pb-28">
-        <div className="wrap grid gap-14 pt-12 md:pt-20 lg:grid-cols-12">
+        <div className="wrap grid gap-14 pt-6 md:pt-10 lg:grid-cols-12">
           <div className="lg:col-span-6">
-            <ProjectLabel project={project} />
-            <h1 className="mt-8 text-[clamp(2.6rem,5.4vw,5rem)] leading-[0.95] text-restinga">
+            <h1 className="text-[clamp(2.2rem,4.4vw,4rem)] leading-[0.98] text-restinga">
               <Mark text={project.hero.title} word={project.hero.mark} color="text-sol" />
             </h1>
             <p className="text-body mt-8 max-w-lg">{project.hero.text}</p>
@@ -101,11 +99,11 @@ export default function Reservas({ project }: { project: Project }) {
               <li key={step.name} className="relative">
                 <Reveal delay={i * 120} className="h-full">
                   <div
-                    className={`h-full rounded-[2rem] p-7 ${
+                    className={`h-full rounded-[2rem] p-5 sm:p-7 ${
                       i === (project.steps?.length ?? 0) - 1 ? 'bg-lima text-carvao' : 'border-2 border-carvao bg-areia'
                     }`}
                   >
-                    <span className="font-display text-5xl text-restinga">{String(i + 1).padStart(2, '0')}</span>
+                    <span className="font-display text-4xl text-restinga sm:text-5xl">{String(i + 1).padStart(2, '0')}</span>
                     <h3 className="mt-4 font-sans text-lg font-bold uppercase tracking-wider">{step.name}</h3>
                     <p className="mt-2 leading-relaxed">{step.text}</p>
                   </div>

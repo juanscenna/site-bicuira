@@ -18,7 +18,7 @@ export default function Solutions() {
   return (
     <section id="solucoes" className="relative pb-16 md:pb-24">
       <div className="wrap">
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="mx-auto max-w-5xl text-center">
           <p className="tag text-restinga">{solutionsIntro.tag}</p>
           <h2 className="mt-5 text-huge text-restinga">
             <Mark text={solutionsIntro.title} word={solutionsIntro.mark} />

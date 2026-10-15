@@ -15,7 +15,7 @@ export default function Footer() {
         <div className="wrap grid gap-12 pb-10 pt-10 md:grid-cols-12">
           <div className="md:col-span-4">
             <Link to="/" aria-label="Bicuíra Digital — página inicial" className="inline-block">
-              <img src={brand.principal} alt="Bicuíra Digital" width={482} height={393} loading="lazy" className="h-32 w-auto sm:h-36" />
+              <img src={brand.principal} alt="Bicuíra Digital" width={482} height={393} loading="lazy" className="h-24 w-auto sm:h-32 md:h-36" />
             </Link>
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-carvao/80">
               {site.footerText}

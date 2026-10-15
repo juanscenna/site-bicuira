@@ -15,6 +15,9 @@
   }
   /* Baloo 2 só é carregada no peso 800 */
   .font-display { font-weight: 800; }
+  /* Quebra de linha equilibrada: evita uma palavra sozinha na última linha */
+  h1, h2, h3 { text-wrap: balance; }
+  p, li { text-wrap: pretty; }
   h1, h2, h3 {
     @apply font-display;
     font-weight: 800;

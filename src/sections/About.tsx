@@ -13,7 +13,7 @@ export default function About() {
       <div className="grid lg:grid-cols-12">
         <div className="order-2 px-4 pt-14 sm:px-6 lg:order-1 lg:col-span-6 lg:pl-[max(2.5rem,calc((100vw-1400px)/2+2.5rem))] lg:pr-12 lg:pt-24">
           <p className="tag text-restinga">{about.tag}</p>
-          <h2 className="mt-6 text-huge text-restinga">
+          <h2 className="mt-6 text-big text-restinga">
             <Mark text={about.title} word={about.mark} />
           </h2>
           <div className="mt-10 space-y-5">
@@ -34,7 +34,7 @@ export default function About() {
         </div>
 
         <div className="relative order-1 lg:order-2 lg:col-span-6 lg:-mt-28">
-          <Photo image={images.beachAerial} sizes="(min-width: 1024px) 50vw, 100vw" className="aspect-[4/5] sm:aspect-[16/9] lg:aspect-auto lg:h-full lg:min-h-[44rem] lg:rounded-bl-[8rem]" />
+          <Photo image={images.beachAerial} sizes="(min-width: 1024px) 50vw, 100vw" className="aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto lg:h-full lg:min-h-[44rem] lg:rounded-bl-[8rem]" />
           <Hill className="absolute -bottom-px left-0 h-20 w-2/3 text-areia lg:hidden" />
           <img
             src={brand.selo}

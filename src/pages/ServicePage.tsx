@@ -43,7 +43,7 @@ export default function ServicePage({ service }: { service: Service }) {
           <p className="tag mt-4 text-restinga">
             {L.serviceTag} {service.number}
           </p>
-          <h1 className="mt-5 max-w-4xl text-[clamp(2.4rem,6.4vw,5.25rem)] leading-[0.95] text-restinga">
+          <h1 className="mt-5 max-w-5xl text-[clamp(2.3rem,5.4vw,4.5rem)] leading-[0.98] text-restinga">
             <Mark text={d.title} word={d.mark} />
           </h1>
           <p className="text-body mt-6 max-w-xl">{d.description}</p>

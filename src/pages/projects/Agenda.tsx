@@ -7,7 +7,6 @@ import SheetGraphic from '../../components/project/SheetGraphic'
 import {
   GalleryFigure,
   ProjectCta,
-  ProjectLabel,
   ProjectNav,
   StoryBlock,
   Tools,
@@ -29,8 +28,7 @@ export default function Agenda({ project }: { project: Project }) {
       <section className="on-dark relative overflow-hidden bg-carvao pb-24 text-areia md:pb-32">
         <div className="wrap grid gap-14 pt-12 md:grid-cols-12 md:pt-20">
           <div className="relative z-10 md:col-span-7">
-            <ProjectLabel project={project} dark />
-            <h1 className="mt-8 text-huge">
+            <h1 className="text-huge">
               <Mark text={project.hero.title} word={project.hero.mark} color="text-lima" />
             </h1>
             <p className="text-body mt-8 max-w-lg text-areia/90">{project.hero.text}</p>
@@ -124,7 +122,7 @@ export default function Agenda({ project }: { project: Project }) {
             <div className="wrap grid gap-10 md:grid-cols-12">
               <div className="md:col-span-7">
                 <p className="tag bg-carvao px-3 py-1.5 text-areia">{L.result}</p>
-                <h2 id="resultado" className="mt-8 text-huge">
+                <h2 id="resultado" className="mt-8 text-big">
                   {project.result.title}
                 </h2>
               </div>

@@ -12,7 +12,7 @@ export default function HowWeWork() {
     <section id="como-trabalhamos" className="on-dark relative overflow-hidden bg-carvao pb-20 pt-16 text-areia md:pb-24 md:pt-24 lg:pb-40">
       <div className="wrap">
         <p className="tag text-lima">{howWeWork.tag}</p>
-        <h2 className="mt-6 max-w-4xl text-huge">
+        <h2 className="mt-6 max-w-5xl text-huge">
           <Mark text={howWeWork.title} word={howWeWork.mark} color="text-lima" />
         </h2>
 

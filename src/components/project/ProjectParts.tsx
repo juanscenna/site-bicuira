@@ -77,7 +77,7 @@ export function ProjectCta({ project }: { project: Project }) {
       <div className="on-dark bg-restinga py-20 text-areia md:py-28">
         <div className="wrap grid gap-10 md:grid-cols-12 md:items-end">
           <div className="md:col-span-8">
-            <h2 id="cta-final" className="text-huge">
+            <h2 id="cta-final" className="text-big">
               {finalCta.title}
             </h2>
             <ScribbleUnderline draw className="mt-4 h-5 w-56 text-lima" />

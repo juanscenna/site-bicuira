@@ -12,7 +12,7 @@ export default function Manifesto() {
       <div className="on-dark relative overflow-hidden bg-sol pb-20 pt-8 text-areia sm:pb-28">
         <div className="wrap">
           <p className="tag bg-carvao px-3 py-1.5 text-areia">{manifesto.tag}</p>
-          <h2 id="manifesto-titulo" className="mt-8 text-[clamp(2.5rem,8.2vw,8.75rem)] leading-[0.9]">
+          <h2 id="manifesto-titulo" className="mt-8 text-[clamp(1.9rem,7.2vw,7.75rem)] leading-[0.92]">
             <span className="block">{manifesto.title[0]}</span>
             <span className="block md:pl-[10vw]">
               <Mark text={manifesto.title[1]} word={manifesto.mark} color="text-lima" />

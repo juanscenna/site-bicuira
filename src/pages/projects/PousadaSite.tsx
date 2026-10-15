@@ -8,7 +8,6 @@ import {
   Benefits,
   GalleryFigure,
   ProjectCta,
-  ProjectLabel,
   ProjectNav,
   StoryBlock,
 } from '../../components/project/ProjectParts'
@@ -24,9 +23,8 @@ export default function PousadaSite({ project }: { project: Project }) {
     <>
       {/* Hero: título grande e uma composição de foto + molduras */}
       <section className="relative overflow-hidden pb-16">
-        <div className="wrap pt-12 md:pt-20">
-          <ProjectLabel project={project} />
-          <h1 className="mt-8 max-w-5xl text-huge text-restinga">
+        <div className="wrap pt-6 md:pt-10">
+          <h1 className="max-w-6xl text-huge text-restinga">
               <Mark text={project.hero.title} word={project.hero.mark} color="text-sol" />
             </h1>
           <div className="mt-10 grid gap-8 md:grid-cols-12 md:items-end">

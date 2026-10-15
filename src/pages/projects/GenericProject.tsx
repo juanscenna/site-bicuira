@@ -5,7 +5,6 @@ import {
   Benefits,
   GalleryFigure,
   ProjectCta,
-  ProjectLabel,
   ProjectNav,
   StoryBlock,
   Tools,
@@ -20,8 +19,7 @@ export default function GenericProject({ project }: { project: Project }) {
     <>
       <section className="wrap grid gap-12 pb-20 pt-12 md:grid-cols-12 md:pt-20">
         <div className="md:col-span-7">
-          <ProjectLabel project={project} />
-          <h1 className="mt-8 text-huge text-restinga">
+          <h1 className="text-huge text-restinga">
               <Mark text={project.hero.title} word={project.hero.mark} color="text-sol" />
             </h1>
           <p className="text-body mt-8 max-w-lg">{project.hero.text}</p>
