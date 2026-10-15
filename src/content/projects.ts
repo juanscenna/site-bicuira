@@ -213,3 +213,22 @@ export function neighbors(slug: string) {
     next: i >= 0 && i < projects.length - 1 ? projects[i + 1] : undefined,
   }
 }
+
+// Textos fixos das páginas de projeto
+export const projectLabels = {
+  case: 'Case',
+  challenge: 'O desafio',
+  solution: 'A solução',
+  howItWorks: 'Como funciona',
+  benefits: 'Benefícios',
+  gallery: 'Galeria',
+  tools: 'Ferramentas',
+  result: 'Resultado relatado pela operação',
+  portfolio: 'Portfólio',
+  back: 'Voltar aos projetos',
+  prev: 'Projeto anterior',
+  next: 'Próximo projeto',
+  services: 'Serviços',
+  servicesLink: 'Conheça nossos serviços',
+  otherProjects: 'Outros projetos',
+}
