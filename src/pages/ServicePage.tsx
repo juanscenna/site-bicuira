@@ -6,7 +6,8 @@ import PageHero, { HeroPlate } from '../components/PageHero'
 import Photo from '../components/Photo'
 import Reveal from '../components/Reveal'
 import usePageMeta from '../components/usePageMeta'
-import ApresentacaoFideliza from '../sections/ApresentacaoFideliza'
+import FidelizaTabs from '../components/FidelizaTabs'
+import LoyaltyCard from '../components/LoyaltyCard'
 import { apresentacao } from '../content/apresentacao'
 import { IconAutomacao, IconFideliza, IconSites, ScribbleUnderline, WaveEdge } from '../components/Doodles'
 import { projectsOf } from '../content/projects'
@@ -42,6 +43,11 @@ export default function ServicePage({ service }: { service: Service }) {
       <section className="pb-14 pt-6 text-center md:pb-20 md:pt-10">
         <div className="wrap flex flex-col items-center">
           <Breadcrumb items={[{ label: L.home, to: '/' }, { label: service.name }]} />
+          {service.id === 'fideliza' && (
+            <div className="mt-3">
+              <FidelizaTabs />
+            </div>
+          )}
           <p className="tag mt-4 text-restinga">
             {L.serviceTag} {service.number}
           </p>
@@ -57,7 +63,7 @@ export default function ServicePage({ service }: { service: Service }) {
               </Button>
             )}
             {service.id === 'fideliza' && (
-              <Button to="#apresentacao" variant="text">
+              <Button to={apresentacao.page.path} variant="text">
                 {apresentacao.section.jump}
               </Button>
             )}
@@ -147,12 +153,21 @@ export default function ServicePage({ service }: { service: Service }) {
               </h2>
               <p className="text-body mt-4">{d.note}</p>
             </div>
+
+            {/* Cartão animado + botão para a apresentação comercial */}
+            <div className="on-dark mt-10 grid items-center gap-8 overflow-hidden rounded-[2rem] bg-restinga px-6 py-10 text-areia sm:px-10 lg:grid-cols-2 lg:px-14">
+              <div className="text-center lg:text-left">
+                <h2 className="text-big">{apresentacao.page.teaser.title}</h2>
+                <p className="text-body mt-4 max-w-md lg:mx-0 mx-auto">{apresentacao.page.teaser.text}</p>
+                <Button to={apresentacao.page.path} color="lima" className="mt-7">
+                  {apresentacao.page.teaser.button}
+                </Button>
+              </div>
+              <LoyaltyCard {...apresentacao.capa.card} />
+            </div>
           </div>
         </section>
       )}
-
-      {/* Fideliza: apresentação comercial navegável */}
-      {service.id === 'fideliza' && <ApresentacaoFideliza />}
 
       {/* Conversar */}
       <section aria-labelledby="cta-servico" className="relative">

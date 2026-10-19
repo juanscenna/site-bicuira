@@ -17,7 +17,8 @@ export default function Header() {
   // Página atual no menu: o serviço aberto, ou o serviço do case aberto
   const caseSlug = location.pathname.startsWith('/projetos/') ? location.pathname.split('/')[2] : ''
   const casePath = caseSlug && findProject(caseSlug) ? findService(findProject(caseSlug)!.service).path : ''
-  const isCurrent = (to: string) => !to.includes('#') && (location.pathname === to || casePath === to)
+  const isCurrent = (to: string) =>
+    !to.includes('#') && (location.pathname === to || location.pathname.startsWith(to + '/') || casePath === to)
 
   // Fecha o menu ao trocar de página/seção
   useEffect(() => setOpen(false), [location.key])

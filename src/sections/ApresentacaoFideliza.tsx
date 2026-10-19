@@ -16,7 +16,7 @@ const demo = 'Dados fictícios de demonstração'
 export default function ApresentacaoFideliza() {
   const s = A.section
   return (
-    <section id="apresentacao" aria-labelledby="apresentacao-titulo" className="pb-16 md:pb-24">
+    <section id="apresentacao" aria-labelledby="apresentacao-titulo" className="pb-16 pt-6 md:pb-24 md:pt-10">
       <div className="wrap">
         {/* Cabeçalho da seção: selo de desenvolvimento + download do PDF */}
         <div className="mx-auto max-w-3xl text-center">
@@ -24,9 +24,9 @@ export default function ApresentacaoFideliza() {
             {inDevelopmentLabel}
           </p>
           <p className="tag mt-6 text-restinga">{s.tag}</p>
-          <h2 id="apresentacao-titulo" className="mt-4 text-big text-restinga">
+          <h1 id="apresentacao-titulo" className="mt-4 text-big text-restinga">
             {s.title}
-          </h2>
+          </h1>
           <p className="text-body mx-auto mt-4 max-w-xl">{s.note}</p>
           <a
             href={s.pdf}
@@ -80,7 +80,7 @@ function Capa() {
           <p className="mt-6 max-w-md text-base leading-relaxed text-areia/90 sm:text-lg">{c.text}</p>
         </div>
         <div className="flex justify-center">
-          <LoyaltyCard label={c.card.label} name={c.card.name} alt={c.card.alt} />
+          <LoyaltyCard {...c.card} />
         </div>
       </div>
     </Slide>

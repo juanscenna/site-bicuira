@@ -22,7 +22,8 @@ Vite + React + TypeScript + Tailwind + React Router. Sem backend. Deploy na Verc
 - `/projetos/pousada-sonhos-do-rosa`, `/projetos/automacao-reservas`, `/projetos/agenda-de-todos-nos` — página completa de cada case, com a mesma abertura, trilha (Início / Serviço / Case) e "voltar" para o serviço. Cada case pertence a um serviço (`service` em `projects.ts`).
 - qualquer outra → 404
 - Todas as páginas começam com `components/PageHero.tsx`.
-- `/fideliza` tem a apresentação comercial navegável (`sections/ApresentacaoFideliza.tsx`, âncora `#apresentacao`), antes do CTA final: 14 slides (A4 deitado no desktop, blocos empilhados no celular), textos em `content/apresentacao.ts` copiados da fonte `juanscenna/bicuira-fideliza → comercial/apresentacao/apresentacao.html` (não reescrever). PDF em `public/docs/`.
+- `/fideliza/apresentacao` — aba "Apresentação comercial" do Fideliza (`pages/ApresentacaoPage.tsx` + `sections/ApresentacaoFideliza.tsx`): 14 slides (A4 deitado no desktop, blocos empilhados no celular), textos em `content/apresentacao.ts` copiados da fonte `juanscenna/bicuira-fideliza → comercial/apresentacao/apresentacao.html` (não reescrever). PDF em `public/docs/`. As páginas do Fideliza têm abas (`components/FidelizaTabs.tsx`: Visão geral / Apresentação comercial) e a `/fideliza` tem um botão para a apresentação.
+- `components/LoyaltyCard.tsx`: cartão de fidelidade animado (mesmo esquema do `CartaoDemo` do repositório do Fideliza, com a identidade da Bicuíra). É ilustração, não captura.
 - `vercel.json` (cleanUrls + rewrite para `index.html`). `ScrollManager` volta ao topo ao trocar de página e rola até a âncora quando há `#`.
 - Pré-seleção do formulário: `/?servico=sites#contato` (ids: `sites`, `automacao`, `fideliza`).
 

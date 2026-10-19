@@ -68,16 +68,30 @@
 .reveal-left { transform: translateX(-48px); }
 .reveal-right { transform: translateX(48px); }
 
-/* Cartão de fidelidade animado: selos carimbados um a um (components/LoyaltyCard.tsx) */
-.loyalty .stamp { opacity: 0; transform: scale(1.7) rotate(-20deg); }
-.loyalty.is-stamping .stamp {
-  animation: stamp 0.38s cubic-bezier(0.2, 0.9, 0.3, 1.25) forwards;
-  animation-delay: calc(0.35s + var(--i) * 0.22s);
+/* Cartão de fidelidade animado (components/LoyaltyCard.tsx) — mesmo esquema do Fideliza */
+.lc-sway { animation: lc-sway 7s ease-in-out infinite; will-change: transform; }
+.lc-spin { animation: lc-spin 1.4s cubic-bezier(0.6, 0, 0.3, 1); }
+.lc-stamp { animation: lc-stamp 600ms ease-out; }
+.lc-spark { animation: lc-spark 700ms ease-out forwards; }
+.lc-shine { animation: lc-shine 3.6s ease-in-out infinite; }
+.lc-glow { animation: lc-glow 3.2s ease-in-out infinite; }
+.lc-glow-2 { animation: lc-glow 4s ease-in-out 1s infinite; }
+.lc-floor { animation: lc-floor 7s ease-in-out infinite; }
+.loyalty-card.is-paused * { animation-play-state: paused; }
+@keyframes lc-sway {
+  0%, 100% { transform: rotateY(-24deg) rotateX(10deg) translateY(0); }
+  50% { transform: rotateY(24deg) rotateX(-6deg) translateY(-12px); }
 }
-@keyframes stamp {
-  60% { opacity: 1; transform: scale(0.92) rotate(4deg); }
-  100% { opacity: 1; transform: scale(1) rotate(0); }
+@keyframes lc-spin { from { transform: rotateY(0deg); } to { transform: rotateY(360deg); } }
+@keyframes lc-stamp {
+  0% { transform: scale(1.6) rotate(-12deg); opacity: 0; }
+  60% { transform: scale(0.92) rotate(3deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0); }
 }
+@keyframes lc-spark { 0% { transform: scale(0); opacity: 1; } 100% { transform: scale(2.4); opacity: 0; } }
+@keyframes lc-shine { 0% { transform: translateX(-34%); } 60%, 100% { transform: translateX(34%); } }
+@keyframes lc-glow { 0%, 100% { opacity: 0.55; transform: scale(0.95); } 50% { opacity: 0.95; transform: scale(1.08); } }
+@keyframes lc-floor { 0%, 100% { transform: scaleX(1); opacity: 0.55; } 50% { transform: scaleX(0.82); opacity: 0.35; } }
 
 /* Linha que liga os passos: se desenha da esquerda para a direita ao entrar na tela */
 .line-draw { clip-path: inset(0 100% 0 0); transition: clip-path 1.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s; }
@@ -116,7 +130,7 @@
   [data-wipe] { clip-path: none !important; }
   [data-grow] { transform: none !important; }
   .case:hover .photo-img { transform: none; }
-  .loyalty .stamp { opacity: 1 !important; transform: none !important; animation: none !important; }
+  .loyalty-card * { animation: none !important; }
   .marquee { animation: none !important; }
   .line-draw { clip-path: none !important; }
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }

@@ -27,7 +27,27 @@ export const apresentacao = {
     download: 'Baixar apresentação em PDF',
     downloadInfo: 'PDF · 14 páginas · 1 MB',
     pdf: '/docs/Bicuira-Fideliza-Apresentacao.pdf',
-    jump: 'Ver a apresentação',
+    jump: 'Ver apresentação comercial',
+  },
+
+  // Página própria da apresentação: /fideliza/apresentacao
+  page: {
+    path: '/fideliza/apresentacao',
+    seo: {
+      title: 'Apresentação comercial — Bicuíra Fideliza | Bicuíra Digital',
+      description:
+        'Apresentação comercial do Bicuíra Fideliza: como funciona o cartão fidelidade no celular, planos, condição de piloto e o case Comida Caseira Rosa Norte. Produto em desenvolvimento.',
+    },
+    breadcrumb: 'Apresentação comercial',
+    // abas no topo das páginas do Fideliza
+    tabs: { overview: 'Visão geral', presentation: 'Apresentação comercial', label: 'Seções do Bicuíra Fideliza' },
+    // botão na página /fideliza
+    teaser: {
+      title: 'Veja a apresentação comercial',
+      text: 'Como funciona, o que o cliente e o dono veem, planos, condição de piloto e o case Comida Caseira Rosa Norte.',
+      button: 'Abrir apresentação comercial',
+    },
+    final: { title: 'Gostou do que viu?', text: 'Fale com a gente e conte como funciona o seu negócio.', button: 'Tenho interesse no Fideliza' },
   },
 
   // 01 · Capa
@@ -36,7 +56,13 @@ export const apresentacao = {
     tagline: 'Fidelidade digital com raiz local.',
     text: 'O cartão fidelidade no celular do seu cliente, para pousadas, bares e restaurantes de Garopaba, Praia do Rosa e Imbituba.',
     // rótulos do cartão animado (ilustração, não é captura do sistema)
-    card: { label: 'Cartão fidelidade', name: 'Bicuíra Fideliza', alt: 'Ilustração de um cartão fidelidade recebendo selos' },
+    card: {
+      label: 'Cartão fidelidade',
+      name: 'Bicuíra Fideliza',
+      reward: 'Recompensa liberada!',
+      back: 'Tecnologia com raiz local',
+      alt: 'Ilustração animada de um cartão fidelidade ganhando selos até liberar a recompensa',
+    },
   },
 
   // 02 · Quem somos
