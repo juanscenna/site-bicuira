@@ -39,6 +39,13 @@ const unsplash = (id: string) => {
 // Foto local em WebP. Salve dois arquivos com o mesmo nome e o sufixo do tamanho:
 //   public/images/surf/hero-800.webp e public/images/surf/hero-1600.webp
 // e use: ...local('/images/surf/hero')
+// Foto local em WebP quando a imagem original é menor que 1600 px:
+// informa a largura real de cada arquivo (ex.: prints de celular com 780 px).
+export const localSized = (path: string, small: number, large: number) => ({
+  src: `${path}-1600.webp`,
+  srcSet: `${path}-800.webp ${small}w, ${path}-1600.webp ${large}w`,
+})
+
 export const local = (path: string) => ({
   src: `${path}-1600.webp`,
   srcSet: `${path}-800.webp 800w, ${path}-1600.webp 1600w`,
@@ -109,6 +116,45 @@ export const captures = {
   agendaExtracted: capture('Captura das informações extraídas do flyer', 'areia'),
   agendaReview: capture('Captura da etapa de revisão humana', 'lima'),
   agendaSheet: capture('Captura da planilha com os dados registrados', 'restinga'),
+
+  // ── Bicuíra Fideliza: prints reais da apresentação comercial ──
+  // Origem: juanscenna/bicuira-fideliza → comercial/apresentacao/img/
+  // Os prints com dados usam dados fictícios de demonstração (a legenda aparece no site).
+  fidelizaCadastroForm: {
+    ...localSized('/images/fideliza/apresentacao/cadastro-form', 780, 780),
+    alt: 'Tela de cadastro do Bicuíra Fideliza no celular, com os campos nome, celular e se a pessoa é moradora ou está de visita',
+    isPlaceholder: false,
+  },
+  fidelizaCadastro: {
+    ...localSized('/images/fideliza/apresentacao/cadastro-rosa-norte', 780, 780),
+    alt: 'Página de cadastro do cartão fidelidade da Comida Caseira Rosa Norte no celular, com a chamada “Junte selos. Ganhe recompensas.”',
+    isPlaceholder: false,
+  },
+  fidelizaCartao: {
+    ...localSized('/images/fideliza/apresentacao/cartao-rosa-norte', 780, 780),
+    alt: 'Cartão fidelidade da Comida Caseira Rosa Norte no celular, com 7 de 10 selos, aviso de quantos faltam para o prêmio e QR Code do cliente',
+    isPlaceholder: false,
+  },
+  fidelizaPainelInicio: {
+    ...localSized('/images/fideliza/apresentacao/painel-inicio', 800, 1600),
+    alt: 'Painel do estabelecimento no computador, na tela de registrar visita, com busca pelo código do cartão, botão para escanear QR Code e resumo do dia',
+    isPlaceholder: false,
+  },
+  fidelizaPainelMetricas: {
+    ...localSized('/images/fideliza/apresentacao/painel-metricas', 800, 1600),
+    alt: 'Tela de métricas do painel no computador, com clientes cadastrados, clientes que retornaram, taxa de retorno, gasto em visitas de retorno e ticket médio',
+    isPlaceholder: false,
+  },
+  rosaNorteLogo: {
+    ...localSized('/images/fideliza/apresentacao/rosa-norte-logo', 512, 512),
+    alt: 'Logo da Comida Caseira Rosa Norte',
+    isPlaceholder: false,
+  },
+  rosaNorteSalao: {
+    ...localSized('/images/fideliza/apresentacao/rosa-norte-salao', 800, 1446),
+    alt: 'Salão da Comida Caseira Rosa Norte, com mesas de madeira e luz do fim de tarde',
+    isPlaceholder: false,
+  },
 } satisfies Record<string, SiteImage>
 
 
@@ -118,4 +164,6 @@ export const brand = {
   principal: '/brand/bicuira-logo-principal.png',
   selo: '/brand/bicuira-selo.png',
   simbolo: '/brand/bicuira-simbolo.png',
+  // versão clara oficial do símbolo (vem do material do Fideliza), para fundos escuros
+  simboloAreia: '/brand/bicuira-simbolo-areia.png',
 }

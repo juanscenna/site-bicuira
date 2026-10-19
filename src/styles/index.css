@@ -64,6 +64,37 @@
   transform: none;
 }
 
+/* Entrada lateral (prints do sistema na apresentação) */
+.reveal-left { transform: translateX(-48px); }
+.reveal-right { transform: translateX(48px); }
+
+/* Cartão de fidelidade animado: selos carimbados um a um (components/LoyaltyCard.tsx) */
+.loyalty .stamp { opacity: 0; transform: scale(1.7) rotate(-20deg); }
+.loyalty.is-stamping .stamp {
+  animation: stamp 0.38s cubic-bezier(0.2, 0.9, 0.3, 1.25) forwards;
+  animation-delay: calc(0.35s + var(--i) * 0.22s);
+}
+@keyframes stamp {
+  60% { opacity: 1; transform: scale(0.92) rotate(4deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+/* Linha que liga os passos: se desenha da esquerda para a direita ao entrar na tela */
+.line-draw { clip-path: inset(0 100% 0 0); transition: clip-path 1.6s cubic-bezier(0.4, 0, 0.2, 1) 0.2s; }
+.is-visible .line-draw { clip-path: inset(0 0 0 0); }
+
+/* Faixa que corre (case Rosa Norte) */
+.marquee { animation: marquee 28s linear infinite; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* Fonte da identidade do cliente Rosa Norte — usada só no bloco do case */
+@font-face {
+  font-family: 'RosaNorte';
+  src: url('/fonts/montserrat-900.woff') format('woff');
+  font-weight: 900;
+  font-display: swap;
+}
+
 /* Movimentos ligados à rolagem: o estado inicial fica aqui e
    components/ScrollFx.tsx atualiza cada elemento conforme a rolagem */
 [data-draw] path { stroke-dasharray: 1; stroke-dashoffset: 1; }
@@ -85,5 +116,8 @@
   [data-wipe] { clip-path: none !important; }
   [data-grow] { transform: none !important; }
   .case:hover .photo-img { transform: none; }
+  .loyalty .stamp { opacity: 1 !important; transform: none !important; animation: none !important; }
+  .marquee { animation: none !important; }
+  .line-draw { clip-path: none !important; }
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
 }

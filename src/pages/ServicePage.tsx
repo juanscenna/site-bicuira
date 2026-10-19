@@ -6,6 +6,8 @@ import PageHero, { HeroPlate } from '../components/PageHero'
 import Photo from '../components/Photo'
 import Reveal from '../components/Reveal'
 import usePageMeta from '../components/usePageMeta'
+import ApresentacaoFideliza from '../sections/ApresentacaoFideliza'
+import { apresentacao } from '../content/apresentacao'
 import { IconAutomacao, IconFideliza, IconSites, ScribbleUnderline, WaveEdge } from '../components/Doodles'
 import { projectsOf } from '../content/projects'
 import { inDevelopmentLabel, serviceLabels as L, services, type Service } from '../content/services'
@@ -52,6 +54,11 @@ export default function ServicePage({ service }: { service: Service }) {
             {cases.length > 0 && (
               <Button to="#cases" variant="text">
                 {L.seeCases}
+              </Button>
+            )}
+            {service.id === 'fideliza' && (
+              <Button to="#apresentacao" variant="text">
+                {apresentacao.section.jump}
               </Button>
             )}
           </div>
@@ -143,6 +150,9 @@ export default function ServicePage({ service }: { service: Service }) {
           </div>
         </section>
       )}
+
+      {/* Fideliza: apresentação comercial navegável */}
+      {service.id === 'fideliza' && <ApresentacaoFideliza />}
 
       {/* Conversar */}
       <section aria-labelledby="cta-servico" className="relative">

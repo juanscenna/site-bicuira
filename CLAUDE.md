@@ -9,7 +9,7 @@ Vite + React + TypeScript + Tailwind + React Router. Sem backend. Deploy na Verc
 - `npm run build` — checagem de tipos + build (precisa passar sem erros)
 
 ## Identidade (não alterar)
-- Logotipos oficiais em `public/brand/` (extraídos do manual da marca). Não redesenhar, não recriar em SVG, não inventar versões (ex.: versão branca não existe ainda — usar o logo colorido sobre fundos claros).
+- Logotipos oficiais em `public/brand/` (extraídos do manual da marca; `bicuira-simbolo-areia.png` é a versão clara oficial do símbolo, vinda do material do Fideliza, para fundos escuros). Não redesenhar, não recriar em SVG, não inventar versões (ex.: versão branca não existe ainda — usar o logo colorido sobre fundos claros).
 - Paleta (tokens no `tailwind.config.ts`) — não introduzir cores novas, só opacidades:
   - `restinga` #25433D · `sol` (Pôr do Sol) #C35E2F · `areia` #F2EBDD · `oceano` #4E889A · `carvao` #292A29 · `lima` #B4CD64
 - Contraste: `sol` e `oceano` só servem para texto GRANDE (≥ 24px) ou elementos gráficos. Texto pequeno vai em `carvao`/`restinga` sobre claro, ou `areia`/`lima` sobre `restinga`/`carvao`. Botões não usam `sol`/`oceano`.
@@ -22,6 +22,7 @@ Vite + React + TypeScript + Tailwind + React Router. Sem backend. Deploy na Verc
 - `/projetos/pousada-sonhos-do-rosa`, `/projetos/automacao-reservas`, `/projetos/agenda-de-todos-nos` — página completa de cada case, com a mesma abertura, trilha (Início / Serviço / Case) e "voltar" para o serviço. Cada case pertence a um serviço (`service` em `projects.ts`).
 - qualquer outra → 404
 - Todas as páginas começam com `components/PageHero.tsx`.
+- `/fideliza` tem a apresentação comercial navegável (`sections/ApresentacaoFideliza.tsx`, âncora `#apresentacao`), antes do CTA final: 14 slides (A4 deitado no desktop, blocos empilhados no celular), textos em `content/apresentacao.ts` copiados da fonte `juanscenna/bicuira-fideliza → comercial/apresentacao/apresentacao.html` (não reescrever). PDF em `public/docs/`.
 - `vercel.json` (cleanUrls + rewrite para `index.html`). `ScrollManager` volta ao topo ao trocar de página e rola até a âncora quando há `#`.
 - Pré-seleção do formulário: `/?servico=sites#contato` (ids: `sites`, `automacao`, `fideliza`).
 
@@ -40,6 +41,8 @@ Vite + React + TypeScript + Tailwind + React Router. Sem backend. Deploy na Verc
 - `npm run build` roda `scripts/prerender-meta.mjs`, que gera um HTML por rota com metas Open Graph (imagens em `public/og/`). Endereço base em `site.url` (`site.ts`).
 - Contraste: verificar 4.5:1 (texto normal) e 3:1 (≥ 24px ou ≥ 18,66px bold). Nenhum texto abaixo de 12px.
 
+- Exceção de identidade: só o bloco do case Comida Caseira Rosa Norte (slide 9 da apresentação) usa a identidade do cliente (preto #0A0A0A, rosa #E8115A, amarelo #F2B315 e Montserrat 900 em `public/fonts/`).
+
 ## Fidelidade à realidade (obrigatório)
 - Preservar os nomes corretos dos clientes e usar só os links reais fornecidos (`sonhosdorosa.lovable.app`, `agendadetodosnos.lovable.app`). A automação de reservas é de uso interno: sem link público.
 - Bicuíra Fideliza é SEMPRE "Produto em desenvolvimento"; nunca apresentar recursos como prontos.
@@ -48,3 +51,4 @@ Vite + React + TypeScript + Tailwind + React Router. Sem backend. Deploy na Verc
 - O resultado da Agenda de Todos Nós é "relatado pela operação", nunca promessa.
 - Não apresentar imagens ilustrativas ou molduras como capturas reais. Legendas da galeria só aparecem quando `isPlaceholder` é `false`. Nada de telas falsas.
 - Se faltar informação, deixar espaço apropriado e avisar — não inventar.
+- Apresentação do Fideliza: selo "Produto em desenvolvimento" no topo; case Rosa Norte é "piloto em andamento" sem resultados; prints com dados levam "Dados fictícios de demonstração"; números de mercado (HBR, Bain, Marketing Metrics) sempre com a nota de referência, não promessa.
