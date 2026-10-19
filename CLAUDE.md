@@ -23,7 +23,8 @@ Vite + React + TypeScript + Tailwind + React Router. Sem backend. Deploy na Verc
 - qualquer outra → 404
 - Todas as páginas começam com `components/PageHero.tsx`.
 - `/fideliza/apresentacao` — aba "Apresentação comercial" do Fideliza (`pages/ApresentacaoPage.tsx` + `sections/ApresentacaoFideliza.tsx`): 14 slides (A4 deitado no desktop, blocos empilhados no celular), textos em `content/apresentacao.ts` copiados da fonte `juanscenna/bicuira-fideliza → comercial/apresentacao/apresentacao.html` (não reescrever). PDF em `public/docs/`. As páginas do Fideliza têm abas (`components/FidelizaTabs.tsx`: Visão geral / Apresentação comercial) e a `/fideliza` tem um botão para a apresentação.
-- `components/LoyaltyCard.tsx`: cartão de fidelidade animado (mesmo esquema do `CartaoDemo` do repositório do Fideliza, com a identidade da Bicuíra). É ilustração, não captura.
+- `components/LoyaltyCard.tsx`: cartão de fidelidade animado (mesmo esquema do `CartaoDemo` do repositório do Fideliza, com a identidade da Bicuíra), em versão calma: carimba os selos uma vez ao aparecer, gira ao completar e fica parado. É ilustração, não captura.
+- Slides da apresentação: altura natural (nunca proporção fixa com conteúdo cortado) e só uma entrada discreta por slide — sem animar item por item, sem contagem de números, sem faixas correndo.
 - `vercel.json` (cleanUrls + rewrite para `index.html`). `ScrollManager` volta ao topo ao trocar de página e rola até a âncora quando há `#`.
 - Pré-seleção do formulário: `/?servico=sites#contato` (ids: `sites`, `automacao`, `fideliza`).
 

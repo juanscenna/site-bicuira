@@ -211,8 +211,9 @@ export const apresentacao = {
         items: ['Tudo do Profissional', 'Página com design exclusivo', 'Ajustes ilimitados no primeiro mês', 'Treinamento presencial ou por vídeo', '2 displays e 3 adesivos', 'Suporte no mesmo dia útil'],
       },
     ],
-    // linha abaixo do preço: "+ R$ 1 por selo · implantação R$ {setup}"
-    extra: (setup: string) => `+ R$ 1 por selo · implantação R$ ${setup}`,
+    // linhas abaixo do preço (fonte: "+ R$ 1 por selo · implantação R$ {setup}")
+    perStamp: '+ R$ 1 por selo',
+    setup: (value: string) => `implantação R$ ${value}`,
     footnote: 'Apple Wallet: adicional sob consulta, a partir de R$ 300 de implantação. Não incluído nos planos.',
   },
 

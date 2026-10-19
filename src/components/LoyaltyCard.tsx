@@ -2,15 +2,13 @@ import { useEffect, useRef, useState } from 'react'
 import { brand } from '../content/images'
 
 // Cartão de fidelidade animado (mesmo esquema do cartão de demonstração do
-// Bicuíra Fideliza, com a identidade da Bicuíra):
-// - balança em 3D, com luzes atrás e um brilho passando
-// - ganha selos um a um, começando devagar e acelerando
-// - ao completar, dá uma volta inteira, mostra "Recompensa liberada!" e recomeça
-// - fora da tela, pausa; com "reduzir movimento", fica parado com 7 selos
+// Bicuíra Fideliza, com a identidade da Bicuíra), em versão calma:
+// - quando aparece na tela, ganha selos um a um (devagar e acelerando)
+// - ao completar, dá uma volta e fica parado mostrando "Recompensa liberada!"
+// - não fica se mexendo o tempo todo; com "reduzir movimento", aparece parado com 7 selos
 // É uma ilustração da ideia (não é uma captura do sistema).
 const META = 10
 const ESPERA_MS = [1100, 950, 800, 650, 520, 420, 340, 280, 230, 210]
-const PAUSA_COMPLETO_MS = 3200
 
 type Props = {
   label: string // "Cartão fidelidade"
@@ -39,19 +37,19 @@ export default function LoyaltyCard({ label, name, reward, back, alt, className 
   const [visible, setVisible] = useState(false)
   const [step, setStep] = useState(0)
 
-  // fora da tela: pausa tudo (economiza bateria e não pesa ao rolar)
+  // só começa quando o cartão está visível na tela
   useEffect(() => {
     const el = box.current
     if (!el || !('IntersectionObserver' in window)) return setVisible(true)
-    const obs = new IntersectionObserver(([e]) => setVisible(e.isIntersecting), { rootMargin: '100px' })
+    const obs = new IntersectionObserver(([e]) => e.isIntersecting && setVisible(true), { rootMargin: '-10% 0px' })
     obs.observe(el)
     return () => obs.disconnect()
   }, [])
 
   useEffect(() => {
     if (reduced || !visible) return
-    const wait = step >= META ? PAUSA_COMPLETO_MS : ESPERA_MS[step]
-    const t = window.setTimeout(() => setStep((s) => (s >= META ? 0 : s + 1)), wait)
+    if (step >= META) return // completou: para e mostra a recompensa
+    const t = window.setTimeout(() => setStep((s) => s + 1), ESPERA_MS[step])
     return () => window.clearTimeout(t)
   }, [reduced, visible, step])
 
@@ -63,19 +61,16 @@ export default function LoyaltyCard({ label, name, reward, back, alt, className 
       ref={box}
       role="img"
       aria-label={alt}
-      className={`loyalty-card relative isolate mx-auto w-full max-w-[360px] py-8 [perspective:1100px] ${visible ? '' : 'is-paused'} ${className}`}
+      className={`loyalty-card relative isolate mx-auto w-full max-w-[360px] py-4 [perspective:1100px] ${className}`}
     >
-      {/* luzes atrás do cartão (Lima e Pôr do Sol) */}
-      <div aria-hidden="true" className="lc-glow absolute -inset-x-6 inset-y-0 bg-[radial-gradient(closest-side,rgba(180,205,100,0.55),rgba(180,205,100,0.18)_55%,transparent)]" />
-      <div aria-hidden="true" className="lc-glow-2 absolute -right-6 -top-6 h-44 w-44 bg-[radial-gradient(closest-side,rgba(195,94,47,0.55),transparent)]" />
-
-      <div aria-hidden="true" className="lc-sway relative [transform-style:preserve-3d]">
+      {/* leve inclinação fixa em 3D (sem balançar) */}
+      <div aria-hidden="true" className="relative [transform-style:preserve-3d] [transform:rotateY(-14deg)_rotateX(6deg)]">
         <div
           key={complete ? 'giro' : 'parado'}
           className={`relative aspect-[1.58/1] w-full [transform-style:preserve-3d] ${complete ? 'lc-spin' : ''}`}
         >
           {/* frente */}
-          <div className="absolute inset-0 overflow-hidden rounded-[1.6rem] border-[3px] border-lima bg-restinga p-4 shadow-[0_24px_50px_-24px_rgba(41,42,41,0.55)] [backface-visibility:hidden]">
+          <div className="absolute inset-0 overflow-hidden rounded-[1.6rem] border-[3px] border-lima bg-restinga p-4 shadow-[0_18px_36px_-22px_rgba(41,42,41,0.5)] [backface-visibility:hidden]">
             <div className="flex items-center gap-2">
               <img src={brand.selo} alt="" className="h-10 w-10 rounded-full bg-areia" />
               <div className="leading-none">
@@ -96,7 +91,7 @@ export default function LoyaltyCard({ label, name, reward, back, alt, className 
                   <li key={i} className="relative flex justify-center">
                     <span
                       className={`flex aspect-square w-full max-w-10 items-center justify-center rounded-full ${
-                        done ? 'bg-areia shadow-[0_0_0_2px_#B4CD64,0_0_14px_rgba(180,205,100,0.85)]' : 'outline-dashed outline-2 outline-areia/30'
+                        done ? 'bg-areia shadow-[0_0_0_2px_#B4CD64]' : 'outline-dashed outline-2 outline-areia/30'
                       } ${fresh ? 'lc-stamp' : ''}`}
                     >
                       <img src={brand.simbolo} alt="" className={`w-[72%] ${done ? '' : 'opacity-20 grayscale'}`} />
@@ -113,8 +108,6 @@ export default function LoyaltyCard({ label, name, reward, back, alt, className 
               </p>
             )}
 
-            {/* brilho passando */}
-            <div className="lc-shine pointer-events-none absolute inset-y-0 -left-full w-[300%] bg-[linear-gradient(115deg,transparent_42%,rgba(242,235,221,0.24)_49%,rgba(180,205,100,0.14)_51%,transparent_58%)]" />
           </div>
 
           {/* verso (aparece no giro) */}
@@ -125,8 +118,6 @@ export default function LoyaltyCard({ label, name, reward, back, alt, className 
         </div>
       </div>
 
-      {/* sombra no "chão" */}
-      <div aria-hidden="true" className="lc-floor mx-auto mt-6 h-4 w-3/4 bg-[radial-gradient(closest-side,rgba(41,42,41,0.45),transparent)]" />
     </div>
   )
 }

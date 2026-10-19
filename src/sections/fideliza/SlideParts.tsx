@@ -32,7 +32,7 @@ export function SlideTitle({ title, className = '' }: { title: Title; className?
   )
 }
 
-// Moldura de um slide: proporção de A4 deitado no desktop, bloco livre no celular.
+// Moldura de um slide: altura natural (o conteúdo nunca é cortado nem sobra espaço vazio).
 // Cabeçalho (etiqueta + título), corpo e rodapé com o símbolo da marca e o número.
 export function Slide({
   n,
@@ -55,11 +55,11 @@ export function Slide({
 }) {
   const base = dark ? 'on-dark bg-restinga text-areia' : 'border-2 border-restinga/15 bg-areia text-carvao'
   return (
-    <Reveal mode="visible">
+    <Reveal>
       <article
         aria-label={`Slide ${String(n).padStart(2, '0')}`}
-        className={`slide mx-auto flex w-full flex-col overflow-hidden rounded-[1.75rem] lg:aspect-[297/210] lg:w-[min(100%,calc(84vh*1.414))] ${base} ${
-          bare ? '' : 'px-5 pt-8 sm:px-10 lg:px-[5.5%] lg:pt-[4%]'
+        className={`slide mx-auto flex w-full max-w-6xl flex-col overflow-hidden rounded-[1.75rem] ${base} ${
+          bare ? '' : 'px-5 pt-8 sm:px-10 sm:pt-10 lg:px-14 lg:pt-12'
         } ${className}`}
       >
         {bare ? (
@@ -70,7 +70,7 @@ export function Slide({
               {tag && <p className={`tag ${dark ? 'text-lima' : 'text-restinga'}`}>{tag}</p>}
               {title && <SlideTitle title={title} className={`mt-3 ${dark ? 'text-areia' : 'text-restinga'}`} />}
             </header>
-            <div className="flex flex-1 flex-col justify-center py-8 lg:py-[3%]">{children}</div>
+            <div className="flex flex-1 flex-col justify-center py-8 lg:py-10">{children}</div>
             <SlideFooter n={n} dark={dark} note={footnote} />
           </>
         )}

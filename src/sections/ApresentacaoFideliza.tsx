@@ -1,8 +1,6 @@
 import { brand } from '../content/images'
 import { apresentacao as A } from '../content/apresentacao'
 import { inDevelopmentLabel } from '../content/services'
-import Reveal from '../components/Reveal'
-import CountUp from '../components/CountUp'
 import LoyaltyCard from '../components/LoyaltyCard'
 import { WaveLine } from '../components/Doodles'
 import { Icon, IconBadge } from './fideliza/Icons'
@@ -76,7 +74,7 @@ function Capa() {
             <span className="text-lima">{c.title[1]}</span>
           </p>
           <p className="mt-4 font-display text-[clamp(1.35rem,2.2vw,1.9rem)] leading-tight">{c.tagline}</p>
-          <WaveLine wipe className="mt-4 h-4 w-40 text-lima" waves={3} />
+          <WaveLine className="mt-4 h-4 w-40 text-lima" waves={3} />
           <p className="mt-6 max-w-md text-base leading-relaxed text-areia/90 sm:text-lg">{c.text}</p>
         </div>
         <div className="flex justify-center">
@@ -98,12 +96,12 @@ function QuemSomos() {
             <Rich text={c.text} />
           </p>
           <ul className="mt-8 grid gap-4">
-            {c.items.map((it, i) => (
+            {c.items.map((it) => (
               <li key={it.text}>
-                <Reveal mode="visible" delay={i * 120} className="flex items-center gap-4">
+                <div className="flex items-center gap-4">
                   <IconBadge name={it.icon} size="sm" />
                   <span>{it.text}</span>
-                </Reveal>
+                </div>
               </li>
             ))}
           </ul>
@@ -122,15 +120,15 @@ function Problema() {
   return (
     <Slide n={3} tag={c.tag} title={c.title}>
       <ul className="grid gap-5 lg:grid-cols-3">
-        {c.cards.map((card, i) => (
+        {c.cards.map((card) => (
           <li key={card.title}>
-            <Reveal mode="visible" delay={i * 140} className="h-full">
+            <div className="h-full">
               <div className="flex h-full flex-col gap-3 rounded-[1.25rem] bg-restinga/[0.07] p-6">
                 <IconBadge name={card.icon} />
                 <h4 className="font-display text-xl leading-tight text-restinga">{card.title}</h4>
                 <p className="leading-relaxed">{card.text}</p>
               </div>
-            </Reveal>
+            </div>
           </li>
         ))}
       </ul>
@@ -144,19 +142,19 @@ function PorQue() {
   return (
     <Slide n={4} dark tag={c.tag} title={c.title} footnote={c.footnote}>
       <ul className="grid gap-5 lg:grid-cols-3">
-        {c.stats.map((st, i) => (
+        {c.stats.map((st) => (
           <li key={st.value}>
-            <Reveal mode="visible" delay={i * 160} className="h-full">
+            <div className="h-full">
               <div className="flex h-full flex-col gap-3 rounded-[1.25rem] border-2 border-lima p-6">
                 <p className="whitespace-nowrap font-display text-[clamp(2.6rem,4.4vw,3.6rem)] leading-none text-lima">
-                  <CountUp value={st.value} />
+                  {st.value}
                 </p>
                 <p className="leading-relaxed">
                   <Rich text={st.text} />
                 </p>
                 <p className="mt-auto text-[0.8125rem] text-areia/90">{st.source}</p>
               </div>
-            </Reveal>
+            </div>
           </li>
         ))}
       </ul>
@@ -174,16 +172,14 @@ function ComoFunciona() {
     <Slide n={5} tag={c.tag} title={c.title}>
       <div className="relative">
         {/* linha que liga os passos: horizontal no desktop, vertical no celular */}
-        <Reveal mode="visible" className="absolute left-[10%] right-[10%] top-6 hidden lg:block">
-          <div className="line-draw">
-            <WaveLine className="h-3 w-full text-oceano" waves={6} />
-          </div>
-        </Reveal>
-        <span aria-hidden="true" data-grow className="absolute bottom-6 left-6 top-6 w-[2px] bg-oceano lg:hidden" />
+        <div className="absolute left-[10%] right-[10%] top-6 hidden lg:block">
+          <WaveLine className="h-3 w-full text-oceano" waves={6} />
+        </div>
+        <span aria-hidden="true" className="absolute bottom-6 left-6 top-6 w-[2px] bg-oceano lg:hidden" />
         <ol className="relative grid gap-6 lg:grid-cols-5 lg:gap-5 lg:text-center">
           {c.steps.map((st, i) => (
             <li key={st.title}>
-              <Reveal mode="visible" delay={i * 160} className="flex gap-4 lg:flex-col lg:items-center lg:gap-0">
+              <div className="flex gap-4 lg:flex-col lg:items-center lg:gap-0">
                 <IconBadge name={st.icon} accent={i === c.steps.length - 1} />
                 <div>
                   <p className={`text-[0.8125rem] font-bold uppercase tracking-wider lg:mt-4 ${i === c.steps.length - 1 ? 'text-carvao' : 'text-restinga'}`}>
@@ -192,19 +188,19 @@ function ComoFunciona() {
                   <h4 className="mt-1 font-display text-xl leading-tight text-restinga">{st.title}</h4>
                   <p className="mt-1 text-[0.9375rem] leading-snug">{st.text}</p>
                 </div>
-              </Reveal>
+              </div>
             </li>
           ))}
         </ol>
       </div>
-      <Reveal mode="visible" delay={300}>
+      <div>
         <p className="on-dark mt-8 flex items-center justify-center gap-4 rounded-[1.25rem] bg-restinga px-6 py-4 text-areia">
           <IconBadge name="repeat" dark size="sm" />
           <span>
             <Rich text={c.banner} strongClass="text-lima" />
           </span>
         </p>
-      </Reveal>
+      </div>
     </Slide>
   )
 }
@@ -217,12 +213,12 @@ function ParaCliente() {
       <div className="grid items-center gap-10 lg:grid-cols-2">
         <div>
           <ul className="grid gap-4">
-            {c.items.map((it, i) => (
+            {c.items.map((it) => (
               <li key={it.text}>
-                <Reveal mode="visible" delay={i * 110} className="flex items-center gap-4">
+                <div className="flex items-center gap-4">
                   <IconBadge name={it.icon} dark size="sm" />
                   <span>{it.text}</span>
-                </Reveal>
+                </div>
               </li>
             ))}
           </ul>
@@ -230,9 +226,9 @@ function ParaCliente() {
         </div>
         <div className="flex justify-center gap-5">
           {c.shots.map((sh, i) => (
-            <Reveal key={sh.label} mode="visible" from="right" delay={i * 180} className="w-[44%] max-w-[12rem]">
+            <div key={sh.label} className="w-[44%] max-w-[12rem]">
               <Shot image={sh.image} frame="phone" label={sh.label} demoLabel={i === 1 ? demo : undefined} />
-            </Reveal>
+            </div>
           ))}
         </div>
       </div>
@@ -246,9 +242,9 @@ function ParaDono() {
   return (
     <Slide n={7} tag={c.tag} title={c.title}>
       <div className="grid items-center gap-10 lg:grid-cols-[1.35fr_1fr]">
-        <Reveal mode="visible" from="left">
+        <div>
           <Shot image={c.shot} frame="pc" demoLabel={demo} />
-        </Reveal>
+        </div>
         <ItemList items={c.items} />
       </div>
     </Slide>
@@ -264,9 +260,9 @@ function Metricas() {
         <div className="order-2 lg:order-1">
           <ItemList items={c.items} />
         </div>
-        <Reveal mode="visible" from="right" className="order-1 lg:order-2">
+        <div className="order-1 lg:order-2">
           <Shot image={c.shot} frame="pc" demoLabel={demo} />
-        </Reveal>
+        </div>
       </div>
     </Slide>
   )
@@ -275,15 +271,15 @@ function Metricas() {
 function ItemList({ items }: { items: { icon: Parameters<typeof IconBadge>[0]['name']; title: string; text: string }[] }) {
   return (
     <ul className="grid gap-5">
-      {items.map((it, i) => (
+      {items.map((it) => (
         <li key={it.title}>
-          <Reveal mode="visible" delay={i * 120} className="flex items-start gap-4">
+          <div className="flex items-start gap-4">
             <IconBadge name={it.icon} size="sm" />
             <div>
               <h4 className="font-display text-lg leading-tight text-restinga">{it.title}</h4>
               <p className="text-[0.9375rem] leading-snug">{it.text}</p>
             </div>
-          </Reveal>
+          </div>
         </li>
       ))}
     </ul>
@@ -325,8 +321,8 @@ function CaseRosaNorte() {
           <div className="grid grid-cols-2 gap-5 lg:contents">
             {c.shots
               .filter((sh) => sh.frame === 'phone')
-              .map((sh, i) => (
-                <Reveal key={sh.label} mode="visible" from="left" delay={i * 160}>
+              .map((sh) => (
+                <div key={sh.label}>
                   <Shot
                     image={sh.image}
                     frame="phone"
@@ -335,15 +331,15 @@ function CaseRosaNorte() {
                     border="border-[#E8115A]"
                     labelClass={`!font-['RosaNorte'] uppercase text-[#F2B315]`}
                   />
-                </Reveal>
+                </div>
               ))}
           </div>
           {c.shots
             .filter((sh) => sh.frame === 'pc')
             .map((sh) => (
-              <Reveal key={sh.label} mode="visible" from="right" delay={300}>
+              <div key={sh.label}>
                 <Shot image={sh.image} frame="pc" label={sh.label} demoLabel={demo} border="border-[#E8115A]" labelClass={`!font-['RosaNorte'] uppercase text-[#F2B315]`} />
-              </Reveal>
+              </div>
             ))}
           <div className="grid gap-4">
             <div className="rounded-[1.1rem] p-5" style={{ background: rosa.yellow, color: rosa.black }}>
@@ -362,9 +358,9 @@ function CaseRosaNorte() {
           </div>
         </div>
 
-        {/* faixa que corre, como na identidade deles */}
+        {/* faixa como na identidade deles */}
         <div aria-hidden="true" className="overflow-hidden py-3" style={{ background: rosa.yellow }}>
-          <div className="marquee flex w-max gap-5 whitespace-nowrap">
+          <div className="flex w-max gap-5 whitespace-nowrap">
             {[...c.strip, ...c.strip].map((t, i) => (
               <span key={i} className="flex items-center gap-5">
                 <span className={`text-sm ${rosaFont}`} style={{ color: rosa.black }}>
@@ -386,9 +382,9 @@ function Negocios() {
   return (
     <Slide n={10} tag={c.tag} title={c.title} footnote={c.footnote}>
       <ul className="grid gap-5 lg:grid-cols-3">
-        {c.cards.map((card, i) => (
+        {c.cards.map((card) => (
           <li key={card.name}>
-            <Reveal mode="visible" delay={i * 140} className="h-full">
+            <div className="h-full">
               <div className="flex h-full flex-col gap-3 rounded-[1.25rem] bg-restinga/[0.07] p-6">
                 <div className="flex items-center gap-3">
                   <IconBadge name={card.icon} />
@@ -402,7 +398,7 @@ function Negocios() {
                 <h4 className="font-display text-lg leading-tight text-restinga">{card.rule}</h4>
                 <p className="text-[0.9375rem] leading-snug">{card.text}</p>
               </div>
-            </Reveal>
+            </div>
           </li>
         ))}
       </ul>
@@ -416,9 +412,9 @@ function Planos() {
   return (
     <Slide n={11} tag={c.tag} title={c.title} footnote={c.footnote}>
       <ul className="grid items-stretch gap-5 lg:grid-cols-3">
-        {c.plans.map((p, i) => (
+        {c.plans.map((p) => (
           <li key={p.name}>
-            <Reveal mode="visible" delay={i * 140} className="h-full">
+            <div className="h-full">
               <div
                 className={`flex h-full flex-col rounded-[1.25rem] p-6 ${
                   p.featured ? 'on-dark bg-restinga text-areia outline outline-4 outline-lima' : 'bg-restinga/[0.07] text-carvao'
@@ -432,7 +428,11 @@ function Planos() {
                   R$ {p.price}
                   <span className="font-sans text-[0.8125rem] font-semibold">{c.perMonth}</span>
                 </p>
-                <p className="mt-2 text-[0.8125rem]">{c.extra(p.setup)}</p>
+                <p className="mt-2 text-[0.8125rem] leading-snug">
+                  {c.perStamp}
+                  <br />
+                  {c.setup(p.setup)}
+                </p>
                 <ul className={`mt-4 grid gap-2 border-t pt-4 ${p.featured ? 'border-areia/20' : 'border-restinga/15'}`}>
                   {p.items.map((it, k) => (
                     <li key={it} className={`flex gap-2 text-[0.8125rem] leading-snug ${k === 0 && p.name !== 'Essencial' ? 'font-bold' : ''}`}>
@@ -442,7 +442,7 @@ function Planos() {
                   ))}
                 </ul>
               </div>
-            </Reveal>
+            </div>
           </li>
         ))}
       </ul>
@@ -450,40 +450,53 @@ function Planos() {
   )
 }
 
-// 12 · Piloto — a conta monta em etapas; R$ 3,30 destaca em lima
+// Junta cada sinal (÷ = <) com o bloco que vem depois dele
+type ContaItem = (typeof A.piloto.conta)[number]
+function pairs(items: ContaItem[]) {
+  const out: [string | undefined, ContaItem][] = []
+  let op: string | undefined
+  for (const it of items) {
+    if (it.op) op = it.op
+    else {
+      out.push([op, it])
+      op = undefined
+    }
+  }
+  return out
+}
+
+// 12 · Piloto — a conta R$ 99 ÷ 30 = R$ 3,30, com o R$ 3,30 em lima
 function Piloto() {
   const c = A.piloto
   return (
     <Slide n={12} dark tag={c.tag} title={c.title} footnote={c.footnote}>
-      <ol className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-        {c.conta.map((b, i) => (
-          <li key={i}>
-            <Reveal mode="visible" delay={i * 170}>
-              {b.op ? (
-                <span aria-hidden="true" className="font-display text-3xl text-lima sm:text-4xl">
-                  {b.op}
-                </span>
-              ) : (
-                <div
-                  className={`rounded-[1.1rem] border-2 px-3 py-3 text-center sm:min-w-[9rem] sm:px-5 sm:py-4 ${
-                    b.highlight ? 'border-lima bg-lima text-restinga lg:scale-110' : 'border-areia/35 bg-restinga'
-                  }`}
-                >
-                  {b.icon && <IconBadge name={b.icon} dark size="sm" />}
-                  {b.label && (
-                    <p className={`text-[0.75rem] font-bold uppercase tracking-[0.12em] ${b.highlight ? 'text-restinga' : 'text-lima'}`}>{b.label}</p>
-                  )}
-                  <p
-                    className={`mt-1 whitespace-nowrap font-display leading-none ${
-                      b.highlight ? 'text-4xl sm:text-5xl' : b.icon ? 'mt-2 text-xl sm:text-2xl' : 'text-3xl sm:text-4xl'
-                    }`}
-                  >
-                    {b.value}
-                  </p>
-                  <p className="mt-1 text-[0.8125rem]">{b.unit}</p>
-                </div>
+      {/* cada sinal fica junto do bloco seguinte, para a conta não quebrar no meio */}
+      <ol className="flex flex-wrap items-center justify-center gap-x-3 gap-y-4 sm:gap-x-4">
+        {pairs(c.conta).map(([op, b], i) => (
+          <li key={i} className="flex items-center gap-3 sm:gap-4">
+            {op && (
+              <span aria-hidden="true" className="font-display text-3xl text-lima sm:text-4xl">
+                {op}
+              </span>
+            )}
+            <div
+              className={`rounded-[1.1rem] border-2 px-3 py-3 text-center sm:min-w-[9rem] sm:px-5 sm:py-4 ${
+                b.highlight ? 'border-lima bg-lima text-restinga' : 'border-areia/35 bg-restinga'
+              }`}
+            >
+              {b.icon && <IconBadge name={b.icon} dark size="sm" />}
+              {b.label && (
+                <p className={`text-[0.75rem] font-bold uppercase tracking-[0.12em] ${b.highlight ? 'text-restinga' : 'text-lima'}`}>{b.label}</p>
               )}
-            </Reveal>
+              <p
+                className={`mt-1 whitespace-nowrap font-display leading-none ${
+                  b.highlight ? 'text-4xl sm:text-5xl' : b.icon ? 'mt-2 text-xl sm:text-2xl' : 'text-3xl sm:text-4xl'
+                }`}
+              >
+                {b.value}
+              </p>
+              <p className="mt-1 text-[0.8125rem]">{b.unit}</p>
+            </div>
           </li>
         ))}
       </ol>
@@ -491,9 +504,9 @@ function Piloto() {
       <p className="sr-only">R$ 99 por mês dividido por 30 dias é igual a R$ 3,30 por dia, menos que 1 cafezinho no balcão.</p>
 
       <ul className="mt-8 grid gap-5 lg:grid-cols-3">
-        {c.cards.map((card, i) => (
+        {c.cards.map((card) => (
           <li key={card.title}>
-            <Reveal mode="visible" delay={600 + i * 120} className="h-full">
+            <div className="h-full">
               <div
                 className={`flex h-full flex-col gap-2 rounded-[1.25rem] p-5 ${
                   card.featured ? 'bg-lima text-restinga' : 'border-2 border-lima'
@@ -505,7 +518,7 @@ function Piloto() {
                   <Rich text={card.text} />
                 </p>
               </div>
-            </Reveal>
+            </div>
           </li>
         ))}
       </ul>
@@ -519,16 +532,14 @@ function Implantacao() {
   return (
     <Slide n={13} tag={c.tag} title={c.title}>
       <div className="relative">
-        <Reveal mode="visible" className="absolute left-[10%] right-[10%] top-6 hidden lg:block">
-          <div className="line-draw">
-            <WaveLine className="h-3 w-full text-oceano" waves={6} />
-          </div>
-        </Reveal>
-        <span aria-hidden="true" data-grow className="absolute bottom-6 left-6 top-6 w-[2px] bg-oceano lg:hidden" />
+        <div className="absolute left-[10%] right-[10%] top-6 hidden lg:block">
+          <WaveLine className="h-3 w-full text-oceano" waves={6} />
+        </div>
+        <span aria-hidden="true" className="absolute bottom-6 left-6 top-6 w-[2px] bg-oceano lg:hidden" />
         <ol className="relative grid gap-6 lg:grid-cols-5 lg:gap-5 lg:text-center">
           {c.steps.map((st, i) => (
             <li key={st.title}>
-              <Reveal mode="visible" delay={i * 150} className="flex gap-4 lg:flex-col lg:items-center lg:gap-0">
+              <div className="flex gap-4 lg:flex-col lg:items-center lg:gap-0">
                 <IconBadge name={st.icon} />
                 <div>
                   <p className="text-[0.8125rem] font-bold uppercase tracking-wider text-restinga lg:mt-4">
@@ -537,17 +548,17 @@ function Implantacao() {
                   <h4 className="mt-1 font-display text-xl leading-tight text-restinga">{st.title}</h4>
                   <p className="mt-1 text-[0.9375rem] leading-snug">{st.text}</p>
                 </div>
-              </Reveal>
+              </div>
             </li>
           ))}
         </ol>
       </div>
-      <Reveal mode="visible" delay={600} className="mt-8 flex justify-center">
+      <div className="mt-8 flex justify-center">
         <p className="on-dark inline-flex flex-wrap items-center justify-center gap-x-4 gap-y-1 rounded-[2rem] bg-restinga px-6 py-3 text-center text-areia">
           <span className="font-display text-lg text-lima">{c.deadline.label}</span>
           <span>{c.deadline.text}</span>
         </p>
-      </Reveal>
+      </div>
     </Slide>
   )
 }
@@ -560,11 +571,11 @@ function Contato() {
       <div className="flex flex-1 flex-col items-center justify-center px-6 py-12 text-center sm:px-10">
         <img src={brand.selo} alt="Bicuíra Digital" width={283} height={283} loading="lazy" className="w-28 rounded-full bg-areia p-2 sm:w-36" />
         <SlideTitle title={c.title} className="mt-7 !text-[clamp(2rem,4vw,3.25rem)] text-areia" />
-        <WaveLine wipe className="mx-auto mt-4 h-4 w-40 text-lima" waves={3} />
+        <WaveLine className="mx-auto mt-4 h-4 w-40 text-lima" waves={3} />
         <ul className="mt-8 grid w-full max-w-3xl gap-6 sm:grid-cols-3">
-          {c.items.map((it, i) => (
+          {c.items.map((it) => (
             <li key={it.text}>
-              <Reveal mode="visible" delay={i * 140} className="flex flex-col items-center gap-3">
+              <div className="flex flex-col items-center gap-3">
                 <IconBadge name={it.icon} dark />
                 {it.href ? (
                   <a href={it.href} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-[44px] items-center underline decoration-lima decoration-2 underline-offset-4">
@@ -574,7 +585,7 @@ function Contato() {
                 ) : (
                   <span className="inline-flex min-h-[44px] items-center">{it.text}</span>
                 )}
-              </Reveal>
+              </div>
             </li>
           ))}
         </ul>
