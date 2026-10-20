@@ -26,6 +26,9 @@ export type Service = {
     description: string
     groups: { title?: string; items: string[] }[]
     note?: string
+    steps?: { title: string; items: string[] } // passo a passo numerado ("Como funciona")
+    status?: { title: string; text: string } // produto em desenvolvimento: em que pé está
+    join?: { title: string } // título do convite final (no lugar do padrão)
     cta: string
   }
 }
@@ -130,39 +133,39 @@ export const services: Service[] = [
     number: '03',
     name: 'Bicuíra Fideliza',
     path: '/fideliza',
-    heroImage: images.surfboards,
+    heroImage: images.surfboards, // foto de atmosfera provisória (isPlaceholder: true)
     seo: {
       title: 'Bicuíra Fideliza — Produto em desenvolvimento | Bicuíra Digital',
       description:
-        'Uma proposta de fidelização digital para incentivar os clientes a voltar. Produto em desenvolvimento, com recursos em validação.',
+        'Cartão de fidelidade digital para restaurantes e bares. Produto em desenvolvimento, em fase de teste com um estabelecimento piloto.',
     },
     formLabel: 'Bicuíra Fideliza',
     inDevelopment: true,
     card: {
-      description:
-        'Uma proposta de fidelização digital para incentivar os clientes a voltar e fortalecer o relacionamento com seu estabelecimento.',
-      examples: ['Cartões digitais', 'Carimbos', 'Recompensas'],
+      description: 'Um cartão de fidelidade digital para restaurantes e bares, feito para o cliente voltar.',
+      examples: ['Cartão web', 'Carimbos', 'Resgates'],
       cta: 'Conhecer Fideliza',
     },
     detail: {
-      title: 'Faça seus clientes terem mais motivos para voltar.',
-      mark: 'voltar',
-      description:
-        'Estamos desenvolvendo uma solução de fidelização digital para aproximar estabelecimentos de seus clientes e incentivar novas visitas.',
-      groups: [
-        {
-          title: 'A proposta pode incluir',
-          items: [
-            'Cartão digital de fidelidade',
-            'Registro de carimbos',
-            'Recompensas e benefícios',
-            'Comunicação para incentivar o retorno',
-            'Mecanismos para fortalecer o relacionamento com clientes',
-          ],
-        },
-      ],
-      note: 'Os recursos ainda são uma proposta de produto e estão em validação.',
-      cta: 'Tenho interesse no Fideliza',
+      title: 'Bicuíra Fideliza',
+      mark: 'Fideliza',
+      description: 'Um cartão de fidelidade digital para restaurantes e bares, feito para o cliente voltar.',
+      groups: [],
+      steps: {
+        title: 'Como funciona',
+        items: [
+          'O cliente escaneia o QR Code do estabelecimento.',
+          'Cadastra-se em poucos segundos e recebe o cartão no celular.',
+          'Cada visita vira um carimbo. Ao completar, há um resgate.',
+          'O dono acompanha tudo em um painel simples.',
+        ],
+      },
+      status: {
+        title: 'Em fase de teste',
+        text: 'Estamos validando o cartão com um estabelecimento piloto. Os recursos ainda estão sendo testados e ajustados.',
+      },
+      join: { title: 'Quer testar com o seu estabelecimento?' },
+      cta: 'Quero entrar na lista',
     },
   },
 ]
@@ -185,6 +188,7 @@ export const serviceLabels = {
   viewCase: 'Ver case completo',
   seeCases: 'Ver os cases',
   statusTitle: 'Em que pé está',
+  illustration: 'Ilustração do cartão. Não é uma captura do sistema.',
   otherServices: 'Conheça também',
   finalTitle: 'Vamos conversar sobre o seu negócio?',
   finalText: 'Conta para a gente o que você precisa. A gente entende sua realidade e mostra as possibilidades.',

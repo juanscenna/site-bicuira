@@ -71,32 +71,59 @@ export default function ServicePage({ service }: { service: Service }) {
         </div>
       </section>
 
-      {/* O que pode incluir */}
-      <section aria-labelledby="inclui" className="pb-16 md:pb-24">
-        <div className="wrap">
-          <div className="rounded-[2.5rem] bg-restinga/10 px-6 py-10 sm:px-10 md:px-14 md:py-14">
-            <h2 id="inclui" className="text-big text-restinga">
-              {L.include}
-            </h2>
-            <div className={`mt-8 grid gap-10 ${d.groups.length > 1 ? 'lg:grid-cols-2' : ''}`}>
-              {d.groups.map((g, gi) => (
-                <Reveal key={gi}>
-                  {g.title && <h3 className="font-sans text-lg font-semibold">{g.title}</h3>}
-                  <ul className={`mt-4 grid gap-x-8 sm:grid-cols-2 ${d.groups.length === 1 ? 'lg:grid-cols-3' : ''}`}>
-                    {g.items.map((item) => (
-                      <li key={item} className="flex gap-3 border-b border-carvao/15 py-3">
-                        <span aria-hidden="true" className="mt-2 h-2 w-2 shrink-0 rounded-full bg-sol" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </Reveal>
-              ))}
+      {/* Como funciona: passo a passo numerado (Fideliza) */}
+      {d.steps && (
+        <section aria-labelledby="como-funciona" className="pb-16 md:pb-24">
+          <div className="wrap">
+            <div className="rounded-[2.5rem] bg-restinga/10 px-6 py-10 sm:px-10 md:px-14 md:py-14">
+              <h2 id="como-funciona" className="text-big text-restinga">
+                {d.steps.title}
+              </h2>
+              <Reveal>
+                <ol className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+                  {d.steps.items.map((item, i) => (
+                    <li key={item} className="flex gap-4 border-t border-carvao/15 pt-5 lg:flex-col lg:gap-3">
+                      <span aria-hidden="true" className="font-display text-4xl leading-none text-sol">
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <span className="leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ol>
+              </Reveal>
             </div>
-            {d.note && !service.inDevelopment && <p className="mt-8 max-w-2xl font-medium">{d.note}</p>}
           </div>
-        </div>
-      </section>
+        </section>
+      )}
+
+      {/* O que pode incluir */}
+      {d.groups.length > 0 && (
+        <section aria-labelledby="inclui" className="pb-16 md:pb-24">
+          <div className="wrap">
+            <div className="rounded-[2.5rem] bg-restinga/10 px-6 py-10 sm:px-10 md:px-14 md:py-14">
+              <h2 id="inclui" className="text-big text-restinga">
+                {L.include}
+              </h2>
+              <div className={`mt-8 grid gap-10 ${d.groups.length > 1 ? 'lg:grid-cols-2' : ''}`}>
+                {d.groups.map((g, gi) => (
+                  <Reveal key={gi}>
+                    {g.title && <h3 className="font-sans text-lg font-semibold">{g.title}</h3>}
+                    <ul className={`mt-4 grid gap-x-8 sm:grid-cols-2 ${d.groups.length === 1 ? 'lg:grid-cols-3' : ''}`}>
+                      {g.items.map((item) => (
+                        <li key={item} className="flex gap-3 border-b border-carvao/15 py-3">
+                          <span aria-hidden="true" className="mt-2 h-2 w-2 shrink-0 rounded-full bg-sol" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </Reveal>
+                ))}
+              </div>
+              {d.note && !service.inDevelopment && <p className="mt-8 max-w-2xl font-medium">{d.note}</p>}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Cases: resumo + botão para a página completa */}
       {cases.length > 0 && (
@@ -149,9 +176,9 @@ export default function ServicePage({ service }: { service: Service }) {
                 {inDevelopmentLabel}
               </p>
               <h2 id="status" className="mt-5 text-mid text-carvao">
-                {L.statusTitle}
+                {d.status?.title ?? L.statusTitle}
               </h2>
-              <p className="text-body mt-4">{d.note}</p>
+              <p className="text-body mt-4">{d.status?.text ?? d.note}</p>
             </div>
 
             {/* Cartão animado + botão para a apresentação comercial */}
@@ -163,7 +190,10 @@ export default function ServicePage({ service }: { service: Service }) {
                   {apresentacao.page.teaser.button}
                 </Button>
               </div>
-              <LoyaltyCard {...apresentacao.capa.card} />
+              <figure>
+                <LoyaltyCard {...apresentacao.capa.card} />
+                <figcaption className="mt-4 text-center text-[0.8125rem] text-areia/80">{L.illustration}</figcaption>
+              </figure>
             </div>
           </div>
         </section>
@@ -175,7 +205,7 @@ export default function ServicePage({ service }: { service: Service }) {
         <div className="on-dark bg-restinga pb-12 pt-8 text-areia md:pb-16">
           <div className="wrap text-center">
             <h2 id="cta-servico" className="mx-auto max-w-3xl text-big">
-              {L.finalTitle}
+              {d.join?.title ?? L.finalTitle}
             </h2>
             <p className="text-body mx-auto mt-5 max-w-xl">{L.finalText}</p>
             <Button to={contactLink} color="lima" className="mt-8">
