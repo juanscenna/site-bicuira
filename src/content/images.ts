@@ -60,7 +60,7 @@ export const videos = {
     src: '/videos/home-abertura.mp4',
     webm: '/videos/home-abertura.webm',
     poster: '/videos/home-abertura-poster.webp',
-    alt: 'Vista aérea de uma praia cheia, com morros verdes e o mar ao fundo',
+    alt: 'Vista aérea de uma praia movimentada, com pessoas jogando bola na areia molhada e o morro verde ao fundo',
   },
 } satisfies Record<string, SiteVideo>
 

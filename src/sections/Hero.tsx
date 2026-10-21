@@ -14,7 +14,7 @@ export default function Hero() {
       <PageHero video={videos.homeHero}>
         <div className="relative">
           {/* brilho claro atrás do logo para ele se destacar sobre a foto */}
-          <div aria-hidden="true" className="absolute -inset-10 rounded-full bg-areia/70 blur-3xl sm:-inset-14" />
+          <div aria-hidden="true" className="absolute -inset-6 rounded-full bg-areia/35 blur-3xl sm:-inset-10" />
           <img
             src={brand.principal}
             alt={hero.logoAlt}
