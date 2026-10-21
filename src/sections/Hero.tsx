@@ -1,5 +1,5 @@
 import Button from '../components/Button'
-import PageHero from '../components/PageHero'
+import PageHero, { HeroLogo } from '../components/PageHero'
 import { ScribbleCircle } from '../components/Doodles'
 import { hero } from '../content/home'
 import { brand, videos } from '../content/images'
@@ -12,18 +12,7 @@ export default function Hero() {
   return (
     <>
       <PageHero video={videos.homeHero}>
-        <div className="relative">
-          {/* brilho claro atrás do logo para ele se destacar sobre a foto */}
-          <div aria-hidden="true" className="absolute -inset-6 rounded-full bg-areia/35 blur-3xl sm:-inset-10" />
-          <img
-            src={brand.principal}
-            alt={hero.logoAlt}
-            width={482}
-            height={393}
-            fetchPriority="high"
-            className="relative w-[min(50vw,22rem)] drop-shadow-[0_6px_18px_rgba(41,42,41,0.35)] md:w-[26rem]"
-          />
-        </div>
+        <HeroLogo src={brand.principal} alt={hero.logoAlt} />
       </PageHero>
 
       <section id="inicio" className="relative pb-16 pt-5 text-center md:pb-24 md:pt-14">

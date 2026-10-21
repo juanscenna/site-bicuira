@@ -2,20 +2,19 @@ import { Link } from 'react-router-dom'
 import Breadcrumb from '../components/Breadcrumb'
 import Button from '../components/Button'
 import Mark from '../components/Mark'
-import PageHero, { HeroPlate } from '../components/PageHero'
+import PageHero, { HeroLogo } from '../components/PageHero'
 import Photo from '../components/Photo'
 import Reveal from '../components/Reveal'
 import usePageMeta from '../components/usePageMeta'
 import FidelizaTabs from '../components/FidelizaTabs'
 import LoyaltyCard from '../components/LoyaltyCard'
 import { apresentacao } from '../content/apresentacao'
-import { IconAutomacao, IconFideliza, IconSites, ScribbleUnderline, WaveEdge } from '../components/Doodles'
+import { ScribbleUnderline, WaveEdge } from '../components/Doodles'
 import { projectsOf } from '../content/projects'
+import { brand } from '../content/images'
 import { inDevelopmentLabel, serviceLabels as L, services, type Service } from '../content/services'
 import { contactHref } from '../content/site'
 
-const icons = { sites: IconSites, automacao: IconAutomacao, fideliza: IconFideliza }
-const iconColor = { sites: 'text-restinga', automacao: 'text-oceano', fideliza: 'text-sol' }
 
 // Página de um serviço (Sites, Automação, Fideliza).
 // Jornada: abertura → o que é → o que pode incluir → cases (resumo) → conversar.
@@ -23,21 +22,18 @@ export default function ServicePage({ service }: { service: Service }) {
   usePageMeta(service.seo.title, service.seo.description)
   const d = service.detail
   const cases = projectsOf(service.id)
-  const Icon = icons[service.id]
   const contactLink = contactHref(service.id)
 
   return (
     <>
       <PageHero image={service.heroImage}>
-        <HeroPlate>
-          <Icon className={`h-12 w-12 ${iconColor[service.id]}`} />
-          <p className="font-display text-[clamp(2rem,6vw,3.5rem)] leading-none text-restinga">{service.name}</p>
+        <HeroLogo src={brand[service.id]} alt={service.name}>
           {service.inDevelopment && (
             <p className="rounded-full bg-carvao px-3 py-1 text-[0.8125rem] font-bold uppercase tracking-wide text-areia">
               {inDevelopmentLabel}
             </p>
           )}
-        </HeroPlate>
+        </HeroLogo>
       </PageHero>
 
       {/* Título + informação (mesmo padrão da página inicial) */}

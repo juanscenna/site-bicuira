@@ -1,9 +1,10 @@
 import Breadcrumb from '../components/Breadcrumb'
 import Button from '../components/Button'
 import FidelizaTabs from '../components/FidelizaTabs'
-import PageHero, { HeroPlate } from '../components/PageHero'
+import PageHero, { HeroLogo } from '../components/PageHero'
 import usePageMeta from '../components/usePageMeta'
-import { IconFideliza, WaveEdge } from '../components/Doodles'
+import { WaveEdge } from '../components/Doodles'
+import { brand } from '../content/images'
 import { apresentacao } from '../content/apresentacao'
 import { findService, serviceLabels } from '../content/services'
 import ApresentacaoFideliza from '../sections/ApresentacaoFideliza'
@@ -18,11 +19,9 @@ export default function ApresentacaoPage() {
   return (
     <>
       <PageHero image={service.heroImage}>
-        <HeroPlate>
-          <IconFideliza className="h-12 w-12 text-sol" />
-          <p className="font-display text-[clamp(2rem,6vw,3.5rem)] leading-none text-restinga">{service.name}</p>
-          <p className="tag text-restinga">{p.breadcrumb}</p>
-        </HeroPlate>
+        <HeroLogo src={brand.fideliza} alt={service.name}>
+          <p className="rounded-full bg-carvao px-3 py-1 text-[0.8125rem] font-bold uppercase tracking-wide text-areia">{p.breadcrumb}</p>
+        </HeroLogo>
       </PageHero>
 
       <div className="wrap flex flex-col items-center gap-4 pt-6">

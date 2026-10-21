@@ -241,6 +241,10 @@ export const brand = {
   horizontal: '/brand/bicuira-logo-horizontal.png',
   principal: '/brand/bicuira-logo-principal.png',
   selo: '/brand/bicuira-selo.png',
+  // logos oficiais de cada serviço (usados na abertura das páginas)
+  sites: '/brand/bicuira-sites.svg',
+  automacao: '/brand/bicuira-automacao.svg',
+  fideliza: '/brand/bicuira-fideliza.svg',
   simbolo: '/brand/bicuira-simbolo.png',
   // versão clara oficial do símbolo (vem do material do Fideliza), para fundos escuros
   simboloAreia: '/brand/bicuira-simbolo-areia.png',

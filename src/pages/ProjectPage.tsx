@@ -31,7 +31,7 @@ function ProjectWithMeta({ project }: { project: Project }) {
   return (
     <>
       {/* Abertura padrão do site: imagem grande + placa central */}
-      <PageHero image={project.heroImage}>
+      <PageHero image={project.heroImage} soft>
         <HeroPlate>
           <p className="tag text-restinga">{project.category}</p>
           <p className="font-display text-[clamp(1.9rem,5.5vw,3.25rem)] leading-none text-restinga">{project.client}</p>
