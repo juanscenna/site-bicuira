@@ -34,7 +34,7 @@ export default function About() {
         </div>
 
         <div className="relative order-1 lg:order-2 lg:col-span-6 lg:-mt-28">
-          <Photo image={images.beachAerial} sizes="(min-width: 1024px) 50vw, 100vw" className="aspect-[4/3] sm:aspect-[16/9] lg:aspect-auto lg:h-full lg:min-h-[44rem] lg:rounded-bl-[8rem]" />
+          <Photo image={images.beachAerial} sizes="(min-width: 1024px) 50vw, 100vw" className="aspect-[4/5] sm:aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[44rem] lg:rounded-bl-[8rem]" />
           <Hill className="absolute -bottom-px left-0 h-20 w-2/3 text-areia lg:hidden" />
           <img
             src={brand.selo}

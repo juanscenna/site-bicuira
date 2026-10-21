@@ -2,7 +2,7 @@ import Button from '../components/Button'
 import PageHero from '../components/PageHero'
 import { ScribbleCircle } from '../components/Doodles'
 import { hero } from '../content/home'
-import { brand, images } from '../content/images'
+import { brand, videos } from '../content/images'
 import { contactHref } from '../content/site'
 
 // Abertura da página inicial (segue o wireframe):
@@ -11,7 +11,7 @@ import { contactHref } from '../content/site'
 export default function Hero() {
   return (
     <>
-      <PageHero image={images.heroCoastal}>
+      <PageHero video={videos.homeHero}>
         <div className="relative">
           {/* brilho claro atrás do logo para ele se destacar sobre a foto */}
           <div aria-hidden="true" className="absolute -inset-10 rounded-full bg-areia/70 blur-3xl sm:-inset-14" />

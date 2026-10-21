@@ -51,6 +51,19 @@ export const local = (path: string) => ({
   srcSet: `${path}-800.webp 800w, ${path}-1600.webp 1600w`,
 })
 
+// Vídeo de abertura (sem som, em loop). O poster aparece enquanto carrega
+// e no lugar do vídeo para quem prefere menos movimento.
+export type SiteVideo = { src: string; webm?: string; poster: string; alt: string }
+
+export const videos = {
+  homeHero: {
+    src: '/videos/home-abertura.mp4',
+    webm: '/videos/home-abertura.webm',
+    poster: '/videos/home-abertura-poster.webp',
+    alt: 'Vista aérea de uma praia cheia, com morros verdes e o mar ao fundo',
+  },
+} satisfies Record<string, SiteVideo>
+
 export const images = {
   // ── Fotografia costeira (atmosfera da marca) ──
   heroCoastal: {
@@ -64,10 +77,11 @@ export const images = {
     alt: 'Textura de água do mar com espuma',
     isPlaceholder: true,
   },
+  // Seção "Sobre" da home (foto enviada pelo cliente)
   beachAerial: {
-    ...unsplash('1519046904884-53103b34b206'),
-    alt: 'Vista do alto de uma praia com ondas chegando na areia',
-    isPlaceholder: true,
+    src: '/images/home/piscina-natural.webp',
+    alt: 'Piscina natural de água clara entre rochas, com uma pessoa nadando e um cachorro na água, e a praia ao fundo',
+    position: '50% 60%',
   },
   waveBreaking: {
     ...unsplash('1500375592092-40eb2168fd21'),
