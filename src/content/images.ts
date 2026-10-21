@@ -154,17 +154,40 @@ export const captures = {
     isPlaceholder: false,
     position: 'top',
   },
-  reservasConfirm: capture('Captura da confirmação do registro da reserva', 'lima'),
-  reservasSheet: capture('Captura da planilha com os dados enviados', 'areia'),
+  reservasConfirm: {
+    src: '/images/projects/reservas-confirmacao.webp',
+    alt: 'Tela "Reserva registrada" do aplicativo, com o resumo da reserva e o aviso de que ela foi adicionada à planilha',
+    isPlaceholder: false,
+    position: 'top',
+  },
+  reservasSheet: {
+    src: '/images/projects/reservas-planilha.webp',
+    alt: 'Planilha de reservas no Google Sheets, com o calendário das acomodações e a linha da reserva registrada',
+    isPlaceholder: false,
+    position: 'top left',
+  },
 
-  agendaFlyer: capture('Flyer original de um evento', 'sol'),
+  agendaFlyer: {
+    src: '/images/projects/agenda-flyer.webp',
+    alt: 'Flyer de um show de rock com data, horário e nome da banda, como chega para a Agenda',
+    isPlaceholder: false,
+  },
   agendaUpload: {
     ...local('/images/projects/agenda-envio'),
     alt: 'Tela da Agenda de Todos Nós para adicionar um evento: área para arrastar a arte do evento e botão "Selecionar imagem"',
     isPlaceholder: false,
   },
-  agendaExtracted: capture('Captura das informações extraídas do flyer', 'areia'),
-  agendaReview: capture('Captura da etapa de revisão humana', 'lima'),
+  agendaExtracted: {
+    src: '/images/projects/agenda-extraido.webp',
+    alt: 'Tela da Agenda com o flyer enviado e a ficha do evento já preenchida pela inteligência artificial',
+    isPlaceholder: false,
+  },
+  agendaReview: {
+    src: '/images/projects/agenda-revisao.webp',
+    alt: 'Ficha do evento para conferir e corrigir antes de adicionar à agenda',
+    isPlaceholder: false,
+    position: 'top',
+  },
   agendaSheet: capture('Captura da planilha com os dados registrados', 'restinga'),
 
   // ── Bicuíra Fideliza: prints reais da apresentação comercial ──
