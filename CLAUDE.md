@@ -21,17 +21,18 @@ Vite + React + TypeScript + Tailwind + React Router. Sem backend. Deploy na Verc
 - `/sites`, `/automacao`, `/fideliza` — uma página por serviço (`pages/ServicePage.tsx`): mesma abertura da home (imagem + placa central), o que inclui, resumo dos cases com "Ver case completo" e CTA final. Fideliza não tem case e mostra o status "em desenvolvimento".
 - `/projetos/pousada-sonhos-do-rosa`, `/projetos/automacao-reservas`, `/projetos/agenda-de-todos-nos` — página completa de cada case, com a mesma abertura, trilha (Início / Serviço / Case) e "voltar" para o serviço. Cada case pertence a um serviço (`service` em `projects.ts`).
 - qualquer outra → 404
-- Todas as páginas começam com `components/PageHero.tsx`. Aceita `image` ou `video` (`videos` em `images.ts`: mp4 + webm + poster, sem som, em loop; com reduzir movimento fica parado no poster). A home usa o vídeo `public/videos/home-abertura.*`. Home e páginas de serviço mostram o logo no centro (`HeroLogo`, halo claro suave); logos de serviço oficiais em `public/brand/bicuira-{sites,automacao,fideliza}.svg`. Cases usam o print da página inicial do projeto com `soft` (desfocado e escurecido) atrás da placa.
+- Todas as páginas começam com `components/PageHero.tsx`. Aceita `image` ou `video` (`videos` em `images.ts`: mp4 + webm + poster, sem som, em loop; com reduzir movimento fica parado no poster). A home usa a foto `heroCoastal` (o vídeo `public/videos/home-abertura.*` está guardado, fora de uso). Home e páginas de serviço mostram o logo no centro (`HeroLogo`, halo claro suave); logos de serviço oficiais em `public/brand/bicuira-{sites,automacao,fideliza}.svg`. Cases usam o print da página inicial do projeto com `soft` (desfocado e escurecido) atrás da placa.
 - `/fideliza/apresentacao` — aba "Apresentação comercial" do Fideliza (`pages/ApresentacaoPage.tsx` + `sections/ApresentacaoFideliza.tsx`): 14 slides (A4 deitado no desktop, blocos empilhados no celular), textos em `content/apresentacao.ts` copiados da fonte `juanscenna/bicuira-fideliza → comercial/apresentacao/apresentacao.html` (não reescrever). PDF em `public/docs/`. As páginas do Fideliza têm abas (`components/FidelizaTabs.tsx`: Visão geral / Apresentação comercial) e a `/fideliza` tem um botão para a apresentação.
 - `components/LoyaltyCard.tsx`: cartão de fidelidade animado (mesmo esquema do `CartaoDemo` do repositório do Fideliza, com a identidade da Bicuíra), em versão calma: carimba os selos uma vez ao aparecer, gira ao completar e fica parado. É ilustração, não captura.
 - Slides da apresentação: altura natural (nunca proporção fixa com conteúdo cortado) e só uma entrada discreta por slide — sem animar item por item, sem contagem de números, sem faixas correndo.
 - `vercel.json` (cleanUrls + rewrite para `index.html`). `ScrollManager` volta ao topo ao trocar de página e rola até a âncora quando há `#`.
 - WhatsApp: número em `site.ts` (`whatsappNumber`/`whatsappDisplay`) e mensagens prontas em `whatsappMessages` (geral, sites, automacao, fideliza). Todos os botões de conversa usam `contactHref(assunto)` (WhatsApp com a mensagem do assunto; sem número, volta para `/?servico=...#contato`). Botão flutuante `components/WhatsAppFloat.tsx`: o assunto vem da página aberta (serviço, case do serviço ou geral).
+- Formulário de contato: não envia para servidor; abre o WhatsApp com a mensagem montada dos campos.
 - Pré-seleção do formulário: `/?servico=sites#contato` (ids: `sites`, `automacao`, `fideliza`).
 
 ## Onde fica cada coisa
 - `src/content/` — TODOS os textos:
-  - `site.ts` — nome, região, Instagram, `whatsappNumber` (null = sem botões de WhatsApp), `formEndpoint` (null = formulário mostra aviso e aponta para o Instagram), menus
+  - `site.ts` — nome, região, Instagram, `whatsappNumber` (null = sem botões de WhatsApp), menus
   - `home.ts` — textos das seções da página inicial
   - `services.ts` — os três serviços (card da home + página própria: `path`, `heroImage`, `seo`, `detail`) e `serviceLabels`
   - `projects.ts` — lista de cases (novo case = nova entrada com `service` + imagens; aparece na página do serviço e ganha página pelo `GenericProject`)

@@ -20,10 +20,6 @@ export const site = {
   whatsappNumber: '554896131754' as string | null,
   whatsappDisplay: '+55 48 9613-1754',
 
-  // Endereço do serviço que vai receber o formulário (ex.: Formspree).
-  // Ex.: 'https://formspree.io/f/abcdwxyz'.
-  // Enquanto for null, o formulário mostra um aviso e indica o Instagram.
-  formEndpoint: null as string | null,
 }
 
 // Menu principal (header)

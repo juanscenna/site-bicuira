@@ -77,20 +77,13 @@ export const contact = {
     servicePlaceholder: 'Escolha uma opção',
     message: 'Mensagem',
     requiredNote: 'Campos com * são obrigatórios.',
-    goInstagram: 'Ir para o Instagram',
-    goWhatsapp: 'Chamar no WhatsApp',
-    submit: 'Enviar mensagem',
-    sending: 'Enviando…',
+    submit: 'Enviar pelo WhatsApp',
     errors: {
       name: 'Conta pra gente seu nome.',
       service: 'Escolha um serviço (ou "Ainda não sei").',
       message: 'Escreva uma mensagem com pelo menos 10 caracteres.',
     },
-    // Aparece enquanto site.formEndpoint for null
-    notReady:
-      'Nosso formulário está chegando em breve. Enquanto isso, fale com a gente pelo WhatsApp.',
-    success: 'Mensagem enviada! Vamos responder assim que possível.',
-    failure: 'Não conseguimos enviar agora. Tente de novo ou fale com a gente pelo WhatsApp.',
+    success: 'Abrimos o WhatsApp com a sua mensagem pronta. É só tocar em enviar por lá.',
   },
 }
 

@@ -2,7 +2,7 @@ import Button from '../components/Button'
 import PageHero, { HeroLogo } from '../components/PageHero'
 import { ScribbleCircle } from '../components/Doodles'
 import { hero } from '../content/home'
-import { brand, videos } from '../content/images'
+import { brand, images } from '../content/images'
 import { contactHref } from '../content/site'
 
 // Abertura da página inicial (segue o wireframe):
@@ -11,7 +11,7 @@ import { contactHref } from '../content/site'
 export default function Hero() {
   return (
     <>
-      <PageHero video={videos.homeHero}>
+      <PageHero image={images.heroCoastal}>
         <HeroLogo src={brand.principal} alt={hero.logoAlt} />
       </PageHero>
 

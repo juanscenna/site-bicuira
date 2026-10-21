@@ -2,11 +2,10 @@ import { useEffect, useState, type FormEvent, type ReactNode } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { contact } from '../content/home'
 import { services, unsureOption } from '../content/services'
-import { site, whatsappUrl } from '../content/site'
+import { site } from '../content/site'
 
 type Fields = { nome: string; empresa: string; servico: string; mensagem: string }
 type Errors = Partial<Record<keyof Fields, string>>
-type Status = 'idle' | 'sending' | 'success' | 'error' | 'not-ready'
 
 const texts = contact.form
 const options = [...services.map((s) => s.formLabel), unsureOption]
@@ -19,15 +18,13 @@ function validate(f: Fields): Errors {
   return errors
 }
 
-// Formulário de contato.
-// - Se site.formEndpoint for null: não envia nada e mostra um aviso com link para o WhatsApp (ou Instagram, sem número).
-// - Se tiver endpoint (ex.: Formspree): envia e mostra carregando / sucesso / erro.
-// Nenhum dado é guardado no site.
+// Formulário de contato: não guarda nada no site. Ao enviar, abre o WhatsApp
+// com a mensagem já montada a partir dos campos (a pessoa só aperta enviar lá).
 export default function ContactForm() {
   const [params] = useSearchParams()
   const [fields, setFields] = useState<Fields>({ nome: '', empresa: '', servico: '', mensagem: '' })
   const [errors, setErrors] = useState<Errors>({})
-  const [status, setStatus] = useState<Status>('idle')
+  const [sent, setSent] = useState(false)
 
   // Pré-seleciona o serviço quando o link vem de um botão (ex.: /?servico=sites#contato)
   const fromLink = params.get('servico')
@@ -35,10 +32,6 @@ export default function ContactForm() {
     const service = services.find((s) => s.id === fromLink)
     if (service) setFields((f) => ({ ...f, servico: service.formLabel }))
   }, [fromLink])
-
-  // Enquanto o formulário não envia, o aviso leva ao WhatsApp com o assunto escolhido
-  const topic = services.find((s) => s.formLabel === fields.servico)?.id ?? 'geral'
-  const chatUrl = whatsappUrl(topic)
 
   function update(name: keyof Fields, value: string) {
     setFields((f) => ({ ...f, [name]: value }))
@@ -56,24 +49,14 @@ export default function ContactForm() {
       return
     }
 
-    if (!site.formEndpoint) {
-      setStatus('not-ready')
-      return
-    }
-
-    setStatus('sending')
-    try {
-      const res = await fetch(site.formEndpoint, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(fields),
-      })
-      if (!res.ok) throw new Error()
-      setStatus('success')
-      setFields({ nome: '', empresa: '', servico: '', mensagem: '' })
-    } catch {
-      setStatus('error')
-    }
+    const text = [
+      `Olá! Sou ${fields.nome.trim()}${fields.empresa.trim() ? `, da ${fields.empresa.trim()}` : ''}.`,
+      `Interesse: ${fields.servico}.`,
+      '',
+      fields.mensagem.trim(),
+    ].join('\n')
+    window.open(`https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(text)}`, '_blank', 'noopener,noreferrer')
+    setSent(true)
   }
 
   const input =
@@ -155,38 +138,13 @@ export default function ContactForm() {
 
       <button
         type="submit"
-        disabled={status === 'sending'}
         className="mt-8 inline-flex min-h-[52px] w-full items-center justify-center rounded-full bg-carvao px-8 font-semibold text-areia transition-colors hover:bg-restinga disabled:opacity-60 sm:w-auto"
       >
-        {status === 'sending' ? texts.sending : texts.submit}
+        {texts.submit}
       </button>
 
-      {/* Mensagens de retorno (lidas automaticamente por leitores de tela) */}
       <div aria-live="polite" className="mt-6">
-        {status === 'not-ready' && (
-          <div className="rounded-xl border-2 border-restinga p-5">
-            <p className="font-medium">{texts.notReady}</p>
-            <a
-              href={chatUrl ?? site.instagram.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 inline-flex min-h-[48px] items-center rounded-full bg-restinga px-6 font-semibold text-areia hover:bg-carvao"
-            >
-              {chatUrl ? texts.goWhatsapp : `${texts.goInstagram} ${site.instagram.handle}`}
-              <span className="sr-only"> (abre em nova aba)</span>
-            </a>
-          </div>
-        )}
-        {status === 'success' && <p className="rounded-xl bg-lima p-5 font-medium">{texts.success}</p>}
-        {status === 'error' && (
-          <p className="rounded-xl border-2 border-sol p-5 font-medium">
-            {texts.failure}{' '}
-            <a href={chatUrl ?? site.instagram.url} target="_blank" rel="noopener noreferrer" className="underline">
-              {chatUrl ? site.whatsappDisplay : site.instagram.handle}
-              <span className="sr-only"> (abre em nova aba)</span>
-            </a>
-          </p>
-        )}
+        {sent && <p className="rounded-xl bg-lima p-5 font-medium">{texts.success}</p>}
       </div>
     </form>
   )
