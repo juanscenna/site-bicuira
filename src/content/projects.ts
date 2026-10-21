@@ -104,7 +104,7 @@ export const projects: Project[] = [
     category: 'Automação de processos',
     summary:
       'Um aplicativo web com interface simples para registrar reservas direto na planilha Google Sheets que o proprietário já usava.',
-    cover: captures.reservasHome,
+    cover: captures.reservasDesktop,
     seo: {
       title: 'Automação de reservas — Bicuíra Digital',
       description:
@@ -165,7 +165,7 @@ export const projects: Project[] = [
     summary:
       'Um sistema que lê flyers de eventos com inteligência artificial, passa pela conferência de uma pessoa e organiza tudo no Google Sheets.',
     highlight: 'IA + revisão humana',
-    cover: captures.agendaFlyer,
+    cover: captures.agendaUpload,
     seo: {
       title: 'Agenda de Todos Nós — Bicuíra Digital',
       description:

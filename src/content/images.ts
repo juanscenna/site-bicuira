@@ -115,18 +115,54 @@ export const images = {
 // Quando tiver as capturas, salve em public/images/projects/ (800 e 1600 px, WebP)
 // e troque a linha por: nome: { ...local('/images/projects/arquivo'), alt: '...', isPlaceholder: false },
 export const captures = {
-  pousadaHome: capture('Captura da página inicial do site da Pousada Sonhos do Rosa (desktop)', 'oceano'),
-  pousadaMobile: capture('Captura do site da Pousada Sonhos do Rosa no celular', 'restinga'),
-  pousadaInternal: capture('Captura de uma seção interna do site da Pousada Sonhos do Rosa', 'sol'),
-  pousadaDetail: capture('Detalhe da interface do site da Pousada Sonhos do Rosa', 'areia'),
+  pousadaHome: {
+    ...local('/images/projects/pousada-home'),
+    alt: 'Página inicial do site da Pousada Sonhos do Rosa no computador, com a foto das cabanas, o título "Sua estadia na Praia do Rosa" e o botão de reservar pelo WhatsApp',
+    isPlaceholder: false,
+  },
+  pousadaMobile: {
+    ...localSized('/images/projects/pousada-mobile', 390, 780),
+    alt: 'Site da Pousada Sonhos do Rosa no celular, com o título, o texto de apresentação e o botão de reservar pelo WhatsApp',
+    isPlaceholder: false,
+    position: 'top',
+  },
+  pousadaInternal: {
+    ...local('/images/projects/pousada-acomodacoes'),
+    alt: 'Seção Acomodações do site da Pousada Sonhos do Rosa, com três cartões de cabanas, fotos, características e o botão de consultar disponibilidade',
+    isPlaceholder: false,
+  },
+  pousadaDetail: {
+    ...localSized('/images/projects/pousada-detalhe', 520, 1040),
+    alt: 'Detalhe do cartão "Cabana com Vista ao Jardim" no site da Pousada Sonhos do Rosa, com carrossel de fotos, etiquetas e botão verde de consulta',
+    isPlaceholder: false,
+  },
 
-  reservasHome: capture('Captura da tela inicial do aplicativo de reservas', 'restinga'),
-  reservasForm: capture('Captura da interface de preenchimento da reserva', 'oceano'),
+  reservasHome: {
+    ...localSized('/images/projects/reservas-inicio', 390, 780),
+    alt: 'Tela inicial do aplicativo de reservas no celular: título "Nova reserva", opção de preencher por mensagem e os campos do hóspede',
+    isPlaceholder: false,
+    position: 'top',
+  },
+  reservasDesktop: {
+    ...local('/images/projects/reservas-computador'),
+    alt: 'Aplicativo de reservas no computador: formulário "Nova reserva" à esquerda e o resumo da reserva à direita',
+    isPlaceholder: false,
+  },
+  reservasForm: {
+    ...localSized('/images/projects/reservas-formulario', 390, 780),
+    alt: 'Formulário do aplicativo de reservas no celular, com datas de entrada e saída, pessoas, valor total e a escolha da acomodação',
+    isPlaceholder: false,
+    position: 'top',
+  },
   reservasConfirm: capture('Captura da confirmação do registro da reserva', 'lima'),
   reservasSheet: capture('Captura da planilha com os dados enviados', 'areia'),
 
   agendaFlyer: capture('Flyer original de um evento', 'sol'),
-  agendaUpload: capture('Captura da interface de envio da imagem', 'oceano'),
+  agendaUpload: {
+    ...local('/images/projects/agenda-envio'),
+    alt: 'Tela da Agenda de Todos Nós para adicionar um evento: área para arrastar a arte do evento e botão "Selecionar imagem"',
+    isPlaceholder: false,
+  },
   agendaExtracted: capture('Captura das informações extraídas do flyer', 'areia'),
   agendaReview: capture('Captura da etapa de revisão humana', 'lima'),
   agendaSheet: capture('Captura da planilha com os dados registrados', 'restinga'),

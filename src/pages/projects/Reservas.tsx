@@ -13,6 +13,7 @@ import {
   Tools,
 } from '../../components/project/ProjectParts'
 import { projectLabels as L, type Project } from '../../content/projects'
+import { captures } from '../../content/images'
 import { contactHref } from '../../content/site'
 
 // Automação de reservas
@@ -35,7 +36,7 @@ export default function Reservas({ project }: { project: Project }) {
 
           <div className="relative lg:col-span-6">
             <div className="relative mx-auto flex max-w-lg items-center gap-2 rounded-[3rem] bg-oceano p-6 sm:p-10">
-              <PhoneFrame image={project.cover} className="w-[38%] shrink-0" />
+              <PhoneFrame image={captures.reservasHome} className="w-[38%] shrink-0" />
               <ScribbleArrow className="w-[18%] shrink-0 text-areia" />
               <div className="flex-1">
                 <SheetGraphic rows={6} cols={3} filled={[4]} />
