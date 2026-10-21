@@ -8,7 +8,7 @@
 //
 // Os três primeiros projetos têm páginas com layout próprio (src/pages/).
 
-import { captures, images, type SiteImage } from './images'
+import { captures, type SiteImage } from './images'
 import type { ServiceId } from './services'
 
 export type GalleryItem = {
@@ -49,7 +49,7 @@ export const projects: Project[] = [
   {
     slug: 'pousada-sonhos-do-rosa',
     service: 'sites',
-    heroImage: images.surfLifestyle,
+    heroImage: captures.pousadaHome,
     client: 'Pousada Sonhos do Rosa',
     title: 'Site da Pousada Sonhos do Rosa',
     category: 'Desenvolvimento de site',
@@ -98,7 +98,7 @@ export const projects: Project[] = [
   {
     slug: 'automacao-reservas',
     service: 'automacao',
-    heroImage: images.waveBreaking,
+    heroImage: captures.reservasDesktop,
     client: 'Pousada Sonhos do Rosa',
     title: 'Automação de reservas',
     category: 'Automação de processos',
@@ -158,7 +158,7 @@ export const projects: Project[] = [
   {
     slug: 'agenda-de-todos-nos',
     service: 'automacao',
-    heroImage: images.oceanAerial,
+    heroImage: captures.agendaUpload,
     client: 'Agenda de Todos Nós',
     title: 'Agenda de Todos Nós',
     category: 'Inteligência artificial e automação',

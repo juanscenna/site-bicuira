@@ -28,7 +28,7 @@ export const captureSoonLabel = 'Captura em breve'
 
 // Espaço de captura vazio: aparece uma composição da marca no lugar.
 // Para colocar a captura real, troque por: { ...local('/images/projects/nome'), alt: '...', isPlaceholder: false }
-const capture = (alt: string, tone: CaptureTone): SiteImage => ({ src: '', alt, isPlaceholder: true, tone })
+export const capture = (alt: string, tone: CaptureTone): SiteImage => ({ src: '', alt, isPlaceholder: true, tone })
 
 // Foto do Unsplash em dois tamanhos (800 e 1600 px de largura)
 const unsplash = (id: string) => {
@@ -188,7 +188,12 @@ export const captures = {
     isPlaceholder: false,
     position: 'top',
   },
-  agendaSheet: capture('Captura da planilha com os dados registrados', 'restinga'),
+  agendaSheet: {
+    src: '/images/projects/agenda-planilha.webp',
+    alt: 'Planilha da Agenda no Google Sheets com os eventos da semana organizados por data, ícone, local, hora e Instagram',
+    isPlaceholder: false,
+    position: 'top left',
+  },
 
   // ── Bicuíra Fideliza: prints reais da apresentação comercial ──
   // Origem: juanscenna/bicuira-fideliza → comercial/apresentacao/img/
