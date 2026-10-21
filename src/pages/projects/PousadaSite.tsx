@@ -3,10 +3,10 @@ import Photo from '../../components/Photo'
 import Reveal from '../../components/Reveal'
 import Mark from '../../components/Mark'
 import { BrowserFrame, PhoneFrame } from '../../components/Frames'
-import { ScribbleArrow, Sun, WaveShape } from '../../components/Doodles'
+import { ScribbleArrow, Sun } from '../../components/Doodles'
 import {
   Benefits,
-  GalleryFigure,
+  CaseGallery,
   ProjectCta,
   ProjectNav,
   StoryBlock,
@@ -18,7 +18,6 @@ import { contactHref } from '../../content/site'
 // Site da Pousada Sonhos do Rosa
 // Ênfase: apresentação visual, fotografia e interface do site.
 export default function PousadaSite({ project }: { project: Project }) {
-  const [g1, g2, g3, g4] = project.gallery
 
   return (
     <>
@@ -71,21 +70,7 @@ export default function PousadaSite({ project }: { project: Project }) {
         </div>
       </section>
 
-      {/* Galeria editorial */}
-      <section aria-labelledby="galeria" className="relative overflow-hidden pb-20 md:pb-28">
-        <div className="wrap">
-          <h2 id="galeria" className="tag text-restinga">
-            {L.gallery}
-          </h2>
-          <div className="mt-10 grid grid-cols-12 gap-4 md:gap-6">
-            {g1 && <GalleryFigure item={g1} className="col-span-12 md:col-span-8" />}
-            {g2 && <GalleryFigure item={g2} className="col-span-6 col-start-4 md:col-span-3 md:col-start-10 md:mt-24" />}
-            {g3 && <GalleryFigure item={g3} className="col-span-12 md:col-span-6 md:col-start-2 md:-mt-10" />}
-            {g4 && <GalleryFigure item={g4} className="col-span-8 col-start-5 md:col-span-4 md:col-start-8 md:mt-10" />}
-          </div>
-        </div>
-        <WaveShape className="absolute -bottom-6 left-[-10%] w-[60%] text-oceano/40" />
-      </section>
+      <CaseGallery project={project} />
 
       {/* Benefícios */}
       <section aria-labelledby="beneficios" className="pb-24">

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import Button from '../Button'
 import { Framed } from '../Frames'
 import { ScribbleUnderline, WaveEdge } from '../Doodles'
-import { neighbors, projectLabels as L, projects, type GalleryItem, type Project } from '../../content/projects'
+import { neighbors, projectLabels as L, projects, type Project } from '../../content/projects'
 import { findService } from '../../content/services'
 import { contactHref } from '../../content/site'
 
@@ -41,17 +41,6 @@ export function Tools({ tools, dark = false }: { tools?: string[]; dark?: boolea
         ))}
       </ul>
     </div>
-  )
-}
-
-// Item da galeria. A legenda só aparece quando a imagem é uma captura real
-// (isPlaceholder: false), para não apresentar foto ilustrativa como captura.
-export function GalleryFigure({ item, className = '' }: { item: GalleryItem; className?: string }) {
-  return (
-    <figure className={className}>
-      <Framed image={item.image} frame={item.frame} />
-      {!item.image.isPlaceholder && <figcaption className="mt-3 text-sm text-carvao/75">{item.label}</figcaption>}
-    </figure>
   )
 }
 
@@ -156,5 +145,62 @@ export function StoryBlock({
       <h2 className="mt-5 text-[clamp(1.5rem,3.4vw,3rem)] leading-[1.02]">{title}</h2>
       <p className="text-body mt-6 max-w-xl">{text}</p>
     </div>
+  )
+}
+
+// Galeria dos cases: fundo neutro para o print aparecer, telas grandes e retas,
+// numeradas e na ordem do processo (computador ocupa meia largura, celular e recorte menos). Tocar abre o print em tamanho real.
+export function CaseGallery({ project }: { project: Project }) {
+  const items = project.gallery.map((g, i) => ({ ...g, n: String(i + 1).padStart(2, '0') }))
+
+  const figure = (g: (typeof items)[number], width: string) => (
+    <figure key={g.label} className={width}>
+      {g.image.isPlaceholder ? (
+        <Framed image={g.image} frame={g.frame} />
+      ) : (
+        <a
+          href={g.image.src}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block rounded-xl transition-transform duration-300 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-carvao"
+        >
+          <Framed image={g.image} frame={g.frame} />
+          <span className="sr-only"> (abre a imagem em tamanho real em nova aba)</span>
+        </a>
+      )}
+      {!g.image.isPlaceholder && (
+        <figcaption className="mt-4 flex items-baseline gap-3 text-[0.9375rem] font-medium text-carvao">
+          <span className="font-display text-lg leading-none text-restinga">{g.n}</span>
+          {g.label}
+        </figcaption>
+      )}
+    </figure>
+  )
+
+  return (
+    <section aria-labelledby="galeria" className="py-16 md:py-24">
+      <div className="wrap">
+        <div className="rounded-[2.5rem] bg-restinga/[0.07] px-5 py-10 sm:px-10 md:px-14 md:py-14">
+          <div className="flex flex-wrap items-end justify-between gap-3">
+            <h2 id="galeria" className="text-big text-restinga">
+              {L.gallery}
+            </h2>
+            <p className="text-sm text-carvao/80">{L.galleryHint}</p>
+          </div>
+          <div className="mt-10 flex flex-wrap items-start justify-center gap-x-10 gap-y-12">
+            {items.map((g) =>
+              figure(
+                g,
+                g.frame === 'browser'
+                  ? 'w-full lg:w-[calc(50%-1.25rem)]'
+                  : g.frame === 'phone'
+                    ? 'w-[min(70vw,15rem)]'
+                    : 'w-[min(80vw,19rem)]',
+              ),
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
   )
 }

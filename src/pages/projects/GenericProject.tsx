@@ -3,7 +3,7 @@ import Mark from '../../components/Mark'
 import Photo from '../../components/Photo'
 import {
   Benefits,
-  GalleryFigure,
+  CaseGallery,
   ProjectCta,
   ProjectNav,
   StoryBlock,
@@ -53,11 +53,7 @@ export default function GenericProject({ project }: { project: Project }) {
         </section>
       )}
 
-      <section className="wrap grid gap-6 pb-24 sm:grid-cols-2">
-        {project.gallery.map((g) => (
-          <GalleryFigure key={g.label} item={g} />
-        ))}
-      </section>
+      <CaseGallery project={project} />
 
       <ProjectCta project={project} />
       <ProjectNav project={project} />

@@ -5,7 +5,7 @@ import Mark from '../../components/Mark'
 import { ScribbleCircle, Spark, WaveEdge } from '../../components/Doodles'
 import SheetGraphic from '../../components/project/SheetGraphic'
 import {
-  GalleryFigure,
+  CaseGallery,
   ProjectCta,
   ProjectNav,
   StoryBlock,
@@ -136,23 +136,7 @@ export default function Agenda({ project }: { project: Project }) {
         </section>
       )}
 
-      {/* Galeria em sequência (rola na horizontal dentro da faixa) */}
-      <section aria-labelledby="galeria" className="py-20 md:py-28">
-        <div className="wrap">
-          <h2 id="galeria" className="tag text-restinga">
-            {L.gallery}
-          </h2>
-        </div>
-        <div className="mt-8 overflow-x-auto pb-6" tabIndex={0} aria-label={L.gallery}>
-          <ol className="flex w-max items-start gap-6 px-4 sm:px-6 lg:px-[max(2.5rem,calc((100vw-1400px)/2+2.5rem))]">
-            {project.gallery.map((g, i) => (
-              <li key={g.label} className={`${g.frame === 'phone' ? 'w-44' : 'w-72 sm:w-96'} ${i % 2 ? 'mt-12' : ''}`}>
-                <GalleryFigure item={g} />
-              </li>
-            ))}
-          </ol>
-        </div>
-      </section>
+      <CaseGallery project={project} />
 
       <ProjectCta project={project} />
       <ProjectNav project={project} />

@@ -6,7 +6,7 @@ import { ScribbleArrow, WaveEdge, WaveLine } from '../../components/Doodles'
 import SheetGraphic from '../../components/project/SheetGraphic'
 import {
   Benefits,
-  GalleryFigure,
+  CaseGallery,
   ProjectCta,
   ProjectNav,
   StoryBlock,
@@ -127,23 +127,10 @@ export default function Reservas({ project }: { project: Project }) {
               <Benefits items={project.benefits} columns={1} />
             </div>
           </div>
-          <div className="max-w-md lg:col-span-5 lg:col-start-8 lg:max-w-none">
-            <h2 className="tag text-restinga">{L.gallery}</h2>
-            <div className="mt-6 grid grid-cols-3 gap-3">
-              {project.gallery
-                .filter((g) => g.frame === 'phone')
-                .map((g, i) => (
-                  <GalleryFigure key={g.label} item={g} className={i === 1 ? 'mt-10' : ''} />
-                ))}
-            </div>
-            {project.gallery
-              .filter((g) => g.frame !== 'phone')
-              .map((g) => (
-                <GalleryFigure key={g.label} item={g} className="mt-6" />
-              ))}
-          </div>
         </div>
       </section>
+
+      <CaseGallery project={project} />
 
       <ProjectCta project={project} />
       <ProjectNav project={project} />

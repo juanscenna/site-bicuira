@@ -239,6 +239,7 @@ export const projectLabels = {
   howItWorks: 'Como funciona',
   benefits: 'Benefícios',
   gallery: 'Galeria',
+  galleryHint: 'Toque em uma imagem para ver em tamanho real.',
   tools: 'Ferramentas',
   result: 'Resultado relatado pela operação',
   portfolio: 'Serviço',
