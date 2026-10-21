@@ -13,6 +13,7 @@ import {
   Tools,
 } from '../../components/project/ProjectParts'
 import { projectLabels as L, type Project } from '../../content/projects'
+import { contactHref } from '../../content/site'
 
 // Automação de reservas
 // Ênfase: o fluxo operacional (celular → planilha) e a integração com o Google Sheets.
@@ -27,7 +28,7 @@ export default function Reservas({ project }: { project: Project }) {
               <Mark text={project.hero.title} word={project.hero.mark} color="text-sol" />
             </h1>
             <p className="text-body mt-8 max-w-lg">{project.hero.text}</p>
-            <Button to={`/?servico=${project.service}#contato`} className="mt-10">
+            <Button to={contactHref(project.service)} className="mt-10">
               {project.hero.contactCta}
             </Button>
           </div>

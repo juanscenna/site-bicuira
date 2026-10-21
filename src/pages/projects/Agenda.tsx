@@ -13,6 +13,7 @@ import {
 } from '../../components/project/ProjectParts'
 import { captures } from '../../content/images'
 import { projectLabels as L, type Project } from '../../content/projects'
+import { contactHref } from '../../content/site'
 
 // Agenda de Todos Nós
 // Ênfase: a sequência imagem → extração → revisão humana → planilha.
@@ -38,7 +39,7 @@ export default function Agenda({ project }: { project: Project }) {
                   {project.hero.externalLink.label}
                 </Button>
               )}
-              <Button to={`/?servico=${project.service}#contato`} variant="text">
+              <Button to={contactHref(project.service)} variant="text">
                 {project.hero.contactCta}
               </Button>
             </div>

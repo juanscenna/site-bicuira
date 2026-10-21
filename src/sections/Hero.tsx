@@ -3,6 +3,7 @@ import PageHero from '../components/PageHero'
 import { ScribbleCircle } from '../components/Doodles'
 import { hero } from '../content/home'
 import { brand, images } from '../content/images'
+import { contactHref } from '../content/site'
 
 // Abertura da página inicial (segue o wireframe):
 // 1. imagem grande com o logo oficial no centro
@@ -38,7 +39,7 @@ export default function Hero() {
           </h1>
           <p className="text-body mt-4 max-w-xl md:mt-6">{hero.text}</p>
           <div className="mt-6 flex flex-col items-center gap-2 sm:flex-row sm:gap-6 md:mt-8">
-            <Button to="/#contato">{hero.primaryCta}</Button>
+            <Button to={contactHref()}>{hero.primaryCta}</Button>
             <Button to="/#solucoes" variant="text">
               {hero.secondaryCta}
             </Button>

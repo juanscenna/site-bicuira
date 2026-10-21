@@ -10,6 +10,7 @@
 //   [SOBRENOME] → removido (fica só "Samuel")
 
 import { captures } from './images'
+import { site, whatsappUrl } from './site'
 
 export type Tone = 'sol' | 'lima' | 'oceano'
 export type SlideTitle = { text: string; highlight?: string; after?: string; color?: Tone }
@@ -257,6 +258,8 @@ export const apresentacao = {
   contato: {
     title: { text: 'Vamos fidelizar ', highlight: 'quem já é seu?', color: 'lima' } as SlideTitle,
     items: [
+      // WhatsApp acrescentado ao slide original (número oficial em site.ts)
+      ...(whatsappUrl('fideliza') ? [{ icon: 'chat' as IconName, text: site.whatsappDisplay, href: whatsappUrl('fideliza')! }] : []),
       { icon: 'instagram', text: '@bicuiradigital', href: 'https://www.instagram.com/bicuiradigital/' },
       { icon: 'globe', text: 'site-bicuira.vercel.app' },
       { icon: 'user', text: 'Samuel' },

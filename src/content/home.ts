@@ -67,8 +67,8 @@ export const contact = {
   title: 'Tem alguma coisa no seu negócio que poderia funcionar melhor?',
   mark: 'funcionar melhor',
   text: 'Conta para a gente o que você está buscando. Vamos entender sua necessidade e conversar sobre as possibilidades.',
-  instagramLabel: 'Fale com a gente no Instagram',
-  whatsappLabel: 'Chamar no WhatsApp',
+  instagramLabel: 'Instagram',
+  whatsappLabel: 'Fale com a gente no WhatsApp',
   form: {
     title: 'Ou deixe uma mensagem',
     name: 'Nome',
@@ -78,6 +78,7 @@ export const contact = {
     message: 'Mensagem',
     requiredNote: 'Campos com * são obrigatórios.',
     goInstagram: 'Ir para o Instagram',
+    goWhatsapp: 'Chamar no WhatsApp',
     submit: 'Enviar mensagem',
     sending: 'Enviando…',
     errors: {
@@ -87,9 +88,9 @@ export const contact = {
     },
     // Aparece enquanto site.formEndpoint for null
     notReady:
-      'Nosso formulário está chegando em breve. Enquanto isso, fale com a gente pelo Instagram.',
+      'Nosso formulário está chegando em breve. Enquanto isso, fale com a gente pelo WhatsApp.',
     success: 'Mensagem enviada! Vamos responder assim que possível.',
-    failure: 'Não conseguimos enviar agora. Tente de novo ou fale com a gente pelo Instagram.',
+    failure: 'Não conseguimos enviar agora. Tente de novo ou fale com a gente pelo WhatsApp.',
   },
 }
 

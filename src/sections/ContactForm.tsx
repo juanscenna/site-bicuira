@@ -2,7 +2,7 @@ import { useEffect, useState, type FormEvent, type ReactNode } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { contact } from '../content/home'
 import { services, unsureOption } from '../content/services'
-import { site } from '../content/site'
+import { site, whatsappUrl } from '../content/site'
 
 type Fields = { nome: string; empresa: string; servico: string; mensagem: string }
 type Errors = Partial<Record<keyof Fields, string>>
@@ -20,7 +20,7 @@ function validate(f: Fields): Errors {
 }
 
 // Formulário de contato.
-// - Se site.formEndpoint for null: não envia nada e mostra um aviso com link para o Instagram.
+// - Se site.formEndpoint for null: não envia nada e mostra um aviso com link para o WhatsApp (ou Instagram, sem número).
 // - Se tiver endpoint (ex.: Formspree): envia e mostra carregando / sucesso / erro.
 // Nenhum dado é guardado no site.
 export default function ContactForm() {
@@ -35,6 +35,10 @@ export default function ContactForm() {
     const service = services.find((s) => s.id === fromLink)
     if (service) setFields((f) => ({ ...f, servico: service.formLabel }))
   }, [fromLink])
+
+  // Enquanto o formulário não envia, o aviso leva ao WhatsApp com o assunto escolhido
+  const topic = services.find((s) => s.formLabel === fields.servico)?.id ?? 'geral'
+  const chatUrl = whatsappUrl(topic)
 
   function update(name: keyof Fields, value: string) {
     setFields((f) => ({ ...f, [name]: value }))
@@ -163,12 +167,12 @@ export default function ContactForm() {
           <div className="rounded-xl border-2 border-restinga p-5">
             <p className="font-medium">{texts.notReady}</p>
             <a
-              href={site.instagram.url}
+              href={chatUrl ?? site.instagram.url}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-4 inline-flex min-h-[48px] items-center rounded-full bg-restinga px-6 font-semibold text-areia hover:bg-carvao"
             >
-              {texts.goInstagram} {site.instagram.handle}
+              {chatUrl ? texts.goWhatsapp : `${texts.goInstagram} ${site.instagram.handle}`}
               <span className="sr-only"> (abre em nova aba)</span>
             </a>
           </div>
@@ -177,8 +181,8 @@ export default function ContactForm() {
         {status === 'error' && (
           <p className="rounded-xl border-2 border-sol p-5 font-medium">
             {texts.failure}{' '}
-            <a href={site.instagram.url} target="_blank" rel="noopener noreferrer" className="underline">
-              {site.instagram.handle}
+            <a href={chatUrl ?? site.instagram.url} target="_blank" rel="noopener noreferrer" className="underline">
+              {chatUrl ? site.whatsappDisplay : site.instagram.handle}
               <span className="sr-only"> (abre em nova aba)</span>
             </a>
           </p>

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { footerLabels, footerNav, site } from '../content/site'
+import { footerLabels, footerNav, site, whatsappUrl } from '../content/site'
 import { services } from '../content/services'
 import { projects } from '../content/projects'
 import { brand } from '../content/images'
@@ -29,6 +29,19 @@ export default function Footer() {
             <FooterColumn title={footerLabels.projects} links={projects.map((p) => ({ label: p.title, to: `/projetos/${p.slug}` }))} />
             <div>
               <h2 className="tag mb-4 font-sans text-restinga">{footerLabels.contact}</h2>
+              {whatsappUrl() && (
+                <p>
+                  <a
+                    href={whatsappUrl()!}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex min-h-[44px] items-center whitespace-nowrap text-sm font-semibold underline decoration-2 underline-offset-4 hover:decoration-sol"
+                  >
+                    {site.whatsappDisplay}
+                    <span className="sr-only"> (WhatsApp, abre em nova aba)</span>
+                  </a>
+                </p>
+              )}
               <p>
                 <a
                   href={site.instagram.url}

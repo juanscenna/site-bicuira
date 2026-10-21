@@ -7,6 +7,7 @@ import { Framed } from '../Frames'
 import { ScribbleUnderline, WaveEdge } from '../Doodles'
 import { neighbors, projectLabels as L, projects, type GalleryItem, type Project } from '../../content/projects'
 import { findService } from '../../content/services'
+import { contactHref } from '../../content/site'
 
 // Etiqueta do topo: "Case 01 — Desenvolvimento de site · Pousada Sonhos do Rosa"
 export function ProjectLabel({ project, dark = false }: { project: Project; dark?: boolean }) {
@@ -84,7 +85,7 @@ export function ProjectCta({ project }: { project: Project }) {
           </div>
           <div className="md:col-span-4">
             <p className="text-body">{finalCta.text}</p>
-            <Button to={`/?servico=${project.service}#contato`} color="lima" className="mt-8">
+            <Button to={contactHref(project.service)} color="lima" className="mt-8">
               {finalCta.button}
             </Button>
           </div>

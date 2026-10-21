@@ -10,6 +10,7 @@ import {
   Tools,
 } from '../../components/project/ProjectParts'
 import { projectLabels as L, type Project } from '../../content/projects'
+import { contactHref } from '../../content/site'
 
 // Layout padrão para projetos novos adicionados em projects.ts.
 // Se quiser uma composição própria, crie uma página em src/pages/projects/
@@ -27,7 +28,7 @@ export default function GenericProject({ project }: { project: Project }) {
             {project.hero.externalLink && (
               <Button to={project.hero.externalLink.url}>{project.hero.externalLink.label}</Button>
             )}
-            <Button to={`/?servico=${project.service}#contato`} variant="text">
+            <Button to={contactHref(project.service)} variant="text">
               {project.hero.contactCta}
             </Button>
           </div>

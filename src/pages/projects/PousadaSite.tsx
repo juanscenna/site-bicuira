@@ -13,6 +13,7 @@ import {
 } from '../../components/project/ProjectParts'
 import { captures, images } from '../../content/images'
 import { projectLabels as L, type Project } from '../../content/projects'
+import { contactHref } from '../../content/site'
 
 // Site da Pousada Sonhos do Rosa
 // Ênfase: apresentação visual, fotografia e interface do site.
@@ -33,7 +34,7 @@ export default function PousadaSite({ project }: { project: Project }) {
               {project.hero.externalLink && (
                 <Button to={project.hero.externalLink.url}>{project.hero.externalLink.label}</Button>
               )}
-              <Button to={`/?servico=${project.service}#contato`} variant="text">
+              <Button to={contactHref(project.service)} variant="text">
                 {project.hero.contactCta}
               </Button>
             </div>

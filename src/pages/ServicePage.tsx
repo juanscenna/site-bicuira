@@ -12,6 +12,7 @@ import { apresentacao } from '../content/apresentacao'
 import { IconAutomacao, IconFideliza, IconSites, ScribbleUnderline, WaveEdge } from '../components/Doodles'
 import { projectsOf } from '../content/projects'
 import { inDevelopmentLabel, serviceLabels as L, services, type Service } from '../content/services'
+import { contactHref } from '../content/site'
 
 const icons = { sites: IconSites, automacao: IconAutomacao, fideliza: IconFideliza }
 const iconColor = { sites: 'text-restinga', automacao: 'text-oceano', fideliza: 'text-sol' }
@@ -23,7 +24,7 @@ export default function ServicePage({ service }: { service: Service }) {
   const d = service.detail
   const cases = projectsOf(service.id)
   const Icon = icons[service.id]
-  const contactLink = `/?servico=${service.id}#contato`
+  const contactLink = contactHref(service.id)
 
   return (
     <>

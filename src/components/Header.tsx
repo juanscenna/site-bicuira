@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { headerCta, mainNav, whatsappUrl } from '../content/site'
+import { contactHref, headerCta, mainNav } from '../content/site'
 import { findProject } from '../content/projects'
 import { findService } from '../content/services'
 import { brand } from '../content/images'
 import { WaveLine } from './Doodles'
+import SmartLink from './SmartLink'
+import { useWhatsappTopic } from './WhatsAppFloat'
 
 export default function Header() {
   const [open, setOpen] = useState(false)
@@ -12,7 +14,7 @@ export default function Header() {
   const location = useLocation()
   const menuButton = useRef<HTMLButtonElement>(null)
   const firstLink = useRef<HTMLAnchorElement>(null)
-  const whatsapp = whatsappUrl()
+  const ctaHref = contactHref(useWhatsappTopic())
 
   // Página atual no menu: o serviço aberto, ou o serviço do case aberto
   const caseSlug = location.pathname.startsWith('/projetos/') ? location.pathname.split('/')[2] : ''
@@ -83,22 +85,12 @@ export default function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
-          {whatsapp && (
-            <a
-              href={whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex min-h-[44px] items-center rounded-full border-2 border-restinga px-4 text-sm font-semibold text-restinga hover:bg-restinga hover:text-areia"
-            >
-              WhatsApp<span className="sr-only"> (abre em nova aba)</span>
-            </a>
-          )}
-          <Link
-            to={headerCta.to}
+          <SmartLink
+            to={ctaHref}
             className="inline-flex min-h-[44px] items-center rounded-full bg-carvao px-5 text-sm font-semibold text-areia transition-colors hover:bg-restinga"
           >
             {headerCta.label}
-          </Link>
+          </SmartLink>
         </div>
 
         {/* Botão do menu (mobile) */}
@@ -142,22 +134,12 @@ export default function Header() {
         </nav>
         <WaveLine className="my-8 h-6 w-full text-oceano" waves={5} />
         <div className="mt-auto flex flex-col gap-3">
-          <Link
-            to={headerCta.to}
+          <SmartLink
+            to={ctaHref}
             className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-carvao px-6 font-semibold text-areia"
           >
             {headerCta.label}
-          </Link>
-          {whatsapp && (
-            <a
-              href={whatsapp}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex min-h-[52px] items-center justify-center rounded-full border-2 border-restinga px-6 font-semibold text-restinga"
-            >
-              WhatsApp<span className="sr-only"> (abre em nova aba)</span>
-            </a>
-          )}
+          </SmartLink>
         </div>
       </div>
     </header>

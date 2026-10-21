@@ -3,6 +3,7 @@ import Header from './Header'
 import Footer from './Footer'
 import ScrollManager from './ScrollManager'
 import ScrollFx from './ScrollFx'
+import WhatsAppFloat from './WhatsAppFloat'
 
 // Estrutura comum a todas as páginas: header, conteúdo e footer.
 export default function Layout() {
@@ -21,6 +22,7 @@ export default function Layout() {
         <Outlet />
       </main>
       <Footer />
+      <WhatsAppFloat />
     </div>
   )
 }

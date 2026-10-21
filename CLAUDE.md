@@ -26,11 +26,12 @@ Vite + React + TypeScript + Tailwind + React Router. Sem backend. Deploy na Verc
 - `components/LoyaltyCard.tsx`: cartão de fidelidade animado (mesmo esquema do `CartaoDemo` do repositório do Fideliza, com a identidade da Bicuíra), em versão calma: carimba os selos uma vez ao aparecer, gira ao completar e fica parado. É ilustração, não captura.
 - Slides da apresentação: altura natural (nunca proporção fixa com conteúdo cortado) e só uma entrada discreta por slide — sem animar item por item, sem contagem de números, sem faixas correndo.
 - `vercel.json` (cleanUrls + rewrite para `index.html`). `ScrollManager` volta ao topo ao trocar de página e rola até a âncora quando há `#`.
+- WhatsApp: número em `site.ts` (`whatsappNumber`/`whatsappDisplay`) e mensagens prontas em `whatsappMessages` (geral, sites, automacao, fideliza). Todos os botões de conversa usam `contactHref(assunto)` (WhatsApp com a mensagem do assunto; sem número, volta para `/?servico=...#contato`). Botão flutuante `components/WhatsAppFloat.tsx`: o assunto vem da página aberta (serviço, case do serviço ou geral).
 - Pré-seleção do formulário: `/?servico=sites#contato` (ids: `sites`, `automacao`, `fideliza`).
 
 ## Onde fica cada coisa
 - `src/content/` — TODOS os textos:
-  - `site.ts` — nome, região, Instagram, `whatsappNumber` (null = sem botão), `formEndpoint` (null = formulário mostra aviso e aponta para o Instagram), menus
+  - `site.ts` — nome, região, Instagram, `whatsappNumber` (null = sem botões de WhatsApp), `formEndpoint` (null = formulário mostra aviso e aponta para o Instagram), menus
   - `home.ts` — textos das seções da página inicial
   - `services.ts` — os três serviços (card da home + página própria: `path`, `heroImage`, `seo`, `detail`) e `serviceLabels`
   - `projects.ts` — lista de cases (novo case = nova entrada com `service` + imagens; aparece na página do serviço e ganha página pelo `GenericProject`)

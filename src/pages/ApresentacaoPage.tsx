@@ -7,6 +7,7 @@ import { IconFideliza, WaveEdge } from '../components/Doodles'
 import { apresentacao } from '../content/apresentacao'
 import { findService, serviceLabels } from '../content/services'
 import ApresentacaoFideliza from '../sections/ApresentacaoFideliza'
+import { contactHref } from '../content/site'
 
 // Aba "Apresentação comercial" do Bicuíra Fideliza: /fideliza/apresentacao
 export default function ApresentacaoPage() {
@@ -40,7 +41,7 @@ export default function ApresentacaoPage() {
               {p.final.title}
             </h2>
             <p className="text-body mx-auto mt-4 max-w-xl">{p.final.text}</p>
-            <Button to={`/?servico=${service.id}#contato`} color="lima" className="mt-8">
+            <Button to={contactHref(service.id)} color="lima" className="mt-8">
               {p.final.button}
             </Button>
           </div>
