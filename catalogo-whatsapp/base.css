@@ -12,3 +12,7 @@ h1,h2{font-family:'Baloo 2';font-weight:800;line-height:.98;letter-spacing:-1px}
 .browser img{display:block;width:100%}
 .phone{border:10px solid #292A29;border-radius:44px;overflow:hidden;background:#292A29}
 .phone img{display:block;width:100%}
+.k{font-size:24px;font-weight:700;color:#25433D;letter-spacing:2px}
+.seal{display:inline-block;background:#B4CD64;color:#25433D;font-weight:700;font-size:22px;border-radius:99px;padding:10px 24px}
+.cta{position:absolute;left:72px;right:72px;bottom:56px;background:#25433D;color:#F2EBDD;border-radius:22px;padding:26px 34px;display:flex;justify-content:space-between;align-items:center}
+.cta b{font-family:'Baloo 2';font-weight:800;font-size:40px}.cta span{font-size:24px;font-weight:600;color:#B4CD64}
