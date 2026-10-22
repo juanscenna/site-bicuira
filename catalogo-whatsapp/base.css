@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@800&family=Sora:wght@400;600;700&display=swap');
+*{margin:0;box-sizing:border-box}html,body{width:1080px;height:1080px;overflow:hidden}
+body{font-family:Sora,sans-serif;color:#292A29;background:#F2EBDD;position:relative}
+h1,h2{font-family:'Baloo 2';font-weight:800;line-height:.98;letter-spacing:-1px}
+.tag{display:inline-block;font-size:22px;font-weight:600;color:#25433D;border:2px solid #25433D;border-radius:99px;padding:8px 22px}
+.foot{position:absolute;left:72px;right:72px;bottom:56px;display:flex;justify-content:space-between;align-items:center;font-size:22px;font-weight:600;color:#25433D}
+.foot img{height:54px}
+.browser{background:#fff;border-radius:18px;overflow:hidden;border:3px solid #292A29}
+.browser .bar{height:40px;background:#292A29;display:flex;align-items:center;gap:10px;padding:0 18px}
+.browser .bar i{width:13px;height:13px;border-radius:50%;background:#F2EBDD;opacity:.6}
+.browser .bar span{margin-left:14px;font-size:16px;color:#F2EBDD}
+.browser img{display:block;width:100%}
+.phone{border:10px solid #292A29;border-radius:44px;overflow:hidden;background:#292A29}
+.phone img{display:block;width:100%}
