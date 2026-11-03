@@ -1,7 +1,7 @@
 // Apresentação comercial do Bicuíra Sites (aba da página /sites).
 // Mesma apresentação usada na reunião com pousadas: quem somos, o case
-// Pousada Sonhos do Rosa, o que entra no site básico, investimento e condições.
-// Valores e condições definidos pela Bicuíra (não alterar sem confirmar).
+// Pousada Sonhos do Rosa, o que entra no site básico e as condições.
+// Condições definidas pela Bicuíra (não alterar sem confirmar). Sem valores no site.
 //
 // Títulos: { text, highlight, color } → "highlight" aparece na cor indicada.
 
@@ -17,7 +17,7 @@ export const apresentacaoSites = {
     seo: {
       title: 'Apresentação comercial — Bicuíra Sites | Bicuíra Digital',
       description:
-        'Apresentação comercial do Bicuíra Sites para pousadas: o case Pousada Sonhos do Rosa, o que entra no site básico, investimento, prazo e condições.',
+        'Apresentação comercial do Bicuíra Sites para pousadas: o case Pousada Sonhos do Rosa, o que entra no site básico, prazo e condições.',
     },
     breadcrumb: 'Apresentação comercial',
     tabs: { overview: 'Visão geral', presentation: 'Apresentação comercial', label: 'Seções do Bicuíra Sites' },
@@ -85,7 +85,7 @@ export const apresentacaoSites = {
 
   // 06 · O que entregamos
   entrega: {
-    tag: 'O que entregamos por R$ 650',
+    tag: 'O que entregamos',
     title: { text: 'Sua pousada inteira, em ', highlight: 'um endereço só.', color: 'lima' } as SlideTitle,
     text: 'Quartos, localização e informações numa única rolagem, com um botão que leva o hóspede direto para a conversa no WhatsApp da pousada.',
     items: [
@@ -126,18 +126,7 @@ export const apresentacaoSites = {
     ],
   },
 
-  // 10 · Investimento
-  investimento: {
-    tag: 'Investimento',
-    price: 'R$ 650',
-    priceNote: 'implementação, pagamento único',
-    monthly: 'R$ 39,90',
-    monthlyNote: 'de mensalidade, com hospedagem e domínio no ar.',
-    boxTitle: 'O que vem no básico',
-    items: ['Identidade visual da pousada', 'Uma página com tudo sobre a pousada', 'Botão direto para o WhatsApp', 'Hospedagem e domínio no ar'],
-  },
-
-  // 11 · Entregável e condições
+  // 10 · Entregável e condições
   condicoes: {
     tag: 'Entregável e condições',
     title: { text: 'Tudo combinado desde o início.' } as SlideTitle,
@@ -153,14 +142,12 @@ export const apresentacaoSites = {
       note: 'Fotos e informações são enviadas pela pousada.',
     },
     prazo: { title: 'Prazo', big: '10 dias úteis', text: 'a partir do recebimento das fotos e informações.' },
-    pagamento: { title: 'Pagamento', big: '50% + 50%', text: 'R$ 325 para começar e R$ 325 na entrega, via Pix.' },
-    mensalidade: {
-      title: 'Mensalidade · R$ 39,90',
+    manutencao: {
+      title: 'Depois de publicado',
       items: [
-        'Começa na publicação do site',
         'Hospedagem e domínio no ar',
         'Até 2 ajustes de texto ou foto por mês',
-        'Páginas novas e mudanças maiores orçadas à parte',
+        'Páginas novas e mudanças maiores combinadas à parte',
       ],
     },
   },

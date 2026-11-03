@@ -30,7 +30,6 @@ export default function ApresentacaoSites() {
           <Pratica />
           <Reserva />
           <Criacao />
-          <Investimento />
           <Condicoes />
         </div>
       </div>
@@ -227,44 +226,15 @@ function Criacao() {
   )
 }
 
-// 10 · Investimento
-function Investimento() {
-  const c = A.investimento
-  return (
-    <Slide n={10} dark tag={c.tag}>
-      <div className="grid items-center gap-10 lg:grid-cols-2">
-        <div>
-          <p className="font-display text-[clamp(4rem,10vw,8rem)] leading-[0.9] text-lima">{c.price}</p>
-          <p className="mt-3 text-lg sm:text-2xl">{c.priceNote}</p>
-          <p className="mt-6 text-base sm:text-lg">
-            <strong className="text-lima">{c.monthly}</strong> {c.monthlyNote}
-          </p>
-        </div>
-        <div className="rounded-[1.5rem] border-2 border-areia/25 p-7">
-          <p className="tag text-lima">{c.boxTitle}</p>
-          <ul className="mt-4 grid gap-1">
-            {c.items.map((it) => (
-              <li key={it} className="flex gap-3 border-t border-areia/20 py-3 text-base sm:text-lg">
-                <Dot />
-                {it}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </Slide>
-  )
-}
-
-// 11 · Entregável e condições
+// 10 · Entregável e condições
 function Condicoes() {
   const c = A.condicoes
   const card = 'rounded-[1.25rem] border-2 border-restinga bg-white/60 p-6'
   const head = 'font-display text-2xl leading-tight text-restinga'
   const big = 'mt-2 whitespace-nowrap font-display text-[clamp(2rem,3vw,2.6rem)] leading-none text-sol'
   return (
-    <Slide n={11} tag={c.tag} title={c.title}>
-      <div className="grid gap-4 lg:grid-cols-[1.4fr_1fr_1fr]">
+    <Slide n={10} tag={c.tag} title={c.title}>
+      <div className="grid gap-4 lg:grid-cols-[1.4fr_1fr]">
         <div className={`${card} lg:row-span-2`}>
           <p className={head}>{c.entregavel.title}</p>
           <ul className="mt-3 grid gap-2">
@@ -282,15 +252,10 @@ function Condicoes() {
           <p className={big}>{c.prazo.big}</p>
           <p className="mt-2 text-base">{c.prazo.text}</p>
         </div>
-        <div className={card}>
-          <p className={head}>{c.pagamento.title}</p>
-          <p className={big}>{c.pagamento.big}</p>
-          <p className="mt-2 text-base">{c.pagamento.text}</p>
-        </div>
-        <div className="on-dark rounded-[1.25rem] bg-restinga p-6 text-areia lg:col-span-2">
-          <p className="font-display text-2xl leading-tight text-lima">{c.mensalidade.title}</p>
-          <ul className="mt-3 grid gap-2 sm:grid-cols-2 sm:gap-x-6">
-            {c.mensalidade.items.map((it) => (
+        <div className="on-dark rounded-[1.25rem] bg-restinga p-6 text-areia">
+          <p className="font-display text-2xl leading-tight text-lima">{c.manutencao.title}</p>
+          <ul className="mt-3 grid gap-2">
+            {c.manutencao.items.map((it) => (
               <li key={it} className="flex gap-3 text-base leading-snug">
                 <Dot />
                 {it}
