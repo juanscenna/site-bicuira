@@ -4,6 +4,8 @@ import Home from './pages/Home'
 import ServicePage from './pages/ServicePage'
 import ApresentacaoPage from './pages/ApresentacaoPage'
 import { apresentacao } from './content/apresentacao'
+import ApresentacaoSitesPage from './pages/ApresentacaoSitesPage'
+import { apresentacaoSites } from './content/apresentacaoSites'
 import ProjectPage from './pages/ProjectPage'
 import NotFound from './pages/NotFound'
 import { services } from './content/services'
@@ -20,6 +22,8 @@ export default function App() {
         ))}
         {/* aba "Apresentação comercial" do Fideliza */}
         <Route path={apresentacao.page.path} element={<ApresentacaoPage />} />
+        {/* aba "Apresentação comercial" do Sites */}
+        <Route path={apresentacaoSites.page.path} element={<ApresentacaoSitesPage />} />
         <Route path="/projetos/:slug" element={<ProjectPage />} />
         <Route path="*" element={<NotFound />} />
       </Route>

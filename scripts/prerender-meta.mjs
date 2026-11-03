@@ -12,6 +12,7 @@ const { outputFiles } = await build({
       export { projects } from './src/content/projects.ts'
       export { services } from './src/content/services.ts'
       export { apresentacao } from './src/content/apresentacao.ts'
+      export { apresentacaoSites } from './src/content/apresentacaoSites.ts'
       export { site } from './src/content/site.ts'`,
     resolveDir: process.cwd(),
     loader: 'ts',
@@ -21,7 +22,7 @@ const { outputFiles } = await build({
   platform: 'node',
   write: false,
 })
-const { apresentacao, homeSeo, projects, services, site } = await import(
+const { apresentacao, apresentacaoSites, homeSeo, projects, services, site } = await import(
   'data:text/javascript;base64,' + Buffer.from(outputFiles[0].text).toString('base64')
 )
 
@@ -60,8 +61,12 @@ for (const s of services) {
 mkdirSync('dist/fideliza', { recursive: true })
 writeFileSync('dist/fideliza/apresentacao.html', page({ ...apresentacao.page.seo, path: apresentacao.page.path, image: ogImage('fideliza') }))
 
+// aba "Apresentação comercial" do Sites (/sites/apresentacao)
+mkdirSync('dist/sites', { recursive: true })
+writeFileSync('dist/sites/apresentacao.html', page({ ...apresentacaoSites.page.seo, path: apresentacaoSites.page.path, image: ogImage('sites') }))
+
 mkdirSync('dist/projetos', { recursive: true })
 for (const p of projects) {
   writeFileSync(`dist/projetos/${p.slug}.html`, page({ ...p.seo, path: `/projetos/${p.slug}`, image: ogImage(p.slug) }))
 }
-console.log(`Metas geradas para ${services.length + projects.length + 2} páginas.`)
+console.log(`Metas geradas para ${services.length + projects.length + 3} páginas.`)

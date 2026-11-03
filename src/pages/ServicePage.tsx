@@ -7,6 +7,8 @@ import Photo from '../components/Photo'
 import Reveal from '../components/Reveal'
 import usePageMeta from '../components/usePageMeta'
 import FidelizaTabs from '../components/FidelizaTabs'
+import SitesTabs from '../components/SitesTabs'
+import { apresentacaoSites } from '../content/apresentacaoSites'
 import LoyaltyCard from '../components/LoyaltyCard'
 import { apresentacao } from '../content/apresentacao'
 import { ScribbleUnderline, WaveEdge } from '../components/Doodles'
@@ -45,6 +47,11 @@ export default function ServicePage({ service }: { service: Service }) {
               <FidelizaTabs />
             </div>
           )}
+          {service.id === 'sites' && (
+            <div className="mt-3">
+              <SitesTabs />
+            </div>
+          )}
           <p className="tag mt-4 text-restinga">
             {L.serviceTag} {service.number}
           </p>
@@ -62,6 +69,11 @@ export default function ServicePage({ service }: { service: Service }) {
             {service.id === 'fideliza' && (
               <Button to={apresentacao.page.path} variant="text">
                 {apresentacao.section.jump}
+              </Button>
+            )}
+            {service.id === 'sites' && (
+              <Button to={apresentacaoSites.page.path} variant="text">
+                {apresentacaoSites.page.jump}
               </Button>
             )}
           </div>
